@@ -1,13 +1,20 @@
+#include <stdint.h>
 
-class InputElement{};
+
+class InputElement{
+
+    public:
+        uint8_t type;
+        uint8_t param1;
+        uint8_t param2;
+};
 
 class NoteOn : public InputElement{
 
-private:
-    int note;
-
-public:
-    NoteOn(int note_);
+    public:
+        NoteOn(uint8_t note_);
+        uint8_t note;
+        
 };
 
 class CCOn : public InputElement{};

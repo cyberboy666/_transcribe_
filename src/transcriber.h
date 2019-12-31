@@ -1,8 +1,12 @@
+// char foo;
+
 #include "inputElement.h"
 #include "outputElement.h"
 #include "commands.h"
 #include "midievents.h"
-#include <MIDIUSB.h>
+#include <usbmidi.h>
+#include <Arduino.h>
+#include <stdint.h>
 
 class Mapping{
 
@@ -16,6 +20,14 @@ public:
     OutputElement output;
 };
 
+class MidiMessage{
+    public:
+        uint8_t command = 0;
+        uint8_t channel = 0;
+        uint8_t param1 = 0;
+        uint8_t param2 = 0;
+};
+
 class Transcriber{
 
 public:
@@ -24,7 +36,9 @@ public:
 
     void map(InputElement input, OutputElement output);
 
-    void callMap(midiEventPacket_t rx);
+    MidiMessage readMidiInput();
+    int checkMap(MidiMessage midi_message);
+    void callOutputCommand(int matchedIndex);
     void serialWrite(String cmd);
 
     Mapping mappingList[20];

@@ -1,20 +1,25 @@
+#include <stdint.h>
+#include <Arduino.h>
 
-class OutputElement{};
+class OutputElement{
+    public:
+        virtual String getCommand(){};
+};
 
 class Button : public OutputElement{ 
 
-private:
-    char cmd[8];
-
 public:
-    Button(char command[8]);
+    Button(String command);
+    String getCommand() override;
+    String cmd;
+
 };
 
-class Switch : public OutputElement{};
+// class Switch : public OutputElement{};
 
-class Slider : public OutputElement{};
+// class Slider : public OutputElement{};
 
-class Slider2 : public OutputElement{};
+// class Slider2 : public OutputElement{};
 
-class Step : public OutputElement{};
+// class Step : public OutputElement{};
 

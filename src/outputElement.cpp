@@ -1,8 +1,12 @@
 #include "outputElement.h"
 
 
-Button::Button(char command[8]){
-    // cmd = command
+Button::Button(String command){
+    cmd = command;
 };
+
+String Button::getCommand(){
+    return cmd;
+}
 
 

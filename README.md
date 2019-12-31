@@ -16,21 +16,11 @@ https://arduinodiy.wordpress.com/2012/03/19/serial-connection-for-your-arduino-a
 
 wiring max232n : 
 
-![image](https://user-images.githubusercontent.com/12017938/71270713-8d1d0080-2352-11ea-840d-7a46f05c743f.png)
-
-![image](https://user-images.githubusercontent.com/12017938/71270767-ade55600-2352-11ea-8631-5f2e28ae7bb4.png)
-
 ![image](https://user-images.githubusercontent.com/12017938/71274322-665fc980-2354-11ea-928c-a6fc264001fb.png)
-
-![image](https://user-images.githubusercontent.com/12017938/71272599-edf90880-2353-11ea-89b8-90c52024c4e5.png)
 
 ![image](https://user-images.githubusercontent.com/12017938/71275155-a030d000-2354-11ea-98e1-16ea6839eb72.png)
 
-![image](https://user-images.githubusercontent.com/12017938/71272877-02d59c00-2354-11ea-83bd-ee6de3375d65.png)
-
 ![image](https://user-images.githubusercontent.com/12017938/71278010-b6d82680-2356-11ea-99df-124c4aaaf7f1.png)
-
-a javascript repo to send serial to ave55 : https://github.com/vdragsic/ave55serial/blob/master/lib/ave55serial.js
 
 ## want to support for : 
 
@@ -64,3 +54,13 @@ another thread about hooking these up: https://forum.pjrc.com/threads/43357-Teen
 - buttons -> notes or cc (sources, )
 - switches (toggles) -> single note/cc (ie pressing once for on, again for off ?)
 - range of values (steps) -> cc values (ie paint0, paint1, paint2, paint3)
+
+## some things to check / try / do
+
+- try with the level-shifter circuit
+- try with smaller caps
+- try with altSoftSerial
+- try with serial midi input (how?)
+- try with usb midi host sheild
+- implement other types of commands
+- create a pcb design

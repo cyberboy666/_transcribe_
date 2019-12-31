@@ -1,7 +1,10 @@
+#include <stdint.h>
+#include <Arduino.h>
+
 namespace AVE55{
 
-const char MIX_MODE[8] = "VMX:000";
-const char WIPE_SQUARE[8] = "VWP:017";
+const String MIX_MODE = "VMX:000";
+const String WIPE_SQUARE = "VWP:017";
 
 }
 
