@@ -1,8 +1,10 @@
 #include "transcriber.h"
 
 
-void Transcriber::begin(bool useUsbClient=true, bool useSerial=false, bool useUsbHost=false){
 
+
+void Transcriber::begin(bool useUsbClient=true, bool useSerial=false, bool useUsbHost=false){
+  
 };
 
 void Transcriber::update(){
@@ -18,10 +20,7 @@ void Transcriber::update(){
 
 };
 
-void Transcriber::map(InputElement input, OutputElement output){
-    mappingList[mappingIndex] = Mapping(input, output);
-    mappingIndex++;
-};
+
 
 MidiMessage Transcriber::readMidiInput(){
   USBMIDI.poll();
@@ -54,15 +53,25 @@ int Transcriber::checkMap(MidiMessage midiMessage){
 }
 
 void Transcriber::callOutputCommand(int matchedIndex){
-  String cmd = mappingList[matchedIndex].output.getCommand();
+  char cmd[8] = {};
+  mappingList[matchedIndex].output.getCmd(cmd);
+  Serial.write(cmd);
   Serial.print("the command called is: ");
-  Serial.print(cmd);
+
+  // Serial.print(this_cmd);
   serialWrite(cmd);
 }
 
-void Transcriber::serialWrite(String cmd){
+void Transcriber::serialWrite(char cmd[]){
+
+Serial.print(cmd);
   Serial1.write(2);
-  Serial1.write(cmd.c_str());
+  Serial1.write(cmd);
   Serial1.write(3);
+
+  
+  // Serial.write(2);
+  // Serial.write(cmd.c_str());
+  // Serial.write(3);
 
 };

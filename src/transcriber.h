@@ -1,5 +1,3 @@
-// char foo;
-
 #include "inputElement.h"
 #include "outputElement.h"
 #include "commands.h"
@@ -34,14 +32,21 @@ public:
     void begin(bool useUsbClient=true, bool useSerial=false, bool useUsbHost=false);
     void update();
 
-    void map(InputElement input, OutputElement output);
+    template <class in, class out>
+    void map (in input, out output){
+        mappingList[mappingIndex] = Mapping(input, output);
+        mappingIndex++;
+    }
+
+
+    // void map(InputElement &input, OutputElement &output);
 
     MidiMessage readMidiInput();
     int checkMap(MidiMessage midi_message);
     void callOutputCommand(int matchedIndex);
-    void serialWrite(String cmd);
+    void serialWrite(char cmd[]);
 
-    Mapping mappingList[20];
+    Mapping mappingList[50];
     int mappingIndex = 0;
 };
 
