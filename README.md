@@ -41,6 +41,30 @@ question about mini-host and pro-micro : https://github.com/felis/USB_Host_Shiel
 an old thread talking about hooking these up together : https://forum.sparkfun.com/viewtopic.php?t=34873
 another thread about hooking these up: https://forum.pjrc.com/threads/43357-Teensy-with-mini-USB-host-shield-(chineese)
 
+### further research into using the usb-host:
+
+- it seems that the vbus (5v) needs to be cut from the vcc (3.3v) , here is best example : https://www.arduino.cn/thread-81435-1-1.html
+- i need a 3.3v power source for the usb-host , prob best bet is a L78L33 (18c, up to 100ma) or LM1117T (99c up to 800ma)
+- for the wiring , in theroy a level-shifter should be used between 5v arduino and 3.3v ic (74HC125) , but people have reported success with a arduio nano , which is also 5v so im thinking maybe this will also just work ?? but other places suggest it wont ,, im not sure - should try this circuit with a 3.3board too ?
+- for the wiring , it should look something like this :
+
+host | pro-micro | name
+--- | --- | ---
+5 | ? | ss
+6 | 16 | mosi
+7 | 14 | miso
+8 | 15 | sck
+2 | ? | int
+1 | vcc | 5v
+9 | regulator | 3.3v
+3 | gnd | gnd
+4 | rst | rst
+
+- also suggested to wire rst to power ... 
+
+![HOST](https://user-images.githubusercontent.com/12017938/71743665-6a680d00-2e65-11ea-9b93-f5de6802a3c6.JPG)
+![image](https://user-images.githubusercontent.com/12017938/71743326-933bd280-2e64-11ea-9e26-02f71ec2c89f.png)
+
 ## want to also support other mixers with similar controls
 
 - mx50 ?
@@ -57,10 +81,10 @@ another thread about hooking these up: https://forum.pjrc.com/threads/43357-Teen
 
 ## some things to check / try / do
 
-- try with the level-shifter circuit
-- try with smaller caps
-- try with altSoftSerial
-- try with serial midi input (how?)
+- try with the level-shifter circuit - i tried but it didnt work - maybe my circuit was wrong tho
+- ~~try with smaller caps~~ this works horray
+- ~~try with altSoftSerial~~ - seems to work, only question is how much space we have on there
+- try with serial midi input (how?) maybe i will need to work with 2 arduinos , one for sending midi another for receiving
 - try with usb midi host sheild
 - implement other types of commands
 - create a pcb design
