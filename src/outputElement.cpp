@@ -2,11 +2,11 @@
 #include "commands.h"
 using namespace AVE55;
 
-OutputElement::OutputElement(char type_[8], char cmd_[8]){
+OutputElement::OutputElement(uint8_t type_, char cmd_[8]){
     for(int i = 0; i < 8; i++){
-        type[i] = type_[i];
         cmd[i] = cmd_[i];
     }
+    type = type_;
 }
 
 void OutputElement::getCmd(char *buf){
@@ -15,5 +15,8 @@ void OutputElement::getCmd(char *buf){
     }
 }
 
-
+bool OutputElement::hasParam(){
+    if(type == 1){return true;}
+    return false;
+}
 

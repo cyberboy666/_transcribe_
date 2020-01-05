@@ -1,6 +1,11 @@
 namespace MIDINOTE{
 
-const int C4 = 60;
-const int CSHARP4 = 61;
+    const uint8_t C4 = 60;
+    const uint8_t C4SHARP = 61;
 
+}
+
+namespace INTYPE{
+    const uint8_t NOTE = 0;
+    const uint8_t CCVALUE = 1;
 }

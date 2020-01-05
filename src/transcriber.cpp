@@ -16,7 +16,7 @@ void Transcriber::update(){
 	int matchedIndex = checkMap(midiMessage);
   if(matchedIndex< 0){return;}
   // call output command
-  callOutputCommand(matchedIndex);
+  callOutputCommand(matchedIndex, midiMessage.param2);
 
 };
 
@@ -42,31 +42,56 @@ MidiMessage Transcriber::readMidiInput(){
 }
 
 int Transcriber::checkMap(MidiMessage midiMessage){
-  // Serial.print("mapping index: ");
-  // Serial.print(mappingIndex);
+
   for(int i=0; i<mappingIndex; i++){
-    if(midiMessage.command == mappingList[i].input.type && midiMessage.param1 == mappingList[i].input.param1){
+
+    if(midiMessage.command == mappingList[i].input.getTypeHex() && midiMessage.param1 == mappingList[i].input.param1){
       return i;
     }
   }
   return -1;
 }
 
-void Transcriber::callOutputCommand(int matchedIndex){
+void Transcriber::callOutputCommand(int matchedIndex, uint8_t midiParam){
+  bool hasParam = mappingList[matchedIndex].output.hasParam();
+
   char cmd[8] = {};
   mappingList[matchedIndex].output.getCmd(cmd);
-  Serial.write(cmd);
-  Serial.print("the command called is: ");
 
-  // Serial.print(this_cmd);
-  serialWrite(cmd);
+  if(hasParam){
+    serialWriteParam(cmd, midiParam);
+  }
+  else{
+    serialWrite(cmd);
+  }
+  
 }
 
 void Transcriber::serialWrite(char cmd[]){
 
-Serial.print(cmd);
+
   Serial1.write(2);
   Serial1.write(cmd);
+  Serial1.write(3);
+
+  
+  // Serial.write(2);
+  // Serial.write(cmd.c_str());
+  // Serial.write(3);
+
+};
+
+void Transcriber::serialWriteParam(char cmd[], uint8_t param){
+Serial.print(param * 2);
+Serial.print(" - ");
+String hexParam =  String(param * 2, HEX);
+hexParam.toUpperCase();
+Serial.print(hexParam);
+
+  Serial1.write(2);
+  Serial1.write(cmd);
+  // Serial1.write(hexParam);
+  Serial1.write(hexParam.c_str());
   Serial1.write(3);
 
   

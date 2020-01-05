@@ -4,10 +4,11 @@
 class OutputElement{
     public:
         OutputElement(){};
-        OutputElement(char type_[8],  char cmd_[8]);
-        char type[8];
+        OutputElement(uint8_t type_,  char cmd_[8]);
+        uint8_t type;
         char cmd[8];
         void getCmd(char *buf);
+        bool hasParam();
 };
 
 // class Switch : public OutputElement{};

@@ -43,8 +43,9 @@ public:
 
     MidiMessage readMidiInput();
     int checkMap(MidiMessage midi_message);
-    void callOutputCommand(int matchedIndex);
+    void callOutputCommand(int matchedIndex, uint8_t midiParam1);
     void serialWrite(char cmd[]);
+    void serialWriteParam(char cmd[], uint8_t param);
 
     Mapping mappingList[50];
     int mappingIndex = 0;

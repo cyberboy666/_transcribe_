@@ -1,5 +1,7 @@
 
 #include <AltSoftSerial.h>
+// #include <usbh_midi.h>
+// #include <usbhub.h>
 #include "src/transcriber.h"
 
 int RXLED = 17;
@@ -14,11 +16,15 @@ void setup() {
   transcriber.begin();
 
 
-  NoteOn input(MIDINOTE::C4);
-  OutputElement output("BUTTON", AVE55::MIX_MODE);
+  // NoteOn input(MIDINOTE::C4);
+  // OutputElement output("BUTTON", AVE55::MIX_MODE);
+    // transcriber.map(input, output);
+
+    transcriber.map(InputElement(INTYPE::NOTE, MIDINOTE::C4), OutputElement(OUTTYPE::BUTTON, AVE55::MIX_MODE));
+    transcriber.map(InputElement(INTYPE::CCVALUE, 0), OutputElement(OUTTYPE::SLIDER, AVE55::A_B_MIX_LEVEL));
   // OutputElement output("BUTTON", "VDE:078");
 
-  transcriber.map(input, output);
+
   // transcriber.map(InputElement(NoteOn(61)), OutputElement(Button(AVE55::A_BUS_MOSAIC_STEP_1)));
   // transcriber.map(InputElement(NoteOn(62)), OutputElement(Button(AVE55::A_BUS_MOSAIC_STEP_2)));
   // transcriber.map(InputElement(NoteOn(63)), OutputElement(Button(AVE55::A_BUS_MOSAIC_STEP_3)));
