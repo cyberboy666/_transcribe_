@@ -46,6 +46,8 @@ another thread about hooking these up: https://forum.pjrc.com/threads/43357-Teen
 - it seems that the vbus (5v) needs to be cut from the vcc (3.3v) , here is best example : https://www.arduino.cn/thread-81435-1-1.html
 - i need a 3.3v power source for the usb-host , prob best bet is a L78L33 (18c, up to 100ma) or LM1117T (99c up to 800ma)
 - for the wiring , in theroy a level-shifter should be used between 5v arduino and 3.3v ic (74HC125) , but people have reported success with a arduio nano , which is also 5v so im thinking maybe this will also just work ?? but other places suggest it wont ,, im not sure - should try this circuit with a 3.3board too ?
+- also a 100uF cap in line with the power is reccomended here : https://www.pjrc.com/teensy/td_libs_USBHostShield.html
+
 - for the wiring , it should look something like this :
 
 host | pro-micro | name
