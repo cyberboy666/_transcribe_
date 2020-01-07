@@ -4,19 +4,28 @@
 namespace OUTTYPE{
     const uint8_t BUTTON = 0;
     const uint8_t SLIDER = 1;
+    const uint8_t SLIDER_TWO = 2;
+    const uint8_t SWITCH = 3;
 }
 
 namespace AVE55{
 
-const char A_BUS_MOSAIC_OFF[8] = "VDE:076"; // Video digital effect
-const char A_BUS_MOSAIC_STEP_1[8] = "VDE:077"; // Video digital effect
-const char A_BUS_MOSAIC_STEP_2[8] = "VDE:078"; // Video digital effect
-const char A_BUS_MOSAIC_STEP_3[8] = "VDE:079"; // Video digital effect
-const char A_BUS_MOSAIC_STEP_4[8] = "VDE:080"; // Video digital effect
-const char A_BUS_MOSAIC_STEP_5[8] = "VDE:081"; // Video digital effect
+// const char A_BUS_MOSAIC_OFF[8] = "VDE:076"; // Video digital effect
+// const char A_BUS_MOSAIC_STEP_1[8] = "VDE:077"; // Video digital effect
+// const char A_BUS_MOSAIC_STEP_2[8] = "VDE:078"; // Video digital effect
+// const char A_BUS_MOSAIC_STEP_3[8] = "VDE:079"; // Video digital effect
+// const char A_BUS_MOSAIC_STEP_4[8] = "VDE:080"; // Video digital effect
+// const char A_BUS_MOSAIC_STEP_5[8] = "VDE:081"; // Video digital effect
 
 const char MIX_MODE[8] = "VMX:000"; // Mix mode /Out of WIPE
 const char A_B_MIX_LEVEL[8] = "VMM:179"; // xx	POTENTIOMETRE 00=A, FF=B
+const char CENTER_WIPE[8] = "VPS:218";
+
+const char A_BUS_SOURCE_1[8] = "VCP:200"; // BUTTON
+// const char A_BUS_SOURCE_2[8] = "VCP:201"; // BUTTON
+// const char A_BUS_SOURCE_3[8] = "VCP:202"; // BUTTON
+// const char A_BUS_SOURCE_4[8] = "VCP:203"; // BUTTON
+const char A_BUS_BACK_COLOR[8] = "VCP:204"; // BUTTON
 
 
 /*

@@ -20,9 +20,13 @@ void setup() {
   // OutputElement output("BUTTON", AVE55::MIX_MODE);
     // transcriber.map(input, output);
 
-    transcriber.map(InputElement(INTYPE::NOTE, MIDINOTE::C4), OutputElement(OUTTYPE::BUTTON, AVE55::MIX_MODE));
+    transcriber.map(InputElement(INTYPE::NOTE, MIDINOTE::C4), OutputElement(OUTTYPE::SWITCH, AVE55::MIX_MODE));
     transcriber.map(InputElement(INTYPE::CCVALUE, 0), OutputElement(OUTTYPE::SLIDER, AVE55::A_B_MIX_LEVEL));
-  // OutputElement output("BUTTON", "VDE:078");
+    transcriber.map(InputElement(INTYPE::CCVALUE, 1, INTYPE::CCVALUE, 2), OutputElement(OUTTYPE::SLIDER_TWO, AVE55::CENTER_WIPE));
+
+    // char* switchCommands[2] = {AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR};
+    // transcriber.map(InputElement(INTYPE::NOTE, MIDINOTE::C4SHARP), OutputElement(OUTTYPE::SWITCH, AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR));
+    // transcriber.map(InputElement(INTYPE::NOTE, MIDINOTE::C4SHARP), OutputElement(OUTTYPE::SWITCH, switchCommands));
 
 
   // transcriber.map(InputElement(NoteOn(61)), OutputElement(Button(AVE55::A_BUS_MOSAIC_STEP_1)));

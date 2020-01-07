@@ -42,10 +42,11 @@ public:
     // void map(InputElement &input, OutputElement &output);
 
     MidiMessage readMidiInput();
-    int checkMap(MidiMessage midi_message);
-    void callOutputCommand(int matchedIndex, uint8_t midiParam1);
+    uint8_t checkMap(MidiMessage midi_message);
+    void callOutputCommand(uint8_t matchedIndex, uint8_t midiParam1, uint8_t midiParam2);
     void serialWrite(char cmd[]);
     void serialWriteParam(char cmd[], uint8_t param);
+    void serialTwoWriteParams(char cmd[], uint8_t param1, uint8_t param2);
 
     Mapping mappingList[50];
     int mappingIndex = 0;
