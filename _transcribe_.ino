@@ -79,6 +79,7 @@
 #include <usbh_midi.h>
 #include <usbhub.h>
 #include <SPI.h>
+#include <usbmidi.h>
 #include "src/midievents.h"
 #include "src/commands.h"
 
@@ -93,6 +94,11 @@ uint8_t switchStore[2];
 // uint8_t twoParamOne;
 // uint8_t twoParamTwo;
 // uint8_t twoParam[2];
+
+bool readInputFromMidiDevice();
+bool readInputFromMidiHost();
+bool readInputFromMidiSerial();
+
 
 void setCmd(char inputCmd[8]){
     for(uint8_t i = 0; i < 8; i++){
@@ -216,11 +222,46 @@ void setup()
   delay( 200 );
 }
 
+
+
 void loop()
 {
   midiCommand = midiChannel =midiParam1 = midiParam2 = 0;
   memset(&cmd[0], 0, sizeof(cmd));
+  bool hasMessage = false;
 
+  hasMessage = readInputFromMidiDevice(); // check from the usbhost-sheild first
+  if(!hasMessage){hasMessage = readInputFromMidiHost();} // if nothing check the usb on the arduino
+  if(!hasMessage){hasMessage = readInputFromMidiSerial();} // if still nothing check the serial port  
+  if(!hasMessage){return;}
+
+
+  if(midiCommand == 0){return;}
+  if(midiChannel != 0){return;}
+
+  Serial.print(midiParam1);
+  Serial.print("<-note\n");
+  Serial.print(midiChannel);
+  Serial.print("<-channel\n");
+  Serial.print(midiCommand);
+  Serial.print("<-command\n"); 
+  // midiParam2 = midiParam2 - 64; // weird off by 64 bug ??
+  Serial.print(midiParam2);
+  Serial.print("<-value\n\n");
+
+  if(midiCommand == MIDICOMMAND::NOTEON){mapMidiNote();}
+  else if(midiCommand == MIDICOMMAND::CC){mapMidiCC();}
+
+  Serial.print(cmd);
+  Serial.print("<-cmd\n");
+  if(cmd[0] == 0){return;}
+
+  Serial1.write(2);
+  Serial1.write(cmd);
+  Serial1.write(3);
+}
+
+bool readInputFromMidiDevice(){
     Usb.Task();
     char buf[20];
     uint8_t bufMidi[3];
@@ -232,32 +273,31 @@ void loop()
     midiChannel = first & 0xF;
     midiParam1 = bufMidi[2];
     midiParam2 = bufMidi[3];
+    return true;
     }
+  return false;
+}
 
+bool readInputFromMidiHost(){
 
+  USBMIDI.poll();
+  if(USBMIDI.available()){
+    //Skip to beginning of next message (silently dropping stray data bytes)
+    while(!(USBMIDI.peek() & 0x80)) USBMIDI.read();
 
-  if(midiCommand == 0){return;}
-  if(midiChannel != 0){return;}
+    uint8_t first = USBMIDI.read();
 
-    Serial.print(midiParam1);
-    Serial.print("<-note\n");
-    Serial.print(midiChannel);
-    Serial.print("<-channel\n");
-    Serial.print(midiCommand);
-    Serial.print("<-command\n"); 
-    // midiParam2 = midiParam2 - 64; // weird off by 64 bug ??
-    Serial.print(midiParam2);
-    Serial.print("<-value\n");
+    midiCommand = first & 0xF0; // command
+    midiChannel = first & 0xF; // channel
+    midiParam1 = USBMIDI.read(); // param 1
+    midiParam2 = USBMIDI.read(); // param 2
 
-  if(midiCommand == MIDICOMMAND::NOTEON){mapMidiNote();}
-  else if(midiCommand == MIDICOMMAND::CC){mapMidiCC();}
+    USBMIDI.flush();
+    return true;
+  }
+  return false;
+}
 
-    
-  Serial.print(cmd);
-  Serial.print("<-cmd\n");
-  if(cmd[0] == 0){return;}
-
-  Serial1.write(2);
-  Serial1.write(cmd);
-  Serial1.write(3);
+bool readInputFromMidiSerial(){
+  return false;
 }
