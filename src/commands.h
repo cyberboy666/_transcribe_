@@ -26,6 +26,7 @@ const char A_BUS_SOURCE_1[8] = "VCP:200"; // BUTTON
 // const char A_BUS_SOURCE_3[8] = "VCP:202"; // BUTTON
 // const char A_BUS_SOURCE_4[8] = "VCP:203"; // BUTTON
 const char A_BUS_BACK_COLOR[8] = "VCP:204"; // BUTTON
+const char WIPE_SQUARE_CORNER_UL[8] = "VWP:001"; // Video Wipe Pattern
 
 
 /*
