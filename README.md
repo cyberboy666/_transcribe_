@@ -67,9 +67,14 @@ host | pro-micro | name
 ![HOST](https://user-images.githubusercontent.com/12017938/71743665-6a680d00-2e65-11ea-9b93-f5de6802a3c6.JPG)
 ![image](https://user-images.githubusercontent.com/12017938/71743326-933bd280-2e64-11ea-9e26-02f71ec2c89f.png)
 
-## want to also support other mixers with similar controls
+## other panansonic (or other) mixers
 
-- mx50 ?
+- panasonic ave55 is rs232 on a stereo 3.5mm jack
+
+- mx50 has a rs232 / rs422 switch , the interface is a 9pin dsub (with a bunch of confusing swtiches / settings)
+- mx30 has 9pin dbus with rs232
+- mx20 has serial on a mini-din , it says rs422 - hard to tell if it will work or how to make it ...
+mx70 has 9pin dsub with rs232 also
 - others ??
 
 ## some ideas of ideal structure
