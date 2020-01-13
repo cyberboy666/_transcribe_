@@ -1,97 +1,39 @@
-# _transcribe_
-for midi control of panasonic video mixers
+# WIP _transcribe_
 
-## idea / overview
+for midi control of panasonic video mixers.
 
-promicro setup : https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/all
+__disclaimer__ _this project is a work in progress. dont order any boards or expect things to be clear or make sense just yet. if you would like to help or test however pls email me : langolierz@gmail.com_
 
-.... some links here, explaining ...
+## background
 
-- take midi in (see different ways below)
-- send serial out (for ave55)
-- convert to r232 with max232 chip
-- connect to 3.5 trs jack
+some people in the video-art community are performing with old hardware video-mixers such as in the Pansonic_WJ_AVE and Pansonic_WJ_MX lines. some of these mixers have a RS232 serial protocal for interfacing with them digitally. this is espically useful for live performace where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as ... and ...) , but many more programs and devices that are made to interface digitally using MIDI.
 
-https://arduinodiy.wordpress.com/2012/03/19/serial-connection-for-your-arduino-atmega
+the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocal used commonly in live/performance instruments to the specific _RS232 panasonic video-mixer spec_ , to better equipt these retired workstations for their new life of glamour on stage
 
-wiring max232n : 
+## supported video-mixers:
 
-![image](https://user-images.githubusercontent.com/12017938/71274322-665fc980-2354-11ea-928c-a6fc264001fb.png)
+- panasonic wj_ave55 wip
+- (not yet) panasonic wj_mx20
+- (not yet) panasonic wj_mx30
+- (not yet) panasonic wj_mx50
+- (not yet) panasonic wj_mx70
+- more ? if you have another mixer or any old equipment with rs232 (or maybe rs422 - i dunno yet..) and a spec-sheet maybe we can add support for it ?
 
-![image](https://user-images.githubusercontent.com/12017938/71275155-a030d000-2354-11ea-98e1-16ea6839eb72.png)
+## hardware features
 
-![image](https://user-images.githubusercontent.com/12017938/71278010-b6d82680-2356-11ea-99df-124c4aaaf7f1.png)
+- input USB-midi from a USB-HOST such as a computer or rpi
+- input serial-midi from older midi devices (din)
+- input USB-midi for a USB-DEVICE such as a korg nanokontroller or otherwise
+- output RS232-serial commands to control panasonic video-mixers
+- all these interfaces are bi-directional and so can be modified with firmware to do other useful things (eg like a USB-DEVICE -> SERIAL converter)
 
-## want to support for : 
+## software features
 
-### usb midi device
+- mapping of notes or cc presses to commands (BUTTON)
+- mapping of cc values to continous controls, like a-b mix or key-amount (SLIDER)
+- mapping of two cc channels to 2d continous controls like xy-position or colour-select (JOYSTICK)
+- mapping of notes or cc presses to alternating commands (SWITCH)
+- mapping of notes or cc presses to a rotating selection of consecutive commands (CYCLE)
+- mapping of cc values to a partitioned selection of consecutive commands (STEP)
 
-usb midi from a host ie computer, pi etc, this should be the easiest to implement
-
-### serial midi
-
-from din midi devices - for this would have to have 2 serial ports, one listening to midi in, and one writing to ave55 out, i thin k the best thing to try is midi on the hardware serial and ave55 on [AltSoftSerial](https://www.pjrc.com/teensy/td_libs_AltSoftSerial.html)
-
-### usb midi host
-
-from things like nano control - needs a host shield - maybe like [this](https://www.aliexpress.com/item/32942427334.html) one : 
-
-reading midi from host and outputting as serial : https://github.com/felis/USB_Host_Shield_2.0/blob/master/examples/USBH_MIDI/USB_MIDI_converter/USB_MIDI_converter.ino
-question about mini-host and pro-micro : https://github.com/felis/USB_Host_Shield_2.0/issues/392
-an old thread talking about hooking these up together : https://forum.sparkfun.com/viewtopic.php?t=34873
-another thread about hooking these up: https://forum.pjrc.com/threads/43357-Teensy-with-mini-USB-host-shield-(chineese)
-
-### further research into using the usb-host:
-
-- it seems that the vbus (5v) needs to be cut from the vcc (3.3v) , here is best example : https://www.arduino.cn/thread-81435-1-1.html
-- i need a 3.3v power source for the usb-host , prob best bet is a L78L33 (18c, up to 100ma) or LM1117T (99c up to 800ma)
-- for the wiring , in theroy a level-shifter should be used between 5v arduino and 3.3v ic (74HC125) , but people have reported success with a arduio nano , which is also 5v so im thinking maybe this will also just work ?? but other places suggest it wont ,, im not sure - should try this circuit with a 3.3board too ?
-- also a 100uF cap in line with the power is reccomended here : https://www.pjrc.com/teensy/td_libs_USBHostShield.html
-
-- for the wiring , it should look something like this :
-
-host | pro-micro | name
---- | --- | ---
-5 | ? | ss
-6 | 16 | mosi
-7 | 14 | miso
-8 | 15 | sck
-2 | ? | int
-1 | vcc | 5v
-9 | regulator | 3.3v
-3 | gnd | gnd
-4 | rst | rst
-
-- also suggested to wire rst to power ... 
-
-![HOST](https://user-images.githubusercontent.com/12017938/71743665-6a680d00-2e65-11ea-9b93-f5de6802a3c6.JPG)
-![image](https://user-images.githubusercontent.com/12017938/71743326-933bd280-2e64-11ea-9e26-02f71ec2c89f.png)
-
-## other panansonic (or other) mixers
-
-- panasonic ave55 is rs232 on a stereo 3.5mm jack
-
-- mx50 has a rs232 / rs422 switch , the interface is a 9pin dsub (with a bunch of confusing swtiches / settings)
-- mx30 has 9pin dbus with rs232
-- mx20 has serial on a mini-din , it says rs422 - hard to tell if it will work or how to make it ...
-mx70 has 9pin dsub with rs232 also
-- others ??
-
-## some ideas of ideal structure
-
-- an intial flag for configuring what input to listen to ... (also what the output device is)
-- a list of mappings between serial commands and midi notes/ccs
-- continuous controls -> cc values (ie mix position...)
-- buttons -> notes or cc (sources, )
-- switches (toggles) -> single note/cc (ie pressing once for on, again for off ?)
-- range of values (steps) -> cc values (ie paint0, paint1, paint2, paint3)
-
-## some things to check / try / do
-
-- try with the level-shifter circuit - i tried but it didnt work - maybe my circuit was wrong tho
-- ~~try with smaller caps~~ this works horray
-- ~~try with altSoftSerial~~ - seems to work, only question is how much space we have on there
-- try with serial midi input (how?) maybe i will need to work with 2 arduinos , one for sending midi another for receiving
-- try with usb midi host sheild
-- implement other types of commands
-- create a pcb design
+(extenable to more such as random, random-walks, ossilators etc ...?)

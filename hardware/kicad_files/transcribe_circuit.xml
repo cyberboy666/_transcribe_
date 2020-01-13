@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/Users/timcaldwell/personal/_transcribe_/_transcribe_/hardware/kicad_files/transcribe_circuit.sch</source>
+    <date>2020 January 13, Monday 20:03:48</date>
+    <tool>Eeschema (5.1.4-0-10_14)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>_transcribe_</title>
+        <company>cyberboy666 &amp; user43368831</company>
+        <rev>0.1</rev>
+        <date>2020-01-13</date>
+        <source>transcribe_circuit.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="U1">
+      <value>ProMicro</value>
+      <libsource lib="transcribe_circuit-rescue" part="ProMicro-promicro" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1CCE60</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>MAX232</value>
+      <footprint>Package_DIP:DIP-16_W7.62mm</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/max232.pdf</datasheet>
+      <libsource lib="Interface_UART" part="MAX232" description="Dual RS232 driver/receiver, 5V supply, 120kb/s, 0C-70C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1CD5E9</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>usbHostMini</value>
+      <libsource lib="transcribe_circuit-rescue" part="usbHostMini-promicro" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1D17C6</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>6N137</value>
+      <footprint>Package_DIP:DIP-8_W7.62mm</footprint>
+      <datasheet>https://optoelectronics.liteon.com/upload/download/DS70-2008-0032/6N135-L%206N136-L%20series.pdf</datasheet>
+      <libsource lib="Isolator" part="6N137" description="High Speed Optocoupler, TTL Compatible, CTR 18%, DIP8"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1E426D</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>220</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1E86F1</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1E9C5C</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_A-405_P7.62mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="D" description="Diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1EB2E4</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>MIDI_IN</value>
+      <footprint>Connector_Audio:Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="AudioJack3" description="Audio Jack, 3 Poles (Stereo / TRS)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1F0A6D</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>MIDI_OUT</value>
+      <footprint>Connector_Audio:Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="AudioJack3" description="Audio Jack, 3 Poles (Stereo / TRS)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1F4FCA</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>220</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1F8F29</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>220</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1F93F1</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>0.1u</value>
+      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E215C9F</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>0.1u</value>
+      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E2174FD</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>0.1u</value>
+      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E218A45</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>0.1u</value>
+      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E219C1D</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>RS232_SERIAL</value>
+      <footprint>Connector_Audio:Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="AudioJack3" description="Audio Jack, 3 Poles (Stereo / TRS)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E2249E5</tstamp>
+    </comp>
+    <comp ref="U5">
+      <value>LM1117-3.3</value>
+      <footprint>Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/lm1117.pdf</datasheet>
+      <libsource lib="Regulator_Linear" part="LM1117-3.3" description="800mA Low-Dropout Linear Regulator, 3.3V fixed output, TO-220/TO-252/TO-263/SOT-223"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E23146E</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="AudioJack3">
+      <description>Audio Jack, 3 Poles (Stereo / TRS)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Jack*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">AudioJack3</field>
+      </fields>
+      <pins>
+        <pin num="R" name="~" type="passive"/>
+        <pin num="S" name="~" type="passive"/>
+        <pin num="T" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D">
+      <description>Diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Interface_UART" part="MAX232">
+      <aliases>
+        <alias>MAX232I</alias>
+        <alias>MAX202</alias>
+        <alias>ADM232A</alias>
+        <alias>MAX3232</alias>
+        <alias>ICL3232</alias>
+      </aliases>
+      <description>Dual RS232 driver/receiver, 5V supply, 120kb/s, 0C-70C</description>
+      <docs>http://www.ti.com/lit/ds/symlink/max232.pdf</docs>
+      <footprints>
+        <fp>SOIC*P1.27mm*</fp>
+        <fp>DIP*W7.62mm*</fp>
+        <fp>TSSOP*4.4x5mm*P0.65mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MAX232</field>
+      </fields>
+      <pins>
+        <pin num="1" name="C1+" type="passive"/>
+        <pin num="2" name="VS+" type="power_out"/>
+        <pin num="3" name="C1-" type="passive"/>
+        <pin num="4" name="C2+" type="passive"/>
+        <pin num="5" name="C2-" type="passive"/>
+        <pin num="6" name="VS-" type="power_out"/>
+        <pin num="7" name="T2OUT" type="output"/>
+        <pin num="8" name="R2IN" type="input"/>
+        <pin num="9" name="R2OUT" type="output"/>
+        <pin num="10" name="T2IN" type="input"/>
+        <pin num="11" name="T1IN" type="input"/>
+        <pin num="12" name="R1OUT" type="output"/>
+        <pin num="13" name="R1IN" type="input"/>
+        <pin num="14" name="T1OUT" type="output"/>
+        <pin num="15" name="GND" type="power_in"/>
+        <pin num="16" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Isolator" part="6N135">
+      <aliases>
+        <alias>6N136</alias>
+        <alias>6N137</alias>
+      </aliases>
+      <description>High Speed Optocoupler, TTL Compatible, CTR 18%, DIP8</description>
+      <docs>https://optoelectronics.liteon.com/upload/download/DS70-2008-0032/6N135-L%206N136-L%20series.pdf</docs>
+      <footprints>
+        <fp>DIP*W7.62mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">6N135</field>
+        <field name="Footprint">Package_DIP:DIP-8_W7.62mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="NC" type="NotConnected"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="NC" type="NotConnected"/>
+        <pin num="5" name="~" type="passive"/>
+        <pin num="6" name="~" type="passive"/>
+        <pin num="7" name="~" type="passive"/>
+        <pin num="8" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="LM1117-1.8">
+      <aliases>
+        <alias>LM1117-2.5</alias>
+        <alias>LM1117-3.3</alias>
+        <alias>LM1117-5.0</alias>
+        <alias>TLV1117-15</alias>
+        <alias>TLV1117-18</alias>
+        <alias>TLV1117-25</alias>
+        <alias>TLV1117-33</alias>
+        <alias>TLV1117-50</alias>
+      </aliases>
+      <description>800mA Low-Dropout Linear Regulator, 1.8V fixed output, TO-220/TO-252/TO-263/SOT-223</description>
+      <docs>http://www.ti.com/lit/ds/symlink/lm1117.pdf</docs>
+      <footprints>
+        <fp>SOT?223*</fp>
+        <fp>TO?263*</fp>
+        <fp>TO?252*</fp>
+        <fp>TO?220*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM1117-1.8</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VO" type="power_out"/>
+        <pin num="3" name="VI" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="transcribe_circuit-rescue" part="ProMicro-promicro">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ProMicro-promicro</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TX" type="BiDi"/>
+        <pin num="2" name="RX" type="BiDi"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="SDA" type="BiDi"/>
+        <pin num="6" name="SCL" type="BiDi"/>
+        <pin num="7" name="D4" type="BiDi"/>
+        <pin num="8" name="C6" type="BiDi"/>
+        <pin num="9" name="D7" type="BiDi"/>
+        <pin num="10" name="E6" type="BiDi"/>
+        <pin num="11" name="B4" type="BiDi"/>
+        <pin num="12" name="B5" type="BiDi"/>
+        <pin num="13" name="B6" type="BiDi"/>
+        <pin num="14" name="B2" type="BiDi"/>
+        <pin num="15" name="B3" type="BiDi"/>
+        <pin num="16" name="B1" type="BiDi"/>
+        <pin num="17" name="F7" type="BiDi"/>
+        <pin num="18" name="F6" type="BiDi"/>
+        <pin num="19" name="F5" type="BiDi"/>
+        <pin num="20" name="F4" type="BiDi"/>
+        <pin num="21" name="VCC" type="power_in"/>
+        <pin num="22" name="RST" type="input"/>
+        <pin num="23" name="GND" type="power_in"/>
+        <pin num="24" name="RAW" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="transcribe_circuit-rescue" part="usbHostMini-promicro">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">usbHostMini-promicro</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="NotConnected"/>
+        <pin num="2" name="~" type="NotConnected"/>
+        <pin num="3" name="RST" type="BiDi"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="~" type="NotConnected"/>
+        <pin num="6" name="~" type="NotConnected"/>
+        <pin num="7" name="~" type="NotConnected"/>
+        <pin num="8" name="~" type="NotConnected"/>
+        <pin num="9" name="~" type="NotConnected"/>
+        <pin num="10" name="~" type="NotConnected"/>
+        <pin num="11" name="~" type="NotConnected"/>
+        <pin num="12" name="int" type="BiDi"/>
+        <pin num="13" name="SS" type="BiDi"/>
+        <pin num="14" name="MOSI" type="BiDi"/>
+        <pin num="15" name="MISO" type="BiDi"/>
+        <pin num="16" name="SKC" type="BiDi"/>
+        <pin num="17" name="~" type="NotConnected"/>
+        <pin num="18" name="~" type="NotConnected"/>
+        <pin num="19" name="~" type="NotConnected"/>
+        <pin num="20" name="~" type="NotConnected"/>
+        <pin num="21" name="3.3v" type="power_in"/>
+        <pin num="22" name="~" type="NotConnected"/>
+        <pin num="23" name="GND" type="power_in"/>
+        <pin num="24" name="RAW" type="power_out"/>
+        <pin num="25" name="5v" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/Library/Application Support/kicad/library/Connector.lib</uri>
+    </library>
+    <library logical="Device">
+      <uri>/Library/Application Support/kicad/library/Device.lib</uri>
+    </library>
+    <library logical="Interface_UART">
+      <uri>/Library/Application Support/kicad/library/Interface_UART.lib</uri>
+    </library>
+    <library logical="Isolator">
+      <uri>/Library/Application Support/kicad/library/Isolator.lib</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>/Library/Application Support/kicad/library/Regulator_Linear.lib</uri>
+    </library>
+    <library logical="transcribe_circuit-rescue">
+      <uri>/Users/timcaldwell/personal/_transcribe_/_transcribe_/hardware/kicad_files/transcribe_circuit-rescue.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(U1-Pad10)">
+      <node ref="U1" pin="10"/>
+    </net>
+    <net code="2" name="Net-(U1-Pad11)">
+      <node ref="U1" pin="11"/>
+    </net>
+    <net code="3" name="Net-(U1-Pad12)">
+      <node ref="U1" pin="12"/>
+    </net>
+    <net code="4" name="Net-(U1-Pad17)">
+      <node ref="U1" pin="17"/>
+    </net>
+    <net code="5" name="Net-(U1-Pad18)">
+      <node ref="U1" pin="18"/>
+    </net>
+    <net code="6" name="Net-(U1-Pad19)">
+      <node ref="U1" pin="19"/>
+    </net>
+    <net code="7" name="Net-(U1-Pad20)">
+      <node ref="U1" pin="20"/>
+    </net>
+    <net code="8" name="Net-(U1-Pad24)">
+      <node ref="U1" pin="24"/>
+    </net>
+    <net code="9" name="Net-(U1-Pad5)">
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="10" name="Net-(U1-Pad6)">
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="11" name="Net-(U1-Pad9)">
+      <node ref="U1" pin="9"/>
+    </net>
+    <net code="12" name="Net-(U2-Pad10)">
+      <node ref="U2" pin="10"/>
+    </net>
+    <net code="13" name="RS_SERIAL_OUT">
+      <node ref="J1" pin="T"/>
+      <node ref="U2" pin="14"/>
+    </net>
+    <net code="14" name="Net-(C3-Pad2)">
+      <node ref="U2" pin="2"/>
+      <node ref="C3" pin="2"/>
+    </net>
+    <net code="15" name="Net-(U2-Pad7)">
+      <node ref="U2" pin="7"/>
+    </net>
+    <net code="16" name="Net-(U2-Pad8)">
+      <node ref="U2" pin="8"/>
+    </net>
+    <net code="17" name="Net-(U2-Pad9)">
+      <node ref="U2" pin="9"/>
+    </net>
+    <net code="18" name="Net-(U4-Pad1)">
+      <node ref="U4" pin="1"/>
+    </net>
+    <net code="19" name="Net-(U4-Pad10)">
+      <node ref="U4" pin="10"/>
+    </net>
+    <net code="20" name="Net-(U4-Pad11)">
+      <node ref="U4" pin="11"/>
+    </net>
+    <net code="21" name="Net-(U4-Pad12)">
+      <node ref="U4" pin="12"/>
+    </net>
+    <net code="22" name="Net-(U4-Pad17)">
+      <node ref="U4" pin="17"/>
+    </net>
+    <net code="23" name="Net-(U4-Pad18)">
+      <node ref="U4" pin="18"/>
+    </net>
+    <net code="24" name="Net-(U4-Pad19)">
+      <node ref="U4" pin="19"/>
+    </net>
+    <net code="25" name="Net-(U4-Pad2)">
+      <node ref="U4" pin="2"/>
+    </net>
+    <net code="26" name="Net-(U4-Pad20)">
+      <node ref="U4" pin="20"/>
+    </net>
+    <net code="27" name="Net-(U4-Pad22)">
+      <node ref="U4" pin="22"/>
+    </net>
+    <net code="28" name="Net-(U4-Pad24)">
+      <node ref="U4" pin="24"/>
+    </net>
+    <net code="29" name="Net-(U4-Pad5)">
+      <node ref="U4" pin="5"/>
+    </net>
+    <net code="30" name="Net-(U4-Pad6)">
+      <node ref="U4" pin="6"/>
+    </net>
+    <net code="31" name="Net-(U4-Pad7)">
+      <node ref="U4" pin="7"/>
+    </net>
+    <net code="32" name="Net-(U4-Pad8)">
+      <node ref="U4" pin="8"/>
+    </net>
+    <net code="33" name="Net-(U4-Pad9)">
+      <node ref="U4" pin="9"/>
+    </net>
+    <net code="34" name="Net-(U3-Pad1)">
+      <node ref="U3" pin="1"/>
+    </net>
+    <net code="35" name="Net-(U3-Pad4)">
+      <node ref="U3" pin="4"/>
+    </net>
+    <net code="36" name="+5V">
+      <node ref="U4" pin="25"/>
+      <node ref="U2" pin="16"/>
+      <node ref="U3" pin="5"/>
+      <node ref="U1" pin="21"/>
+      <node ref="U5" pin="3"/>
+      <node ref="R2" pin="2"/>
+      <node ref="R3" pin="1"/>
+    </net>
+    <net code="37" name="Net-(U3-Pad6)">
+      <node ref="U3" pin="6"/>
+    </net>
+    <net code="38" name="MIDI_SERIAL_IN">
+      <node ref="U1" pin="2"/>
+      <node ref="U3" pin="7"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="39" name="Net-(D1-Pad1)">
+      <node ref="U3" pin="3"/>
+      <node ref="R1" pin="1"/>
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="40" name="MIDI_IN_DATA">
+      <node ref="J2" pin="T"/>
+      <node ref="U3" pin="2"/>
+      <node ref="D1" pin="2"/>
+    </net>
+    <net code="41" name="GND">
+      <node ref="J3" pin="S"/>
+      <node ref="U3" pin="8"/>
+      <node ref="C3" pin="1"/>
+      <node ref="U4" pin="4"/>
+      <node ref="C4" pin="1"/>
+      <node ref="U4" pin="23"/>
+      <node ref="U2" pin="15"/>
+      <node ref="J1" pin="S"/>
+      <node ref="U1" pin="4"/>
+      <node ref="U1" pin="3"/>
+      <node ref="U1" pin="23"/>
+      <node ref="U5" pin="1"/>
+      <node ref="J2" pin="S"/>
+    </net>
+    <net code="42" name="MIDI_IN_PLUS">
+      <node ref="J2" pin="R"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="43" name="MIDI_OUT_DATA">
+      <node ref="R4" pin="2"/>
+      <node ref="J3" pin="T"/>
+    </net>
+    <net code="44" name="MIDI_OUT_PLUS">
+      <node ref="R3" pin="2"/>
+      <node ref="J3" pin="R"/>
+    </net>
+    <net code="45" name="MIDI_SERIAL_OUT">
+      <node ref="R4" pin="1"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="46" name="Net-(C1-Pad1)">
+      <node ref="C1" pin="1"/>
+      <node ref="U2" pin="1"/>
+    </net>
+    <net code="47" name="Net-(C1-Pad2)">
+      <node ref="C1" pin="2"/>
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="48" name="Net-(C2-Pad1)">
+      <node ref="U2" pin="4"/>
+      <node ref="C2" pin="1"/>
+    </net>
+    <net code="49" name="Net-(C2-Pad2)">
+      <node ref="U2" pin="5"/>
+      <node ref="C2" pin="2"/>
+    </net>
+    <net code="50" name="Net-(C4-Pad2)">
+      <node ref="C4" pin="2"/>
+      <node ref="U2" pin="6"/>
+    </net>
+    <net code="51" name="RS_SERIAL_IN">
+      <node ref="J1" pin="R"/>
+      <node ref="U2" pin="13"/>
+    </net>
+    <net code="52" name="ALT_SERIAL_OUT">
+      <node ref="U1" pin="8"/>
+      <node ref="U2" pin="11"/>
+    </net>
+    <net code="53" name="ALT_SERIAL_IN">
+      <node ref="U1" pin="7"/>
+      <node ref="U2" pin="12"/>
+    </net>
+    <net code="54" name="RST_HOST">
+      <node ref="U4" pin="3"/>
+      <node ref="U1" pin="22"/>
+    </net>
+    <net code="55" name="SKC_HOST">
+      <node ref="U1" pin="16"/>
+      <node ref="U4" pin="16"/>
+    </net>
+    <net code="56" name="MISO_HOST">
+      <node ref="U1" pin="15"/>
+      <node ref="U4" pin="15"/>
+    </net>
+    <net code="57" name="MOSI_HOST">
+      <node ref="U1" pin="14"/>
+      <node ref="U4" pin="14"/>
+    </net>
+    <net code="58" name="SS_HOST">
+      <node ref="U4" pin="13"/>
+      <node ref="U1" pin="13"/>
+    </net>
+    <net code="59" name="3.3v">
+      <node ref="U5" pin="2"/>
+      <node ref="U4" pin="21"/>
+    </net>
+  </nets>
+</export>

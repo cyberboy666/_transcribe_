@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name transcribe_circuit-rescue)(type Legacy)(uri ${KIPRJMOD}/transcribe_circuit-rescue.lib)(options "")(descr ""))
+)

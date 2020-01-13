@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/Users/timcaldwell/Documents/Arduino/libraries/USB_Host_Shield_Library_2.0",
+                "/Users/timcaldwell/Documents/Arduino/libraries/AltSoftSerial",
+                "/Users/timcaldwell/Documents/Arduino/libraries/USBMIDI/src",
+                "/Users/timcaldwell/Library/Arduino15/packages/SparkFun/hardware/avr/1.1.12/**"
+            ],
+            "forcedInclude": [],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

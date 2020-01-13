@@ -1,0 +1,146 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L promicro:ProMicro U?
+U 1 1 5E1CCE60
+P 2450 2200
+F 0 "U?" H 2450 3237 60  0000 C CNN
+F 1 "ProMicro" H 2450 3131 60  0000 C CNN
+F 2 "" H 2550 1150 60  0000 C CNN
+F 3 "" H 2550 1150 60  0000 C CNN
+	1    2450 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Interface_UART:MAX232 U?
+U 1 1 5E1CD5E9
+P 5375 2925
+F 0 "U?" H 5375 4306 50  0000 C CNN
+F 1 "MAX232" H 5375 4215 50  0000 C CNN
+F 2 "" H 5425 1875 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/max232.pdf" H 5375 3025 50  0001 C CNN
+	1    5375 2925
+	1    0    0    -1  
+$EndComp
+$Comp
+L promicro:usbHostMini U?
+U 1 1 5E1D17C6
+P 2350 5975
+F 0 "U?" H 2350 7012 60  0000 C CNN
+F 1 "usbHostMini" H 2350 6906 60  0000 C CNN
+F 2 "" H 2450 4925 60  0000 C CNN
+F 3 "" H 2450 4925 60  0000 C CNN
+	1    2350 5975
+	1    0    0    -1  
+$EndComp
+Text Notes 875  950  0    118  ~ 0
+micro-controller
+Text Notes 4275 975  0    118  ~ 0
+rs232 serial
+Text Notes 1000 4525 0    118  ~ 0
+usb-host shield
+Text Notes 7450 1025 0    118  ~ 0
+midi serial
+$Comp
+L Isolator:6N137 U?
+U 1 1 5E1E426D
+P 8875 2175
+F 0 "U?" H 8875 1758 50  0000 C CNN
+F 1 "6N137" H 8875 1849 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 8675 1875 50  0001 L CIN
+F 3 "https://optoelectronics.liteon.com/upload/download/DS70-2008-0032/6N135-L%206N136-L%20series.pdf" H 8875 2175 50  0001 L CNN
+	1    8875 2175
+	1    0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5E1E86F1
+P 8125 2075
+F 0 "R?" V 8025 2075 50  0000 C CNN
+F 1 "220" V 8125 2075 50  0000 C CNN
+F 2 "" V 8055 2075 50  0001 C CNN
+F 3 "~" H 8125 2075 50  0001 C CNN
+	1    8125 2075
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5E1E9C5C
+P 9625 1975
+F 0 "R?" V 9525 1975 50  0000 C CNN
+F 1 "10k" V 9625 1975 50  0000 C CNN
+F 2 "" V 9555 1975 50  0001 C CNN
+F 3 "~" H 9625 1975 50  0001 C CNN
+	1    9625 1975
+	0    1    1    0   
+$EndComp
+Text GLabel 10050 1975 2    50   Input ~ 0
+MIDI_SERIAL_IN
+$Comp
+L Device:D D?
+U 1 1 5E1EB2E4
+P 8375 2225
+F 0 "D?" V 8329 2304 50  0000 L CNN
+F 1 "1N4148" H 8275 2125 50  0000 L CNN
+F 2 "" H 8375 2225 50  0001 C CNN
+F 3 "~" H 8375 2225 50  0001 C CNN
+	1    8375 2225
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5E1EC60A
+P 9375 1600
+F 0 "#PWR?" H 9375 1450 50  0001 C CNN
+F 1 "+5V" H 9390 1773 50  0000 C CNN
+F 2 "" H 9375 1600 50  0001 C CNN
+F 3 "" H 9375 1600 50  0001 C CNN
+	1    9375 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E1ED3DB
+P 9500 2650
+F 0 "#PWR?" H 9500 2400 50  0001 C CNN
+F 1 "GND" H 9505 2477 50  0000 C CNN
+F 2 "" H 9500 2650 50  0001 C CNN
+F 3 "" H 9500 2650 50  0001 C CNN
+	1    9500 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9500 2650 9500 2375
+Wire Wire Line
+	9500 2375 9175 2375
+Wire Wire Line
+	9175 1975 9375 1975
+Wire Wire Line
+	9775 1975 9850 1975
+Wire Wire Line
+	9175 2275 9850 2275
+Wire Wire Line
+	9850 2275 9850 1975
+Connection ~ 9850 1975
+Wire Wire Line
+	9850 1975 10050 1975
+Wire Wire Line
+	9375 1600 9375 1975
+Connection ~ 9375 1975
+Wire Wire Line
+	9375 1975 9475 1975
+NoConn ~ 9175 2075
+$EndSCHEMATC

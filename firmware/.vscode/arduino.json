@@ -1,0 +1,7 @@
+{
+    "arduino.path": "/Applications",
+    "port": "/dev/cu.usbmodemC1",
+    "board": "SparkFun:avr:promicro",
+    "configuration": "cpu=16MHzatmega32U4",
+    "sketch": "_transcribe_/_transcribe_.ino"
+}
