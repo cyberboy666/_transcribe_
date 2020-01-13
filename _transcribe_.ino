@@ -82,7 +82,9 @@
 #include <usbmidi.h>
 #include "src/midievents.h"
 #include "src/commands.h"
+#include <AltSoftSerial.h>
 
+AltSoftSerial altSerial;
 USB Usb;
 USBH_MIDI  Midi(&Usb);
 uint16_t pid, vid;
@@ -91,14 +93,156 @@ uint8_t midiCommand, midiChannel, midiParam1, midiParam2;
 
 uint8_t twoParamStore[2][2];
 uint8_t switchStore[2];
-// uint8_t twoParamOne;
-// uint8_t twoParamTwo;
-// uint8_t twoParam[2];
+
+int incomingByte = 0; // for testing only
+
 
 bool readInputFromMidiDevice();
 bool readInputFromMidiHost();
 bool readInputFromMidiSerial();
 
+void setCmd(char inputCmd[8]);
+void setCmdSwitch(char inputCmd1[8], char inputCmd2[8], uint8_t switchIndex);
+void setCmdToggle(char inputCmd[8], uint8_t offset, uint8_t switchIndex);
+void setCmdToggle(char inputCmd[8], uint8_t offset, uint8_t switchIndex);
+void setCmdStep(char inputCmd[8], uint8_t param, uint8_t offset);
+void setCmdParam(char inputCmd[8], uint8_t param);
+void setCmdTwoParams(char inputCmd[8], uint8_t param, uint8_t position, uint8_t storeIndex);
+
+
+
+void mapMidiNote(){
+  if(midiParam1 == 82){setCmd(AVE55::MIX_MODE); }
+  // else if(midiParam1 == 81){setCmd(AVE55::A_BUS_BACK_COLOR); }
+  // else if(midiParam1 == 81){setCmd(AVE55::A_BUS_SOURCE_1); }
+  else if(midiParam1 == 83){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 0);}
+  // else if(midiParam1 == 84){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
+}
+
+void mapMidiCC(){
+  if(midiParam1 == 0){setCmdParam(AVE55::A_B_MIX_LEVEL, midiParam2);}
+  else if(midiParam1 == 1){setCmdTwoParams(AVE55::CENTER_WIPE, midiParam2, 0, 0);}
+  else if(midiParam1 == 2){setCmdTwoParams(AVE55::CENTER_WIPE, midiParam2, 1, 0);}
+  else if(midiParam1 == 3){setCmdStep(AVE55::WIPE_SQUARE_CORNER_UL, midiParam2, 8);}
+  else if(midiParam1 == 71){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}\
+
+}
+
+void setup()
+{
+  Serial1.begin(31250);
+  Serial.begin(9600);
+  altSerial.begin(9600);
+
+  vid = pid = 0;
+  twoParamStore[2][2] = {};
+  switchStore[2] = {};
+
+  // if (Usb.Init() == -1) {
+  //   while (1); //halt
+  // }//if (Usb.Init() == -1...
+  // delay( 200 );
+}
+
+
+
+void loop()
+{
+  midiCommand = midiChannel =midiParam1 = midiParam2 = 0;
+  memset(&cmd[0], 0, sizeof(cmd));
+  bool hasMessage = false;
+
+  // hasMessage = readInputFromMidiDevice(); // check from the usbhost-sheild first
+  hasMessage = readInputFromMidiHost();
+//   if(!hasMessage){hasMessage = readInputFromMidiHost();} // if nothing check the usb on the arduino
+  if(!hasMessage){hasMessage = readInputFromMidiSerial();} // if still nothing check the serial port  
+// hasMessage = readInputFromMidiSerial();
+  if(!hasMessage){return;}
+
+
+  if(midiCommand == 0){return;}
+  if(midiChannel != 0){return;}
+
+  Serial.print(midiParam1);
+  Serial.print("<-note\n");
+  Serial.print(midiChannel);
+  Serial.print("<-channel\n");
+  Serial.print(midiCommand);
+  Serial.print("<-command\n"); 
+  // midiParam2 = midiParam2 - 64; // weird off by 64 bug ??
+  Serial.print(midiParam2);
+  Serial.print("<-value\n\n");
+
+  if(midiCommand == MIDICOMMAND::NOTEON){mapMidiNote();}
+  else if(midiCommand == MIDICOMMAND::CC){mapMidiCC();}
+
+  Serial.print(cmd);
+  Serial.print("<-cmd\n");
+  if(cmd[0] == 0){return;}
+
+  altSerial.write(2);
+  altSerial.write(cmd);
+  altSerial.write(3);
+}
+
+bool readInputFromMidiDevice(){
+    Usb.Task();
+    char buf[20];
+    uint8_t bufMidi[3];
+    uint16_t  rcvd;
+
+  if (Midi.RecvData( &rcvd,  bufMidi) == 0 ) {
+    uint8_t first =  bufMidi[1];
+    midiCommand = first & 0xF0;
+    midiChannel = first & 0xF;
+    midiParam1 = bufMidi[2];
+    midiParam2 = bufMidi[3];
+    return true;
+    }
+  return false;
+}
+
+bool readInputFromMidiHost(){
+
+  USBMIDI.poll();
+  if(USBMIDI.available()){
+    //Skip to beginning of next message (silently dropping stray data bytes)
+    while(!(USBMIDI.peek() & 0x80)) USBMIDI.read();
+
+    uint8_t first = USBMIDI.read();
+
+    midiCommand = first & 0xF0; // command
+    midiChannel = first & 0xF; // channel
+    midiParam1 = USBMIDI.read(); // param 1 (note)
+    midiParam2 = USBMIDI.read(); // param 2 (value)
+
+    USBMIDI.flush();
+    return true;
+  }
+  return false;
+}
+
+bool readInputFromMidiSerial(){
+
+  if(Serial1.available() > 2){
+
+    //Skip to beginning of next message (silently dropping stray data bytes)
+    while(!(Serial1.peek() & 0x80)) Serial1.read();
+
+    uint8_t first = Serial1.read();
+
+    midiCommand = first & 0xF0; // command
+    midiChannel = first & 0xF; // channel
+    midiParam1 = Serial1.read(); // param 1
+    midiParam2 = Serial1.read(); // param 2
+
+    // Serial1.flush();
+    while(Serial1.available()){Serial1.read();}
+    return true;
+  }
+
+  return false;
+}
 
 void setCmd(char inputCmd[8]){
     for(uint8_t i = 0; i < 8; i++){
@@ -188,116 +332,4 @@ void setCmdTwoParams(char inputCmd[8], uint8_t param, uint8_t position, uint8_t 
   cmd[8] = hexParam[1];
   cmd[9] = hexParam[2];
   cmd[10] = hexParam[3];
-}
-
-void mapMidiNote(){
-  if(midiParam1 == 82){setCmd(AVE55::MIX_MODE); }
-  // else if(midiParam1 == 81){setCmd(AVE55::A_BUS_BACK_COLOR); }
-  // else if(midiParam1 == 81){setCmd(AVE55::A_BUS_SOURCE_1); }
-  else if(midiParam1 == 83){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 0);}
-  // else if(midiParam1 == 84){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
-}
-
-void mapMidiCC(){
-  if(midiParam1 == 0){setCmdParam(AVE55::A_B_MIX_LEVEL, midiParam2);}
-  else if(midiParam1 == 1){setCmdTwoParams(AVE55::CENTER_WIPE, midiParam2, 0, 0);}
-  else if(midiParam1 == 2){setCmdTwoParams(AVE55::CENTER_WIPE, midiParam2, 1, 0);}
-  else if(midiParam1 == 3){setCmdStep(AVE55::WIPE_SQUARE_CORNER_UL, midiParam2, 8);}
-  else if(midiParam1 == 71){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}\
-
-}
-
-void setup()
-{
-  Serial1.begin(9600);
-  Serial.begin(9600);
-
-  vid = pid = 0;
-  twoParamStore[2][2] = {};
-  switchStore[2] = {};
-
-  if (Usb.Init() == -1) {
-    while (1); //halt
-  }//if (Usb.Init() == -1...
-  delay( 200 );
-}
-
-
-
-void loop()
-{
-  midiCommand = midiChannel =midiParam1 = midiParam2 = 0;
-  memset(&cmd[0], 0, sizeof(cmd));
-  bool hasMessage = false;
-
-  hasMessage = readInputFromMidiDevice(); // check from the usbhost-sheild first
-  if(!hasMessage){hasMessage = readInputFromMidiHost();} // if nothing check the usb on the arduino
-  if(!hasMessage){hasMessage = readInputFromMidiSerial();} // if still nothing check the serial port  
-  if(!hasMessage){return;}
-
-
-  if(midiCommand == 0){return;}
-  if(midiChannel != 0){return;}
-
-  Serial.print(midiParam1);
-  Serial.print("<-note\n");
-  Serial.print(midiChannel);
-  Serial.print("<-channel\n");
-  Serial.print(midiCommand);
-  Serial.print("<-command\n"); 
-  // midiParam2 = midiParam2 - 64; // weird off by 64 bug ??
-  Serial.print(midiParam2);
-  Serial.print("<-value\n\n");
-
-  if(midiCommand == MIDICOMMAND::NOTEON){mapMidiNote();}
-  else if(midiCommand == MIDICOMMAND::CC){mapMidiCC();}
-
-  Serial.print(cmd);
-  Serial.print("<-cmd\n");
-  if(cmd[0] == 0){return;}
-
-  Serial1.write(2);
-  Serial1.write(cmd);
-  Serial1.write(3);
-}
-
-bool readInputFromMidiDevice(){
-    Usb.Task();
-    char buf[20];
-    uint8_t bufMidi[3];
-    uint16_t  rcvd;
-
-  if (Midi.RecvData( &rcvd,  bufMidi) == 0 ) {
-    uint8_t first =  bufMidi[1];
-    midiCommand = first & 0xF0;
-    midiChannel = first & 0xF;
-    midiParam1 = bufMidi[2];
-    midiParam2 = bufMidi[3];
-    return true;
-    }
-  return false;
-}
-
-bool readInputFromMidiHost(){
-
-  USBMIDI.poll();
-  if(USBMIDI.available()){
-    //Skip to beginning of next message (silently dropping stray data bytes)
-    while(!(USBMIDI.peek() & 0x80)) USBMIDI.read();
-
-    uint8_t first = USBMIDI.read();
-
-    midiCommand = first & 0xF0; // command
-    midiChannel = first & 0xF; // channel
-    midiParam1 = USBMIDI.read(); // param 1
-    midiParam2 = USBMIDI.read(); // param 2
-
-    USBMIDI.flush();
-    return true;
-  }
-  return false;
-}
-
-bool readInputFromMidiSerial(){
-  return false;
 }
