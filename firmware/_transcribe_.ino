@@ -13,12 +13,10 @@ USBH_MIDI  Midi(&Usb);
 uint16_t pid, vid;
 char cmd[12] = {};
 uint8_t midiCommand, midiChannel, midiParam1, midiParam2;
+bool hasUsbDevice;
 
 uint8_t twoParamStore[2][2];
 uint8_t switchStore[2];
-
-int incomingByte = 0; // for testing only
-
 
 bool readInputFromMidiDevice();
 bool readInputFromMidiHost();
@@ -57,17 +55,16 @@ void setup()
   Serial.begin(9600);
   altSerial.begin(9600);
 
+  hasUsbDevice = false;
   vid = pid = 0;
   twoParamStore[2][2] = {};
   switchStore[2] = {};
 
-  // if (Usb.Init() == -1) {
-  //   while (1); //halt
-  // }//if (Usb.Init() == -1...
-  // delay( 200 );
+  if (Usb.Init() == 0){ // means it is successful
+    hasUsbDevice = true;
+    delay( 200 );
+    }
 }
-
-
 
 void loop()
 {
@@ -75,11 +72,9 @@ void loop()
   memset(&cmd[0], 0, sizeof(cmd));
   bool hasMessage = false;
 
-  // hasMessage = readInputFromMidiDevice(); // check from the usbhost-sheild first
-  hasMessage = readInputFromMidiHost();
-//   if(!hasMessage){hasMessage = readInputFromMidiHost();} // if nothing check the usb on the arduino
+  if(hasUsbDevice){hasMessage = readInputFromMidiDevice();} // check from the usbhost-sheild first if connected
+  if(!hasMessage){hasMessage = readInputFromMidiHost();} // if nothing check the usb on the arduino
   if(!hasMessage){hasMessage = readInputFromMidiSerial();} // if still nothing check the serial port  
-// hasMessage = readInputFromMidiSerial();
   if(!hasMessage){return;}
 
 
@@ -147,24 +142,20 @@ bool readInputFromMidiHost(){
 
 bool readInputFromMidiSerial(){
 
-  if(Serial1.available() > 2){
+  if(Serial1.available() < 3){ return false;}
+  //Skip to beginning of next message (silently dropping stray data bytes)
+  while(!(Serial1.peek() & 0x80)){ Serial1.read(); }
+  if(Serial1.available() < 3){ return false;}
+  uint8_t first = Serial1.read();
 
-    //Skip to beginning of next message (silently dropping stray data bytes)
-    while(!(Serial1.peek() & 0x80)) Serial1.read();
+  midiCommand = first & 0xF0; // command
+  midiChannel = first & 0xF; // channel
+  midiParam1 = Serial1.read(); // param 1
+  midiParam2 = Serial1.read(); // param 2
 
-    uint8_t first = Serial1.read();
-
-    midiCommand = first & 0xF0; // command
-    midiChannel = first & 0xF; // channel
-    midiParam1 = Serial1.read(); // param 1
-    midiParam2 = Serial1.read(); // param 2
-
-    // Serial1.flush();
-    while(Serial1.available()){Serial1.read();}
-    return true;
-  }
-
-  return false;
+  // Serial1.flush();
+  while(Serial1.available()){Serial1.read();}
+  return true;
 }
 
 void setCmd(char inputCmd[8]){
