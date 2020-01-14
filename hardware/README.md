@@ -53,6 +53,8 @@ ref | part | source | source-id | section
 ? | USB-host sheild mini | amazon, ali | - | D
 ? | LM1117 | - | D
 
+- the host chip requires only 0.045A, so prob a regulator like [this](https://www.taydaelectronics.com/l78l33acz-78l33-3-3v-voltage-regulator-ic.html) will do...
+
 ## potential additional parts to add : 
 
 - version for arduino nano ? (dont need regulator)

@@ -32,7 +32,7 @@ usb midi from a host ie computer, pi etc, this should be the easiest to implemen
 
 ### serial midi
 
-from din midi devices - for this would have to have 2 serial ports, one listening to midi in, and one writing to ave55 out, i thin k the best thing to try is midi on the hardware serial and ave55 on [AltSoftSerial](https://www.pjrc.com/teensy/td_libs_AltSoftSerial.html)
+from din midi devices - for this would have to have 2 serial ports, one listening to midi in, and one writing to ave55 out, i thin k the best thing to try is midi on the hardware serial and ave55 on [AltSoftSerial](https://www.pjrc.com/teensy/td_libs_AltSoftSerial.html) , altSoftSerial on pro micro is missing the input pin , but it seems this can be modded in without too much trouble : https://forum.arduino.cc/index.php?topic=339587.0
 
 ### usb midi host
 
