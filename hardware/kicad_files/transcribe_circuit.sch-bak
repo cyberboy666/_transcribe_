@@ -154,7 +154,7 @@ U 1 1 5E1F0A6D
 P 7650 3375
 F 0 "J2" H 7632 3700 50  0000 C CNN
 F 1 "MIDI_IN_TRS" H 7632 3609 50  0000 C CNN
-F 2 "Connector_Audio:Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles" H 7650 3375 50  0001 C CNN
+F 2 "Connector_Audio:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7650 3375 50  0001 C CNN
 F 3 "~" H 7650 3375 50  0001 C CNN
 	1    7650 3375
 	1    0    0    -1  
@@ -175,7 +175,7 @@ U 1 1 5E1F4FCA
 P 7650 5800
 F 0 "J3" H 7632 6125 50  0000 C CNN
 F 1 "MIDI_OUT_TRS" H 7632 6034 50  0000 C CNN
-F 2 "Connector_Audio:Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles" H 7650 5800 50  0001 C CNN
+F 2 "Connector_Audio:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7650 5800 50  0001 C CNN
 F 3 "~" H 7650 5800 50  0001 C CNN
 	1    7650 5800
 	1    0    0    -1  
@@ -345,7 +345,7 @@ U 1 1 5E2249E5
 P 4150 1575
 F 0 "J1" H 4132 1900 50  0000 C CNN
 F 1 "RS232_SERIAL" H 4025 1800 50  0000 C CNN
-F 2 "Connector_Audio:Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles" H 4150 1575 50  0001 C CNN
+F 2 "Connector_Audio:Tayda_3.5mm_stereo_TRS_jack_A-853" H 4150 1575 50  0001 C CNN
 F 3 "~" H 4150 1575 50  0001 C CNN
 	1    4150 1575
 	1    0    0    -1  
@@ -681,7 +681,7 @@ U 1 1 5E26D6D4
 P 9950 5800
 F 0 "J6" H 9950 5525 50  0000 C CNN
 F 1 "MIDI_OUT_DIN" H 9950 5434 50  0000 C CNN
-F 2 "Connector_DIN:SDS-50J" H 9950 5800 50  0001 C CNN
+F 2 "Connector_DIN:Tayda5pinMidi-A1010" H 9950 5800 50  0001 C CNN
 F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9950 5800 50  0001 C CNN
 	1    9950 5800
 	1    0    0    -1  
@@ -703,7 +703,7 @@ U 1 1 5E28B4C2
 P 9850 3300
 F 0 "J5" H 9850 3025 50  0000 C CNN
 F 1 "MIDI_IN_DIN" H 9850 2934 50  0000 C CNN
-F 2 "Connector_DIN:SDS-50J" H 9850 3300 50  0001 C CNN
+F 2 "Connector_DIN:Tayda5pinMidi-A1010" H 9850 3300 50  0001 C CNN
 F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9850 3300 50  0001 C CNN
 	1    9850 3300
 	1    0    0    -1  

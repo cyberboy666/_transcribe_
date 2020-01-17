@@ -1,4 +1,4 @@
-16373670046188573
+16375249324596573
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -6609,6 +6609,13 @@ DIN 41512 IEC 60603 B
 64
 Connector_DIN
 SDS-50J
+SDS-50J, standard DIN connector, 5 pins, midi
+SDS-50J DIN 5-pins connector midi
+0
+7
+5
+Connector_DIN
+Tayda5pinMidi-A1010
 SDS-50J, standard DIN connector, 5 pins, midi
 SDS-50J DIN 5-pins connector midi
 0
