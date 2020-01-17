@@ -91,8 +91,8 @@ mx70 has 9pin dsub with rs232 also
 
 - try with the level-shifter circuit - i tried but it didnt work - maybe my circuit was wrong tho
 - ~~try with smaller caps~~ this works horray
-- ~~try with altSoftSerial~~ - seems to work, only question is how much space we have on there
+- ~~try with altSoftSerial~~ - seems to work
 - ~~try with serial midi input (how?) maybe i will need to work with 2 arduinos , one for sending midi another for receiving~~
-- ~~try with usb midi host sheild~~ need to check for device on midi host and not block / slow if cant find one ...
+- ~~try with usb midi host sheild~~ 
 - implement other types of commands (random / osolatoer etc .. )
 - create a pcb design

@@ -1,6 +1,41 @@
 # _transcribe_ hardware
 
-this is the hardware section of _transcribe_ - a project created to control panasonic video_mixers with midi. it is based around an arduino micro controller. included in this circuit are a number of different ways to input midi and output serial. you can choose which sections to populate based on your personal requirements.
+this is the hardware section of _transcribe_ - a project created to control panasonic video_mixers with midi.
+
+# BOM
+
+ref | part | source | source-id | section
+--- | --- | --- | --- | ---
+? | _transcribe_ pcb | me? or a fab-house | ...  | all
+? | sparkfun pro-micro 5v | [ali](https://www.aliexpress.com/item/1348800135.html) [amazon](https://www.amazon.com/OSOYOO-ATmega32U4-arduino-Leonardo-ATmega328/dp/B012FOV17O/), [sparkfun](https://www.sparkfun.com/products/12640) | - | A
+? | max232n ic | tayda | A-034 | B
+? | 0.1uF caps | tayda | A-4008 | B
+? | 3.5mm TSR jacks | tayda | A-853 | B , C
+? | din jacks | tayda | A-1010 | B , C
+? | dsub9 | tayda | A-300 | B , C
+? | 6n137 | tayda | A-871 | C
+? | resistors and diode | tayda | - | C
+? | USB-host sheild mini | [ali](https://www.aliexpress.com/item/32842815739.html) [amazon](https://www.amazon.com/HiLetgo-Development-Compatible-Interface-Arduino/dp/B01EWW9R1E/) | - | D
+? |  78L33 regulator | tayda | A-492 | D
+
+
+## potential additional parts to add : 
+
+- version for arduino nano ? (dont need regulator)
+- 74hc14 inverter for buffered serial midi out ? or transistor inverter ?
+- power caps (main for usb-host , but also for in general )
+- switches to select serial-midi TRS standard , and/or din option ?
+- a dsub9 / dsub9 breakout
+
+## assemble guide :
+
+blah blah blah
+
+IF USING USB_HOST_MIDI YOU __MUST CUT A TRACE__ ON THE BOARD ! heres how - ...
+
+# explaining the sections of _transcribe_
+
+ _transcribe_ is based around an arduino micro controller. included in this circuit are a number of different ways to input midi and output serial. you can choose which sections to populate based on your personal requirements.
 
 ## A - micro-conntroller - centre
 
@@ -39,32 +74,3 @@ the uC (in A) can act as a USB midi _device_. this means it can be controlled by
 - convert usb-midi controller to serial midi : A + C + D
 - convert rs232 commands to serial-midi : A + B + C
 - use a ps3 controller to send serial-midi : A + C + D
-
-# BOM
-
-ref | part | source | source-id | section
---- | --- | --- | --- | ---
-? | sparkfun pro-micro 5v | amazon, ali, sparkfun, adafruit... | link or link | A
-? | max232n ic | mouser | ... | B
-? | 0.1uF caps | tayda | - | B
-? | 3.5mm TSR jacks | tayda | - | B , C
-? | 6n137 | tayda | - | C
-? | resistors and diode | tayda | - | C
-? | USB-host sheild mini | amazon, ali | - | D
-? | LM1117 | - | D
-
-- the host chip requires only 0.045A, so prob a regulator like [this](https://www.taydaelectronics.com/l78l33acz-78l33-3-3v-voltage-regulator-ic.html) will do...
-
-## potential additional parts to add : 
-
-- version for arduino nano ? (dont need regulator)
-- 74hc14 inverter for buffered serial midi out ? or transistor inverter ?
-- power caps (main for usb-host , but also for in general )
-- switches to select serial-midi TRS standard , and/or din option ?
-- a dsub9 / dsub9 breakout
-
-## assemble guide :
-
-blah blah blah
-
-IF USING USB_HOST_MIDI YOU __MUST CUT A TRACE__ ON THE BOARD ! heres how - ...
