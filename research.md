@@ -96,3 +96,27 @@ mx70 has 9pin dsub with rs232 also
 - ~~try with usb midi host sheild~~ 
 - implement other types of commands (random / osolatoer etc .. )
 - create a pcb design
+
+## looking at other  mixers
+
+the other panasonic mixers i know about have a different way of inputing serial... dont even know if this is compatable or works in the same way..
+
+### mx 50 wiring
+
+![image](https://user-images.githubusercontent.com/12017938/72551825-f599c780-3895-11ea-9dfe-01caa6c28e96.png)
+
+### mx 30 wiring
+
+![image](https://user-images.githubusercontent.com/12017938/72551934-22e67580-3896-11ea-9557-71356cbbbd36.png)
+
+crazy that even these two arnt wired the same way ! but maybe only the (tx/rx/gnd matter anyway...)
+
+### mx 20 wiring
+
+![image](https://user-images.githubusercontent.com/12017938/72552322-e6ffe000-3896-11ea-8446-043ce3df478d.png)
+
+dif plug, (mini din) and i think dif wiring too - looks like , oof it makes no sense ! (no mention of buad rate or stop byte or anything really on this one) , maybe not possible to support this one ...
+
+## from wikipedia :
+
+![image](https://user-images.githubusercontent.com/12017938/72552976-32ff5480-3898-11ea-9528-21e9894f0128.png)
