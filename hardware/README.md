@@ -15,6 +15,7 @@ ref | part | source | source-id | section
 ? | dsub9 | tayda | A-300 | B , C
 ? | 6n137 | tayda | A-871 | C
 ? | resistors and diode | tayda | - | C
+? | cd4069 | tayda | A-882 | C
 ? | USB-host sheild mini | [ali](https://www.aliexpress.com/item/32842815739.html) [amazon](https://www.amazon.com/HiLetgo-Development-Compatible-Interface-Arduino/dp/B01EWW9R1E/) | - | D
 ? |  78L33 regulator | tayda | A-492 | D
 

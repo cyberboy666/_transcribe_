@@ -17,6 +17,10 @@ namespace AVE55{
 // const char A_BUS_MOSAIC_STEP_4[8] = "VDE:080"; // Video digital effect
 // const char A_BUS_MOSAIC_STEP_5[8] = "VDE:081"; // Video digital effect
 
+// std::pair< const char[8], int >  MIX_MODE;
+// MIX_MODE.first = "VMX:000";
+// MIX_MODE.second = 32;
+
 const char MIX_MODE[8] = "VMX:000"; // Mix mode /Out of WIPE
 const char A_B_MIX_LEVEL[8] = "VMM:179"; // xx	POTENTIOMETRE 00=A, FF=B
 const char CENTER_WIPE[8] = "VPS:218";
@@ -26,8 +30,12 @@ const char A_BUS_SOURCE_1[8] = "VCP:200"; // BUTTON
 // const char A_BUS_SOURCE_3[8] = "VCP:202"; // BUTTON
 // const char A_BUS_SOURCE_4[8] = "VCP:203"; // BUTTON
 const char A_BUS_BACK_COLOR[8] = "VCP:204"; // BUTTON
-const char WIPE_SQUARE_CORNER_UL[8] = "VWP:001"; // Video Wipe Pattern
+// const char WIPE_SQUARE_CORNER_UL[8] = "VWP:001"; // Video Wipe Pattern
 
+// const char CMD_ARRAY[8][3] = {"VWP:005", "VWP:006", "VWP:007"};
+const uint8_t notes[177] = {133, 132, 137, 138, 136, 131, 130, 135, 134, 121, 120, 127, 126, 204, 200, 201, 202, 203, 209, 205, 206, 207, 208, 91, 92, 181, 180, 89, 90, 76, 77, 78, 79, 80, 81, 87, 88, 82, 83, 84, 85, 86, 185, 184, 70, 71, 72, 73, 74, 75, 115, 116, 183, 182, 113, 114, 100, 101, 102, 103, 104, 105, 111, 112, 106, 107, 108, 109, 110, 187, 186, 94, 95, 96, 97, 98, 99, 147, 146, 197, 142, 143, 144, 198, 145, 148, 140, 141, 213, 212, 0, 210, 162, 163, 160, 164, 161, 40, 41, 43, 42, 44, 62, 61, 63, 157, 156, 152, 153, 154, 155, 158, 150, 151, 216, 91, 50, 49, 52, 51, 46, 47, 48, 45, 53, 56, 54, 57, 55, 199, 192, 215, 166, 165, 167, 168, 169, 170, 171, 172, 6, 5, 7, 8, 18, 21, 20, 22, 19, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 17, 2, 3, 1, 4, 10, 11, 9, 12, 14, 13, 15, 16};
+
+// const char notes[177][8] = {"VFD:133", "VFD:132", "VFD:137", "VFD:138", "VFD:136", "VFD:131", "VFD:130", "VFD:135", "VFD:134", "AML:121", "AML:120", "AML:127", "AML:126", "VCP:204", "VCP:200", "VCP:201", "VCP:202", "VCP:203", "VCP:209", "VCP:205", "VCP:206", "VCP:207", "VCP:208", "VDE:091", "VDE:092", "VDE:181", "VDE:180", "VDE:089", "VDE:090", "VDE:076", "VDE:077", "VDE:078", "VDE:079", "VDE:080", "VDE:081", "VDE:087", "VDE:088", "VDE:082", "VDE:083", "VDE:084", "VDE:085", "VDE:086", "VDE:185", "VDE:184", "VDE:070", "VDE:071", "VDE:072", "VDE:073", "VDE:074", "VDE:075", "VDE:115", "VDE:116", "VDE:183", "VDE:182", "VDE:113", "VDE:114", "VDE:100", "VDE:101", "VDE:102", "VDE:103", "VDE:104", "VDE:105", "VDE:111", "VDE:112", "VDE:106", "VDE:107", "VDE:108", "VDE:109", "VDE:110", "VDE:187", "VDE:186", "VDE:094", "VDE:095", "VDE:096", "VDE:097", "VDE:098", "VDE:099", "VBC:147", "VBC:146", "VBC:197", "VBC:142", "VBC:143", "VBC:144", "VBC:198", "VBC:145", "VBC:148", "VBC:140", "VBC:141", "VMX:213", "VMX:212", "VMX:000", "VMX:210", "VBG:162", "VBG:163", "VBG:160", "VBG:164", "VBG:161", "VWD:040", "VWD:041", "VWB:043", "VWB:042", "VWB:044", "VWB:062", "VWB:061", "VWB:063", "VEC:157", "VEC:156", "VEC:152", "VEC:153", "VEC:154", "VEC:155", "VEC:158", "VEC:150", "VEC:151", "ZEN:216", "VF:191", "VWM:050", "VWM:049", "VWM:052", "VWM:051", "VWM:046", "VWM:047", "VWM:048", "VWM:045", "VW:053", "VW:056", "VW:054", "VW:057", "VW:055", "ZRS:199", "VMA:192", "ZUD:215", "VTC:166", "VTC:165", "VTE:167", "VTE:168", "VTE:169", "VTE:170", "VTE:171", "VTE:172", "VWP:006", "VWP:005", "VWP:007", "VWP:008", "VWP:018", "VWP:021", "VWP:020", "VWP:022", "VWP:019", "VWP:023", "VWP:024", "VWP:025", "VWP:026", "VWP:027", "VWP:028", "VWP:029", "VWP:030", "VWP:031", "VWP:032", "VWP:033", "VWP:034", "VWP:035", "VWP:036", "VWP:037", "VWP:017", "VWP:002", "VWP:003", "VWP:001", "VWP:004", "VWP:010", "VWP:011", "VWP:009", "VWP:012", "VWP:014", "VWP:013", "VWP:015", "VWP:016"};
 
 /*
 const char MIX_MODE[8] = "VMX:000"; // Mix mode /Out of WIPE
