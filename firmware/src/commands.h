@@ -10,32 +10,201 @@ namespace OUTTYPE{
 
 namespace AVE55{
 
-// const char A_BUS_MOSAIC_OFF[8] = "VDE:076"; // Video digital effect
-// const char A_BUS_MOSAIC_STEP_1[8] = "VDE:077"; // Video digital effect
-// const char A_BUS_MOSAIC_STEP_2[8] = "VDE:078"; // Video digital effect
-// const char A_BUS_MOSAIC_STEP_3[8] = "VDE:079"; // Video digital effect
-// const char A_BUS_MOSAIC_STEP_4[8] = "VDE:080"; // Video digital effect
-// const char A_BUS_MOSAIC_STEP_5[8] = "VDE:081"; // Video digital effect
-
-// std::pair< const char[8], int >  MIX_MODE;
-// MIX_MODE.first = "VMX:000";
-// MIX_MODE.second = 32;
-
-const char MIX_MODE[8] = "VMX:000"; // Mix mode /Out of WIPE
-const char A_B_MIX_LEVEL[8] = "VMM:179"; // xx	POTENTIOMETRE 00=A, FF=B
-const char CENTER_WIPE[8] = "VPS:218";
-
-const char A_BUS_SOURCE_1[8] = "VCP:200"; // BUTTON
-// const char A_BUS_SOURCE_2[8] = "VCP:201"; // BUTTON
-// const char A_BUS_SOURCE_3[8] = "VCP:202"; // BUTTON
-// const char A_BUS_SOURCE_4[8] = "VCP:203"; // BUTTON
-const char A_BUS_BACK_COLOR[8] = "VCP:204"; // BUTTON
-// const char WIPE_SQUARE_CORNER_UL[8] = "VWP:001"; // Video Wipe Pattern
-
-// const char CMD_ARRAY[8][3] = {"VWP:005", "VWP:006", "VWP:007"};
 const uint8_t notes[177] = {133, 132, 137, 138, 136, 131, 130, 135, 134, 121, 120, 127, 126, 204, 200, 201, 202, 203, 209, 205, 206, 207, 208, 91, 92, 181, 180, 89, 90, 76, 77, 78, 79, 80, 81, 87, 88, 82, 83, 84, 85, 86, 185, 184, 70, 71, 72, 73, 74, 75, 115, 116, 183, 182, 113, 114, 100, 101, 102, 103, 104, 105, 111, 112, 106, 107, 108, 109, 110, 187, 186, 94, 95, 96, 97, 98, 99, 147, 146, 197, 142, 143, 144, 198, 145, 148, 140, 141, 213, 212, 0, 210, 162, 163, 160, 164, 161, 40, 41, 43, 42, 44, 62, 61, 63, 157, 156, 152, 153, 154, 155, 158, 150, 151, 216, 91, 50, 49, 52, 51, 46, 47, 48, 45, 53, 56, 54, 57, 55, 199, 192, 215, 166, 165, 167, 168, 169, 170, 171, 172, 6, 5, 7, 8, 18, 21, 20, 22, 19, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 17, 2, 3, 1, 4, 10, 11, 9, 12, 14, 13, 15, 16};
 
-// const char notes[177][8] = {"VFD:133", "VFD:132", "VFD:137", "VFD:138", "VFD:136", "VFD:131", "VFD:130", "VFD:135", "VFD:134", "AML:121", "AML:120", "AML:127", "AML:126", "VCP:204", "VCP:200", "VCP:201", "VCP:202", "VCP:203", "VCP:209", "VCP:205", "VCP:206", "VCP:207", "VCP:208", "VDE:091", "VDE:092", "VDE:181", "VDE:180", "VDE:089", "VDE:090", "VDE:076", "VDE:077", "VDE:078", "VDE:079", "VDE:080", "VDE:081", "VDE:087", "VDE:088", "VDE:082", "VDE:083", "VDE:084", "VDE:085", "VDE:086", "VDE:185", "VDE:184", "VDE:070", "VDE:071", "VDE:072", "VDE:073", "VDE:074", "VDE:075", "VDE:115", "VDE:116", "VDE:183", "VDE:182", "VDE:113", "VDE:114", "VDE:100", "VDE:101", "VDE:102", "VDE:103", "VDE:104", "VDE:105", "VDE:111", "VDE:112", "VDE:106", "VDE:107", "VDE:108", "VDE:109", "VDE:110", "VDE:187", "VDE:186", "VDE:094", "VDE:095", "VDE:096", "VDE:097", "VDE:098", "VDE:099", "VBC:147", "VBC:146", "VBC:197", "VBC:142", "VBC:143", "VBC:144", "VBC:198", "VBC:145", "VBC:148", "VBC:140", "VBC:141", "VMX:213", "VMX:212", "VMX:000", "VMX:210", "VBG:162", "VBG:163", "VBG:160", "VBG:164", "VBG:161", "VWD:040", "VWD:041", "VWB:043", "VWB:042", "VWB:044", "VWB:062", "VWB:061", "VWB:063", "VEC:157", "VEC:156", "VEC:152", "VEC:153", "VEC:154", "VEC:155", "VEC:158", "VEC:150", "VEC:151", "ZEN:216", "VF:191", "VWM:050", "VWM:049", "VWM:052", "VWM:051", "VWM:046", "VWM:047", "VWM:048", "VWM:045", "VW:053", "VW:056", "VW:054", "VW:057", "VW:055", "ZRS:199", "VMA:192", "ZUD:215", "VTC:166", "VTC:165", "VTE:167", "VTE:168", "VTE:169", "VTE:170", "VTE:171", "VTE:172", "VWP:006", "VWP:005", "VWP:007", "VWP:008", "VWP:018", "VWP:021", "VWP:020", "VWP:022", "VWP:019", "VWP:023", "VWP:024", "VWP:025", "VWP:026", "VWP:027", "VWP:028", "VWP:029", "VWP:030", "VWP:031", "VWP:032", "VWP:033", "VWP:034", "VWP:035", "VWP:036", "VWP:037", "VWP:017", "VWP:002", "VWP:003", "VWP:001", "VWP:004", "VWP:010", "VWP:011", "VWP:009", "VWP:012", "VWP:014", "VWP:013", "VWP:015", "VWP:016"};
+const uint8_t MIX_MODE = 0; // Mix mode /Out of WIPE
+const uint8_t WIPE_SQUARE_CORNER_UL = 1; // Video Wipe Pattern
+const uint8_t WIPE_SQUARE_CORNER_DL = 2; // Video Wipe Pattern
+const uint8_t WIPE_SQUARE_CORNER_DR = 3; // Video Wipe Pattern
+const uint8_t WIPE_SQUARE_CORNER_UR = 4; // Video Wipe Pattern
+const uint8_t WIPE_BLIND_L = 5; // Video Wipe Pattern
+const uint8_t WIPE_BLIND_D = 6; // Video Wipe Pattern
+const uint8_t WIPE_BLIND_R = 7; // Video Wipe Pattern
+const uint8_t WIPE_BLIND_U = 8; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_CORNER_UL = 9; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_CORNER_DL = 10; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_CORNER_DR = 11; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_CORNER_UR = 12; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_L = 13; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_D = 14; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_R = 15; // Video Wipe Pattern
+const uint8_t WIPE_TRIANGLE_U = 16; // Video Wipe Pattern
+const uint8_t WIPE_SQUARE = 17; // Video Wipe Pattern
+const uint8_t WIPE_CIRCLE = 18; // Video Wipe Pattern
+const uint8_t WIPE_OVALE = 19; // Video Wipe Pattern
+const uint8_t WIPE_LOSANGE = 20; // Video Wipe Pattern
+const uint8_t WIPE_I =21; // Video Wipe Pattern
+const uint8_t WIPE_MINUS =22; // Video Wipe Pattern
+const uint8_t WIPE_PLUS =23; // Video Wipe Pattern
+const uint8_t WIPE_SPECIAL_24 =24; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_25 =25; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_26 =26; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_27 =27; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_28 =28; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_29 =29; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_30 =30; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_31 =31; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_32 =32; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_33 =33; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_34 =34; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_35 =35; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_36 =36; // Video Special Wipe Pattern
+const uint8_t WIPE_SPECIAL_37 =37; // Video Special Wipe Pattern
+const uint8_t DIRECTION_ONE_WAY =40; // Wipe Direction
+const uint8_t DIRECTION_REVERSE =41; // Wipe Direction
+const uint8_t EDGE_NONE =42; // Edge/Border
+const uint8_t EDGE_BORDER =43; // Edge/Border	! 50
+const uint8_t EDGE_SOFT =44; // Edge/Border	! 50
+const uint8_t MULTI_BASIC =45; // Multi Wipe
+const uint8_t MULTI_1 =46; // Multi Wipe	! 47
+const uint8_t MULTI_2 =47; // Multi Wipe	! 47
+const uint8_t MULTI_3 =48; // Multi Wipe	! 47
+const uint8_t MODE_NORMAL =49; // Wipe Mode
+const uint8_t MODE_COMPRESSION =50; // Wipe Mode
+const uint8_t MODE_SLIDE =51; // Wipe Mode
+const uint8_t MODE_PAIR =52; // Wipe Mode
+const uint8_t MODE_SLIDE_COMPRESSION =53; // Wipe Mode
+const uint8_t OPERATION_OVER =54; // Wipe Operation
+const uint8_t OPERATION_REMOVE =55; // Wipe Operation
+const uint8_t OPERATION_FLIP =56; // Wipe Operation
+const uint8_t OPERATION_PUSH =57; // Wipe Operation
+const uint8_t SPEDGE_NONE =61; // Special Edge
+const uint8_t SPEDGE_BORDER =62; // Special Edge
+const uint8_t SPEDGE_SOFT =63; // Special Edge
+const uint8_t A_BUS_STROBO_OFF =70; // Video digital effect
+const uint8_t A_BUS_STROBO_STEP_1 =71; // Video digital effect
+const uint8_t A_BUS_STROBO_STEP_2 =72; // Video digital effect
+const uint8_t A_BUS_STROBO_STEP_3 =73; // Video digital effect
+const uint8_t A_BUS_STROBO_STEP_4 =74; // Video digital effect
+const uint8_t A_BUS_STROBO_STEP_5 =75; // Video digital effect
+const uint8_t A_BUS_MOSAIC_OFF =76; // Video digital effect
+const uint8_t A_BUS_MOSAIC_STEP_1 =77; // Video digital effect
+const uint8_t A_BUS_MOSAIC_STEP_2 =78; // Video digital effect
+const uint8_t A_BUS_MOSAIC_STEP_3 =79; // Video digital effect
+const uint8_t A_BUS_MOSAIC_STEP_4 =80; // Video digital effect
+const uint8_t A_BUS_MOSAIC_STEP_5 =81; // Video digital effect
+const uint8_t A_BUS_PAINT_OFF =82; // Video digital effect
+const uint8_t A_BUS_PAINT_STEP_1 =83; // Video digital effect
+const uint8_t A_BUS_PAINT_STEP_2 =84; // Video digital effect
+const uint8_t A_BUS_PAINT_STEP_3 =85; // Video digital effect
+const uint8_t A_BUS_PAINT_STEP_4 =86; // Video digital effect
+const uint8_t A_BUS_NEGATIVE_OFF =87; // Video digital effect
+const uint8_t A_BUS_NEGATIVE_ON =88; // Video digital effect
+const uint8_t A_BUS_FIELD_STILL_MODE =89; // Video digital effect
+const uint8_t A_BUS_FRAME_STILL_MODE =90; // Video digital effect
+const uint8_t A_BUS_COLOR_CORRECTOR_OFF =91; // Video digital effect
+const uint8_t A_BUS_COLOR_CORRECTOR_ON =92; // Video digital effect
+const uint8_t A_BUS_CHROMA_LEVEL =93; // xx	Video digital effect 	xx =(ASCII HEX1H_17H
+const uint8_t B_BUS_STROBO_OFF =94; // Video digital effect
+const uint8_t B_BUS_STROBO_STEP_1 =95; // Video digital effect
+const uint8_t B_BUS_STROBO_STEP_2 =96; // Video digital effect
+const uint8_t B_BUS_STROBO_STEP_3 =97; // Video digital effect
+const uint8_t B_BUS_STROBO_STEP_4 =98; // Video digital effect
+const uint8_t B_BUS_STROBO_STEP_5 =99; // Video digital effect
+const uint8_t B_BUS_MOSAIC_OFF = 100; // Video digital effect
+const uint8_t B_BUS_MOSAIC_STEP_1 = 101; // Video digital effect
+const uint8_t B_BUS_MOSAIC_STEP_2 = 102; // Video digital effect
+const uint8_t B_BUS_MOSAIC_STEP_3 = 103; // Video digital effect
+const uint8_t B_BUS_MOSAIC_STEP_4 = 104; // Video digital effect
+const uint8_t B_BUS_MOSAIC_STEP_5 = 105; // Video digital effect
+const uint8_t B_BUS_PAINT_OFF = 106; // Video digital effect
+const uint8_t B_BUS_PAINT_STEP_1 = 107; // Video digital effect
+const uint8_t B_BUS_PAINT_STEP_2 = 108; // Video digital effect
+const uint8_t B_BUS_PAINT_STEP_3 = 109; // Video digital effect
+const uint8_t B_BUS_PAINT_STEP_4 = 110; // Video digital effect
+const uint8_t B_BUS_NEGATIVE_OFF = 111; // Video digital effect
+const uint8_t B_BUS_NEGATIVE_ON = 112; // Video digital effect
+const uint8_t B_BUS_FIELD_STILL_MODE = 113; // Video digital effect
+const uint8_t B_BUS_FRAME_STILL_MODE = 114; // Video digital effect
+const uint8_t B_BUS_COLOR_CORRECTOR_OFF = 115; // Video digital effect
+const uint8_t B_BUS_COLOR_CORRECTOR_ON = 116; // Video digital effect
+const uint8_t B_BUS_CHROMA_LEVEL = 117; // xx	Video digital effect 	xx =(ASCII HEX 01H_17H
+const uint8_t AUDIO_MIX_LEVEL_GLOBAL_FOLLOW_ON = 120; // Audio
+const uint8_t AUDIO_MIX_LEVEL_GLOBAL_FOLLOW_OFF = 121; // Audio
+const uint8_t AUDIO_LEVEL_SOURCE_1 = 122; // xx	Audio	(xx is ASCII 00H_1AH
+const uint8_t AUDIO_LEVEL_SOURCE_2 = 123; // xx	Audio	(xx is ASCII 00H_1AH
+const uint8_t AUDIO_LEVEL_SOURCE_3 = 124; // xx	Audio	(xx is ASCII 00H_1AH
+const uint8_t AUDIO_LEVEL_SOURCE_4 = 125; // xx	Audio	(xx is ASCII 00H_1AH
+const uint8_t AUDIO_MIX_LEVEL_SOURCE_4_FOLLOW_ON = 126; // Audio
+const uint8_t AUDIO_MIX_LEVEL_SOURCE_4_FOLLOW_OFF = 127; // Audio
+const uint8_t VIDEO_FADE_ON = 130; // Fade
+const uint8_t VIDEO_FADE_OFF = 131; // Fade
+const uint8_t AUDIO_FADE_ON = 132; // Fade
+const uint8_t AUDIO_FADE_OFF = 133; // Fade
+const uint8_t TITTLE_FADE_ON = 134; // Fade
+const uint8_t TITTLE_FADE_OFF = 135; // Fade
+const uint8_t FADE_TO_WHITE = 136; // Fade
+const uint8_t FADE_TO_BLACK = 137; // Fade
+const uint8_t FADE_TO_COLOR = 138; // Fade
+const uint8_t BACK_COLOR_WHITE = 140; // Set background color
+const uint8_t BACK_COLOR_YELLOW = 141; // Set background color
+const uint8_t BACK_COLOR_CYAN = 142; // Set background color
+const uint8_t BACK_COLOR_GREEN = 143; // Set background color
+const uint8_t BACK_COLOR_MAGENTA = 144; // Set background color
+const uint8_t BACK_COLOR_RED = 145; // Set background color
+const uint8_t BACK_COLOR_BLUE = 146; // Set background color
+const uint8_t BACK_COLOR_BLACK = 147; // Set background color
+const uint8_t BACK_COLOR_USER_COLOR = 148; // Set background color	set by 174
+const uint8_t EDGE_COLOR_WHITE = 150; // Set edge color
+const uint8_t EDGE_COLOR_YELLOW = 151; // Set edge color
+const uint8_t EDGE_COLOR_CYAN = 152; // Set edge color
+const uint8_t EDGE_COLOR_GREEN = 153; // Set edge color
+const uint8_t EDGE_COLOR_MAGENTA = 154; // Set edge color
+const uint8_t EDGE_COLOR_RED = 155; // Set edge color
+const uint8_t EDGE_COLOR_BLUE = 156; // Set edge color
+const uint8_t EDGE_COLOR_BLACK = 157; // Set edge color
+const uint8_t EDGE_COLOR_USER_COLOR = 158; // Set edge color	set by 175
+const uint8_t COLOR_MODE_NORMAL = 160; // Color Mode
+const uint8_t COLOR_MODE_VERTICAL = 161; // Color Mode
+const uint8_t COLOR_MODE_HORIZONTAL = 162; // Color Mode
+const uint8_t COLOR_MODE_LINES = 163; // Color Mode
+const uint8_t COLOR_MODE_PALETTE = 164; // Color Mode
+const uint8_t TITLE_COLOR_INTERNAL_BACK_COLOR = 165; // Title colr	internal color _ using back color
+const uint8_t TITLE_COLOR_EXTERNAL = 166; // Title color	external color _ controlled by titler
+const uint8_t TITLE_EDGE_PATTERN_0_OFF = 167; // Tittle pattern
+const uint8_t TITLE_EDGE_PATTERN_1 = 168; // Tittle pattern
+const uint8_t TITLE_EDGE_PATTERN_2 = 169; // Tittle pattern
+const uint8_t TITLE_EDGE_PATTERN_3 = 170; // Tittle pattern
+const uint8_t TITLE_EDGE_PATTERN_4 = 171; // Tittle pattern
+const uint8_t TITLE_EDGE_PATTERN_5 = 172; // Tittle pattern
+const uint8_t BACK_COLOR_MANUAL = 174; // xxyy	Set user color xx = B_Y (ASCII HEX 00H_FFH) yy = R_Y (ASCII HEX 00H_FFH
+const uint8_t EDGE_COLOR_MANUAL = 175; // xxyy	Set user color xx = B_Y (ASCII HEX 00H_FFH) yy = R_Y (ASCII HEX 00H_FFH
+const uint8_t A_B_MIX_LEVEL = 179; // xx	POTENTIOMETRE 00=A, FF=B
+const uint8_t A_BUS_EFFECT_ON = 180; // BUTTON
+const uint8_t A_BUS_EFFECT_OFF = 181; // BUTTON
+const uint8_t B_BUS_EFFECT_ON = 182; // BUTTON
+const uint8_t B_BUS_EFFECT_OFF = 183; // BUTTON
+const uint8_t A_BUS_STILL_ON = 184; // BUTTON
+const uint8_t A_BUS_STILL_OFF = 185; // BUTTON
+const uint8_t B_BUS_STILL_ON = 186; // BUTTON
+const uint8_t B_BUS_STILL_OFF = 187; // BUTTON
+const uint8_t SPEED_SET = 190; // xx	POTENTIOMETRE	xx =(ASCII HEX 01H_FFH
+const uint8_t FADE_BUTTON = 191; // BUTTON
+const uint8_t TAKE_BUTTON = 192; // BUTTON
+const uint8_t BACK_COLOR_COLOR_BARS = 197; // test
+const uint8_t BACK_COLOR_NOT_COLOR_BARS = 198; // test
+const uint8_t RESET_TO_FACTORY_SETTINGS = 199; // Reset
+const uint8_t A_BUS_SOURCE_1 = 200; // BUTTON
+const uint8_t A_BUS_SOURCE_2 = 201; // BUTTON
+const uint8_t A_BUS_SOURCE_3 = 202; // BUTTON
+const uint8_t A_BUS_SOURCE_4 = 203; // BUTTON
+const uint8_t A_BUS_BACK_COLOR = 204; // BUTTON
+const uint8_t B_BUS_SOURCE_1 = 205; // BUTTON
+const uint8_t B_BUS_SOURCE_2 = 206; // BUTTON
+const uint8_t B_BUS_SOURCE_3 = 207; // BUTTON
+const uint8_t B_BUS_SOURCE_4 = 208; // BUTTON
+const uint8_t B_BUS_BACK_COLOR = 209; // BUTTON
+const uint8_t WIPE_MIX_BUTTON = 210; // BUTTON
+const uint8_t THRESHOLD_LUM_KEY = 211; // xx	BUTTON	(xx = ASCII HEX 00H FFH
+const uint8_t LUM_KEY = 212; // BUTTON
+const uint8_t CHROMA_KEY = 213; // BUTTON
+const uint8_t CHROMA_SET = 214; // xxyyzz	BUTTON	3 couleurs en mémoire ?
+const uint8_t UNDO = 215; // BUTTON
+const uint8_t ENTER = 216; // BUTTON
+const uint8_t COLOR_CORECT = 217; // xxyy	POSITION
+const uint8_t CENTER_WIPE = 218; // xxyy	POSITION	(xx = horizontal) (yy _ vertical) (ASCII HEX 00H_FFH
+const uint8_t SCENE_GRABER = 219; // xxyy	POSITION
+
 
 /*
 const char MIX_MODE[8] = "VMX:000"; // Mix mode /Out of WIPE
@@ -195,7 +364,7 @@ const char TITLE_EDGE_PATTERN_4[8] = "VTE:171"; // Tittle pattern
 const char TITLE_EDGE_PATTERN_5[8] = "VTE:172"; // Tittle pattern
 const char BACK_COLOR_MANUAL[8] = "VB:174"; // xxyy	Set user color xx = B_Y (ASCII HEX 00H_FFH) yy = R_Y (ASCII HEX 00H_FFH
 const char EDGE_COLOR_MANUAL[8] = "VE:175"; // xxyy	Set user color xx = B_Y (ASCII HEX 00H_FFH) yy = R_Y (ASCII HEX 00H_FFH
-const char A_B_MIX_LEVEL[8] = "VM:179"; // xx	POTENTIOMETRE 00=A, FF=B
+const char A_B_MIX_LEVEL[8] = "VMM:179"; // xx	POTENTIOMETRE 00=A, FF=B
 const char A_BUS_EFFECT_ON[8] = "VDE:180"; // BUTTON
 const char A_BUS_EFFECT_OFF[8] = "VDE:181"; // BUTTON
 const char B_BUS_EFFECT_ON[8] = "VDE:182"; // BUTTON
