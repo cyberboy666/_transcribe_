@@ -69,6 +69,10 @@ host | pro-micro | name
 ![HOST](https://user-images.githubusercontent.com/12017938/71743665-6a680d00-2e65-11ea-9b93-f5de6802a3c6.JPG)
 ![image](https://user-images.githubusercontent.com/12017938/71743326-933bd280-2e64-11ea-9e26-02f71ec2c89f.png)
 
+some more useful info about the host :
+- https://www.hackster.io/139994/plug-any-usb-device-on-an-esp8266-e0ca8a
+- https://web.archive.org/web/20190120133645/https://www.circuitsathome.com/usb-host-shield-hardware-manual/
+
 ## other panansonic (or other) mixers
 
 - panasonic ave55 is rs232 on a stereo 3.5mm jack
