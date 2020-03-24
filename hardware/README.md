@@ -9,12 +9,16 @@ ref | part | source | source-id | section
 ? | _transcribe_ pcb | me? or a fab-house | ...  | all
 ? | sparkfun pro-micro 5v | [ali](https://www.aliexpress.com/item/1348800135.html) [amazon](https://www.amazon.com/OSOYOO-ATmega32U4-arduino-Leonardo-ATmega328/dp/B012FOV17O/), [sparkfun](https://www.sparkfun.com/products/12640) | - | A
 ? | max232n ic | tayda | A-034 | B
-? | 0.1uF caps | tayda | A-4008 | B
+c2, c3, c4, c5 | 0.1uF caps | tayda | A-4008 | B
 ? | 3.5mm TSR jacks | tayda | A-853 | B , C
 ? | din jacks | tayda | A-1010 | B , C
 ? | dsub9 | tayda | A-300 | B , C
 ? | 6n137 | tayda | A-871 | C
 ? | resistors and diode | tayda | - | C
+r1, r2, r3 | 220 | tayda | - | C
+r4 | 10k | tayda | - | C
+d1 | 1n4148 | tayda | - | C
+c1 | 100uf | tayda | - | A
 ? | cd4069 | tayda | A-882 | C
 ? | USB-host sheild mini | [ali](https://www.aliexpress.com/item/32842815739.html) [amazon](https://www.amazon.com/HiLetgo-Development-Compatible-Interface-Arduino/dp/B01EWW9R1E/) | - | D
 ? |  78L33 regulator | tayda | A-492 | D
