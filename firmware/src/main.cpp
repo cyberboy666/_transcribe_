@@ -1,29 +1,33 @@
-
 #include <usbh_midi.h>
 #include <usbhub.h>
 #include <SPI.h>
 #include <usbmidi.h>
-#include "src/midievents.h"
-#include "src/commands.h"
+#include "midievents.h"
+#include "commands.h"
 #include <AltSoftSerial.h>
 
 AltSoftSerial altSerial;
 USB Usb;
 USBH_MIDI  Midi(&Usb);
 uint16_t pid, vid;
-char cmd[12] = {};
+char cmd[14] = {};
 uint8_t cmdNum = -1;
 uint8_t notes[128];
 uint8_t cc[128];
 uint8_t midiCommand, midiChannel, midiParam1, midiParam2;
 bool hasUsbDevice;
 
-uint8_t twoParamStore[2][2];
 uint8_t switchStore[2];
+
+uint8_t twoInputStore[2][5]; // 0=BACK_COLOR_MANUAL:174, 1=EDGE_COLOR_MANUAL:175, 2=COLOR_CORECT:217, 3=CENTER_WIPE:218, 4=SCENE_GRABER:219
+uint8_t threeInputStore[3][1]; // 0=CHROMA_SET:214
+
+bool useFlatMidiMap;
 
 bool readInputFromMidiDevice();
 bool readInputFromMidiHost();
 bool readInputFromMidiSerial();
+
 
 void setCmd(uint8_t inputCmd);
 void setCmdSwitch(uint8_t inputCmd1, uint8_t inputCmd2, uint8_t switchIndex);
@@ -32,6 +36,7 @@ void setCmdToggle(uint8_t inputCmd, uint8_t offset, uint8_t switchIndex);
 void setCmdStep(uint8_t inputCmd, uint8_t param, uint8_t offset);
 void setCmdParam(uint8_t inputCmd, uint8_t param);
 void setCmdTwoParams(uint8_t inputCmd, uint8_t param, uint8_t position, uint8_t storeIndex);
+void setCmdThreeParams(uint8_t inputCmd, uint8_t param, uint8_t position, uint8_t storeIndex);
 void setPrefix(uint8_t cmdNum);
 void setThisPrefix(char prefix[4]);
 void removeTrailingUnderscore();
@@ -48,24 +53,93 @@ void createMap(){
   notes[62] = AVE55::WIPE_SQUARE_CORNER_DR;
   notes[63] = AVE55::WIPE_SQUARE_CORNER_UR;
 
-  // else if(midiParam1 == 83){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 0);}
-  // else if(midiParam1 == 84){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
+  cc[5] = AVE55::A_B_MIX_LEVEL;
+  // two&three input controls need to be adjacent in the mapping
+  cc[4] = AVE55::CENTER_WIPE; // first is x
+  cc[3] = AVE55::CENTER_WIPE; // second is y
+}
 
-// if (midiParam1 == 60){setCmd(AVE55::WIPE_SQUARE_CORNER_UL);}
-// else if (midiParam1 == 61){setCmd(AVE55::WIPE_SQUARE_CORNER_DL);}
-// else if (midiParam1 == 62){setCmd(AVE55::WIPE_SQUARE_CORNER_DR);}
-// else if (midiParam1 == 63){setCmd(AVE55::WIPE_SQUARE_CORNER_UR);}
+uint8_t get_two_param_position(){
+  uint8_t position = 1;
+  if(useFlatMidiMap && midiChannel > 0 && AVE55::flat_cc_ch_two[midiParam1+1] == cmdNum){position = 0;}
+  else if(cc[midiParam1+1] == cmdNum){position = 0;}
+  return position;
+}
 
-  cc[0] = AVE55::A_B_MIX_LEVEL;
-  // cc[0] = AVE55::A_B_MIX_LEVEL;
+uint8_t get_three_param_position(){
+  uint8_t position = 2;
+  if(useFlatMidiMap && midiChannel > 0 && AVE55::flat_cc_ch_two[midiParam1+1] == cmdNum && AVE55::flat_cc_ch_two[midiParam1+2] == cmdNum){position = 0;}
+  else if(useFlatMidiMap && midiChannel > 0 && AVE55::flat_cc_ch_two[midiParam1+1] == cmdNum){position = 1;}
+  else if(cc[midiParam1+1] == cmdNum && cc[midiParam1+2] == cmdNum){position = 0;}
+  else if(cc[midiParam1+1] == cmdNum){position = 1;}
+  return position;
+}
 
-  // if(midiParam1 == 0){setCmdParam(AVE55::A_B_MIX_LEVEL, midiParam2);}
-  // else if(midiParam1 == 1){setCmdTwoParams(AVE55::CENTER_WIPE, midiParam2, 0, 0);}
-  // else if(midiParam1 == 2){setCmdTwoParams(AVE55::CENTER_WIPE, midiParam2, 1, 0);}
-  // else if(midiParam1 == 3){setCmdStep(AVE55::WIPE_SQUARE_CORNER_UL, midiParam2, 8);}
-  // else if(midiParam1 == 71){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
+uint8_t get_two_store_index(){
+  uint8_t storeIndex = 0;
+  if(cmdNum == 175) storeIndex=1;
+  else if(cmdNum == 217) storeIndex=2;
+  else if(cmdNum == 218) storeIndex=3;
+  else if(cmdNum == 219) storeIndex=4;
+  return storeIndex;
+}
 
+void setMap(){
+  // first check the default flatmap for midi channel 2 or 3
+  if(useFlatMidiMap && midiChannel == 1){
+    Serial.print("in the midi 1 part");
+    if(midiCommand == MIDICOMMAND::NOTEON){     
+      cmdNum = AVE55::flat_notes_ch_two[midiParam1];
+    }
+    else if(midiCommand == MIDICOMMAND::CC){
+      cmdNum = AVE55::flat_cc_ch_two[midiParam1];
+    }
+  }
+  else if(useFlatMidiMap && midiChannel == 2){
+    if(midiCommand == MIDICOMMAND::NOTEON){     
+      cmdNum = AVE55::flat_notes_ch_three[midiParam1];
+    }
+  }
+  // then check the simple custom map
+  if(midiChannel == 0){
+    if(midiCommand == MIDICOMMAND::NOTEON && notes[midiParam1] != 255){
+      cmdNum = notes[midiParam1];
+    }
+    else if(midiCommand == MIDICOMMAND::CC && cc[midiParam1] != 255){
 
+      cmdNum = cc[midiParam1];
+      }
+    }
+  if(cmdNum != 255){
+    if(AVE55::is_one_input(cmdNum)){
+      setCmdParam(cmdNum, midiParam2);
+    }
+    else if(AVE55::is_two_input(cmdNum)){
+      uint8_t storeIndex = get_two_store_index();
+      uint8_t position = get_two_param_position();
+      setCmdTwoParams(cmdNum, midiParam2, position, storeIndex);
+    }
+    if(AVE55::is_three_input(cmdNum)){
+      uint8_t position = get_three_param_position();
+      setCmdThreeParams(cmdNum, midiParam2, position, 0);
+    }
+    else{
+    // no inputs
+    setCmd(cmdNum);
+    }
+
+    return;
+  }
+  // finally check the special custom map
+  if(midiCommand == MIDICOMMAND::NOTEON){
+    // special note stuff here
+  }
+  else if(midiCommand == MIDICOMMAND::CC){
+    if(midiParam1 == 7){setCmdStep(AVE55::WIPE_SQUARE_CORNER_UL, midiParam2, 8);}
+    else if(midiParam1 == 32){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
+    else if(midiParam1 == 33){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 0);}
+    else if(midiParam1 == 34){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
+  }
 }
 
 void setup()
@@ -78,20 +152,18 @@ void setup()
   createMap();
   hasUsbDevice = false;
   vid = pid = 0;
-  twoParamStore[2][2] = {};
   switchStore[2] = {};
+  useFlatMidiMap = true;
 
   if (Usb.Init() == 0){ // means it is successful
     hasUsbDevice = true;
     delay( 200 );
     }
-
-
 }
 
 void loop()
 {
-  midiCommand = midiChannel =midiParam1 = midiParam2 = 0;
+  midiCommand = midiChannel = midiParam1 = midiParam2 = 0;
   cmdNum = 255;
   memset(&cmd[0], 0, sizeof(cmd));
   bool hasMessage = false;
@@ -101,10 +173,8 @@ void loop()
   if(!hasMessage){hasMessage = readInputFromMidiSerial();} // if still nothing check the serial port  
   if(!hasMessage){return;}
 
-
   if(midiCommand == 0){return;}
-  if(midiChannel != 0){return;}
-
+ 
   Serial.print(midiParam1);
   Serial.print("<-note\n");
   Serial.print(midiChannel);
@@ -115,18 +185,7 @@ void loop()
   Serial.print(midiParam2);
   Serial.print("<-value\n\n");
 
-  if(midiCommand == MIDICOMMAND::NOTEON && notes[midiParam1] != 255){
-    cmdNum = notes[midiParam1];
-    setPrefix(cmdNum);
-    setCmd(cmdNum);
-  }
-  if(midiCommand == MIDICOMMAND::CC && cc[midiParam1] != 255){
-    cmdNum = cc[midiParam1];
-    Serial.print(cmdNum);
-    Serial.print("<-cmdNum\n"); 
-    setPrefix(cmdNum);
-    setCmdParam(cmdNum, midiParam2);
-  }
+  setMap();
   
   removeTrailingUnderscore();
 
@@ -170,6 +229,10 @@ bool readInputFromMidiHost(){
     midiParam1 = USBMIDI.read(); // param 1 (note)
     midiParam2 = USBMIDI.read(); // param 2 (value)
 
+    Serial1.write(first);
+    Serial1.write(midiParam1);
+    Serial1.write(midiParam2);
+
     USBMIDI.flush();
     return true;
   }
@@ -191,6 +254,7 @@ bool readInputFromMidiSerial(){
 
   // Serial1.flush();
   while(Serial1.available()){Serial1.read();}
+
   return true;
 }
 
@@ -238,8 +302,8 @@ void setPrefix(uint8_t cmdNum){
 
 }
 
-
 void setCmd(uint8_t cmdNum){
+  setPrefix(cmdNum);
 
   cmd[3] = ':';
   char hexParam[12] = {};
@@ -272,6 +336,8 @@ void setCmdStep(uint8_t inputCmd, uint8_t param, uint8_t offset){
 }
 
 void setCmdParam(uint8_t inputCmd, uint8_t param){
+  setPrefix(inputCmd);
+
   char hexParam[12] = {};
   sprintf(hexParam, "%03d%02X", inputCmd, param*2);
   Serial.print(hexParam);
@@ -284,11 +350,12 @@ void setCmdParam(uint8_t inputCmd, uint8_t param){
   cmd[8] = hexParam[4];
 }
 
-void setCmdTwoParams(char inputCmd[8], uint8_t param, uint8_t position, uint8_t storeIndex){
-  twoParamStore[storeIndex][position] = param;
+void setCmdTwoParams(uint8_t inputCmd, uint8_t param, uint8_t position, uint8_t storeIndex){
+  setPrefix(inputCmd);
+  twoInputStore[storeIndex][position] = param;
 
   char hexParam[12] = {};
-  sprintf(hexParam, "%03d%02X%02X", inputCmd, twoParamStore[storeIndex][0]*2, twoParamStore[storeIndex][1]*2);
+  sprintf(hexParam, "%03d%02X%02X", inputCmd, twoInputStore[storeIndex][0]*2, twoInputStore[storeIndex][1]*2);
   cmd[3] = ':';
   cmd[4] = hexParam[0];
   cmd[5] = hexParam[1];
@@ -297,6 +364,24 @@ void setCmdTwoParams(char inputCmd[8], uint8_t param, uint8_t position, uint8_t 
   cmd[8] = hexParam[4];
   cmd[9] = hexParam[5];
   cmd[10] = hexParam[6];
+}
+
+void setCmdThreeParams(uint8_t inputCmd, uint8_t param, uint8_t position, uint8_t storeIndex){
+  setPrefix(inputCmd);
+  threeInputStore[storeIndex][position] = param;
+
+  char hexParam[14] = {};
+  sprintf(hexParam, "%03d%02X%02X%02X", inputCmd, threeInputStore[storeIndex][0]*2, threeInputStore[storeIndex][1]*2, threeInputStore[storeIndex][2]*2);
+  cmd[3] = ':';
+  cmd[4] = hexParam[0];
+  cmd[5] = hexParam[1];
+  cmd[6] = hexParam[2];
+  cmd[7] = hexParam[3];
+  cmd[8] = hexParam[4];
+  cmd[9] = hexParam[5];
+  cmd[10] = hexParam[6];
+  cmd[11] = hexParam[5];
+  cmd[12] = hexParam[6];
 }
 
 void removeTrailingUnderscore(){
