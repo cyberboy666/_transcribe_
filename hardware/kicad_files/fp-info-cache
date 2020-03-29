@@ -1,4 +1,4 @@
-16375249512773573
+16389443833896036
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -73205,6 +73205,55 @@ varistor SIOV
 0
 2
 2
+lib_fp
+DSUB-9_Male_Vertical_Tayda
+9-pin D-Sub connector, straight/vertical, THT-mount, male, pitch 2.77x2.84mm, distance of mounting holes 25mm, see https://disti-assets.s3.amazonaws.com/tonar/files/datasheets/16730.pdf
+9-pin D-Sub connector straight vertical THT male pitch 2.77x2.84mm mounting holes distance 25mm
+0
+11
+10
+lib_fp
+PinHeader_2x08_P2.54_Euro
+Through hole straight pin header, 2x08, 2.54mm pitch, double rows
+Through hole pin header THT 2x08 2.54mm double row
+0
+16
+16
+lib_fp
+ProMicro
+Pro Micro footprint
+promicro ProMicro
+0
+24
+24
+lib_fp
+Tayda5pinMidi-A1010
+SDS-50J, standard DIN connector, 5 pins, midi
+SDS-50J DIN 5-pins connector midi
+0
+7
+5
+lib_fp
+Tayda_3.5mm_stereo_TRS_jack_A-853
+
+
+0
+5
+5
+project_parts
+DSUB-9_Male_Vertical_Tayda
+9-pin D-Sub connector, straight/vertical, THT-mount, male, pitch 2.77x2.84mm, distance of mounting holes 25mm, see https://disti-assets.s3.amazonaws.com/tonar/files/datasheets/16730.pdf
+9-pin D-Sub connector straight vertical THT male pitch 2.77x2.84mm mounting holes distance 25mm
+0
+11
+10
+project_parts
+PinHeader_2x08_P2.54_Euro
+Through hole straight pin header, 2x08, 2.54mm pitch, double rows
+Through hole pin header THT 2x08 2.54mm double row
+0
+16
+16
 project_parts
 ProMicro
 Pro Micro footprint
@@ -73212,3 +73261,17 @@ promicro ProMicro
 0
 24
 24
+project_parts
+Tayda5pinMidi-A1010
+SDS-50J, standard DIN connector, 5 pins, midi
+SDS-50J DIN 5-pins connector midi
+0
+7
+5
+project_parts
+Tayda_3.5mm_stereo_TRS_jack_A-853
+
+
+0
+5
+5
