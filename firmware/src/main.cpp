@@ -11,7 +11,7 @@ USB Usb;
 USBH_MIDI  Midi(&Usb);
 uint16_t pid, vid;
 char cmd[14] = {};
-uint8_t cmdNum = -1;
+uint8_t cmdNum;
 uint8_t notes[128];
 uint8_t cc[128];
 uint8_t midiCommand, midiChannel, midiParam1, midiParam2;
@@ -53,10 +53,12 @@ void createMap(){
   notes[62] = AVE55::WIPE_SQUARE_CORNER_DR;
   notes[63] = AVE55::WIPE_SQUARE_CORNER_UR;
 
-  cc[5] = AVE55::A_B_MIX_LEVEL;
+  cc[0] = AVE55::A_B_MIX_LEVEL;
   // two&three input controls need to be adjacent in the mapping
-  cc[4] = AVE55::CENTER_WIPE; // first is x
-  cc[3] = AVE55::CENTER_WIPE; // second is y
+  cc[1] = AVE55::CENTER_WIPE; // first is x
+  cc[2] = AVE55::CENTER_WIPE; // second is y
+  cc[46] = AVE55::WIPE_MIX_BUTTON;
+
 }
 
 uint8_t get_two_param_position(){
@@ -87,7 +89,6 @@ uint8_t get_two_store_index(){
 void setMap(){
   // first check the default flatmap for midi channel 2 or 3
   if(useFlatMidiMap && midiChannel == 1){
-    Serial.print("in the midi 1 part");
     if(midiCommand == MIDICOMMAND::NOTEON){     
       cmdNum = AVE55::flat_notes_ch_two[midiParam1];
     }
@@ -117,6 +118,8 @@ void setMap(){
     else if(AVE55::is_two_input(cmdNum)){
       uint8_t storeIndex = get_two_store_index();
       uint8_t position = get_two_param_position();
+      Serial.print(storeIndex);
+      Serial.print("<-- store index");
       setCmdTwoParams(cmdNum, midiParam2, position, storeIndex);
     }
     if(AVE55::is_three_input(cmdNum)){
@@ -125,20 +128,30 @@ void setMap(){
     }
     else{
     // no inputs
-    setCmd(cmdNum);
-    }
+      if(midiParam2 != 0){
+        setCmd(cmdNum);
+      }
 
+    }
     return;
   }
+  Serial.print(cmdNum);
+  Serial.print("<-- the cmdNum");
   // finally check the special custom map
   if(midiCommand == MIDICOMMAND::NOTEON){
     // special note stuff here
   }
   else if(midiCommand == MIDICOMMAND::CC){
-    if(midiParam1 == 7){setCmdStep(AVE55::WIPE_SQUARE_CORNER_UL, midiParam2, 8);}
-    else if(midiParam1 == 32){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
-    else if(midiParam1 == 33){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 0);}
-    else if(midiParam1 == 34){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
+    if(midiParam1 == 16){setCmdStep(AVE55::A_BUS_STROBO_OFF, midiParam2, 6);}
+    else if(midiParam1 == 17){setCmdStep(AVE55::A_BUS_MOSAIC_OFF, midiParam2, 6);}
+    else if(midiParam1 == 18){setCmdStep(AVE55::A_BUS_PAINT_OFF, midiParam2, 6);}
+
+    else if(midiParam1 == 20){setCmdStep(AVE55::B_BUS_STROBO_OFF, midiParam2, 6);}
+    else if(midiParam1 == 21){setCmdStep(AVE55::B_BUS_MOSAIC_OFF, midiParam2, 6);}
+    else if(midiParam1 == 22){setCmdStep(AVE55::B_BUS_PAINT_OFF, midiParam2, 6);}
+    // else if(midiParam1 == 32){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
+    // else if(midiParam1 == 33){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 0);}
+    // else if(midiParam1 == 34){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 1);}
   }
 }
 
@@ -298,7 +311,9 @@ void setPrefix(uint8_t cmdNum){
   else if(cmdNum >= 215 && cmdNum <= 215) {setThisPrefix("ZUD"); }
   else if(cmdNum >= 216 && cmdNum <= 216) {setThisPrefix("ZEN"); }
   else if(cmdNum >= 217 && cmdNum <= 219) {setThisPrefix("VPS"); }
-  else{ Serial.print("<-found nothuing\n"); }
+  else{
+    Serial.print(cmdNum);
+     Serial.print("<-found nothuing\n"); }
 
 }
 
@@ -321,9 +336,9 @@ void setCmdSwitch(uint8_t inputCmd1, uint8_t inputCmd2, uint8_t switchIndex){
 }
 
 void setCmdToggle(uint8_t inputCmd, uint8_t offset, uint8_t switchIndex){
-  inputCmd = (inputCmd + switchStore[switchIndex]) % offset;
-  setCmd(inputCmd);
-  switchStore[switchIndex] = (switchStore[switchIndex] + 1) % offset;
+  // inputCmd = (inputCmd + switchStore[switchIndex]) % offset;
+  // setCmd(inputCmd);
+  // switchStore[switchIndex] = (switchStore[switchIndex] + 1) % offset;
 }
 
 
@@ -352,7 +367,9 @@ void setCmdParam(uint8_t inputCmd, uint8_t param){
 
 void setCmdTwoParams(uint8_t inputCmd, uint8_t param, uint8_t position, uint8_t storeIndex){
   setPrefix(inputCmd);
-  twoInputStore[storeIndex][position] = param;
+  uint8_t *pointer = &twoInputStore[storeIndex][position];
+  *pointer = param;
+  // twoInputStore[storeIndex][position] = *param;
 
   char hexParam[12] = {};
   sprintf(hexParam, "%03d%02X%02X", inputCmd, twoInputStore[storeIndex][0]*2, twoInputStore[storeIndex][1]*2);
@@ -368,7 +385,9 @@ void setCmdTwoParams(uint8_t inputCmd, uint8_t param, uint8_t position, uint8_t 
 
 void setCmdThreeParams(uint8_t inputCmd, uint8_t param, uint8_t position, uint8_t storeIndex){
   setPrefix(inputCmd);
-  threeInputStore[storeIndex][position] = param;
+  uint8_t *pointer = &threeInputStore[storeIndex][position];
+  *pointer = param;
+  // threeInputStore[storeIndex][position] = param;
 
   char hexParam[14] = {};
   sprintf(hexParam, "%03d%02X%02X%02X", inputCmd, threeInputStore[storeIndex][0]*2, threeInputStore[storeIndex][1]*2, threeInputStore[storeIndex][2]*2);
