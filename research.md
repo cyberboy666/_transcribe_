@@ -124,3 +124,24 @@ dif plug, (mini din) and i think dif wiring too - looks like , oof it makes no s
 ## from wikipedia :
 
 ![image](https://user-images.githubusercontent.com/12017938/72552976-32ff5480-3898-11ea-9528-21e9894f0128.png)
+
+
+# burning the bootloader
+
+it is known that the sparkfun promicro can from time to time get into a state where the port is not recognised, or difficult to upload new code to it - there is a complicated method of grounding the reset pin some times and then quickly uploading new code - i have tried this and though it works sometimes , it also is very frustrating and can just become a problem again the next time you try to upload some code. 
+
+instead i am going to explore the method of reburning the bootloader on the pro-micro, hopefully this will fix the problem more permanently. and after the intial time taken to learn how to do this, it will also save time working on this project, and any others with pro-micros. as a side note - this could also be useful for burning/uploading code to the dip-atmega ics you can get for $2 from tayda...
+
+this [sparkfun article](https://learn.sparkfun.com/tutorials/installing-an-arduino-bootloader) is a good introduction to the idea.
+
+i dont have an uno, but do have an arduino nano here - so will try using this as the ISP. sounds like even another pro-micro will work as ISP according to [this forum](https://forum.arduino.cc/index.php?topic=199524.0) post, but they have caused enough trouble for now !
+
+first i uploaded the ArduinoISP sketch to the nano (using the old bootloader version) , 
+then hooked them together with some wires:
+
+the connections were: with spi->spi (miso, mosi, clk), and ss -> rst, plus power/gnd ; exactly the same as in this guide https://www.instructables.com/id/Burn-Bootloader-Arduino-Nano-As-ISP-to-Pro-Micro/ ; also i put a 10uf cap reset -> +| |- ->gnd on the nano
+
+then in the arduino ide i chose the pro-micro board, changed the programmer to `arduino as ISP` then pressed `BurnBootloader`. this worked no problem ! very painless. at first i followed the intructable above and loaded with the  `arduino Micro` board selected, but this did weird things with the leds , and although it still worked, after trying with my other 'not working' pro-micro , this newly updated one also started having problems.. i then went back and reburnt the bootloader , now with `sparkfun pro-micro` board selected - this fixed the weird led thing.
+
+even with the pro-micro burnt, if i try upload code with the problem board, then swich the cables to a fresh and working one (even with a reset of vscode between) it will pass on the problem to this fresh board. luckly reburning the bootloader is very quick if you have the nano set up and ready to go. i will keep this ISP nano handy on the breadboard while developing on the pro-micro in case this problem starts again. 
+
