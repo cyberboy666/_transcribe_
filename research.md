@@ -124,3 +124,5 @@ dif plug, (mini din) and i think dif wiring too - looks like , oof it makes no s
 ## from wikipedia :
 
 ![image](https://user-images.githubusercontent.com/12017938/72552976-32ff5480-3898-11ea-9528-21e9894f0128.png)
+
+

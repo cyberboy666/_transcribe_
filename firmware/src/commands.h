@@ -6,7 +6,7 @@ namespace AVE55{
 // default flatmap
 const uint8_t flat_notes_ch_two[128] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 61, 62, 63, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 120, 121, 126, 127, 130, 131, 132, 133, 134, 135, 136, 137, 138, 140, 141, 142, 143, 144, 145, 146, 147, 148, 150};
 const uint8_t flat_notes_ch_three[128] = {151, 152, 153, 154, 155, 156, 157, 158, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 180, 181, 182, 183, 184, 185, 186, 187, 191, 192, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 212, 213, 215, 216};
-const uint8_t flat_cc_ch_two[128] = {93, 117, 122, 123, 124, 125, 179, 190, 211, 174, 174, 175, 175, 217, 217, 218, 218, 219, 219, 214, 214, 214};
+const uint16_t flat_cc_ch_two[128] = {93, 117, 122, 123, 124, 125, 179, 190, 211, 174, 174 + 256, 175, 175 + 256, 217, 217 + 256, 218, 218 + 256, 219, 219 + 256, 214, 214 + 256, 214 + 512};
 
 //oneInput controls:
 //A_BUS_CHROMA_LEVEL:93, B_BUS_CHROMA_LEVEL:117, AUDIO_LEVEL_SOURCE_1:122, AUDIO_LEVEL_SOURCE_2:123, AUDIO_LEVEL_SOURCE_3:124, AUDIO_LEVEL_SOURCE_4:125, A_B_MIX_LEVEL:179, SPEED_SET:190, THRESHOLD_LUM_KEY:211
@@ -14,9 +14,23 @@ const uint8_t flat_cc_ch_two[128] = {93, 117, 122, 123, 124, 125, 179, 190, 211,
 //twoInput controls:
 // 0=BACK_COLOR_MANUAL:174, 1=EDGE_COLOR_MANUAL:175, 2=COLOR_CORECT:217, 3=CENTER_WIPE:218, 4=SCENE_GRABER:219
 // const uint8_t twoParamControl[5] = {174, 175, 217, 218, 219};
+const uint16_t BACK_COLOR_MANUAL_X = 174;
+const uint16_t BACK_COLOR_MANUAL_Y = 174 + 256;
+const uint16_t EDGE_COLOR_MANUAL_X = 175;
+const uint16_t EDGE_COLOR_MANUAL_Y = 175 + 256;
+const uint16_t COLOR_CORECT_X = 217;
+const uint16_t COLOR_CORECT_Y = 217 + 256;
+const uint16_t CENTER_WIPE_X = 218;
+const uint16_t CENTER_WIPE_Y = 218 + 256;
+const uint16_t SCENE_GRABER_X = 219;
+const uint16_t SCENE_GRABER_Y = 219 + 256 ;
 //threeInput controls:
 // 0=CHROMA_SET:214
 // const uint8_t threeParamControl[1] = {214};
+const uint8_t CHROMA_SET_X = 214;
+const uint8_t CHROMA_SET_Y = 214 + 256;
+const uint8_t CHROMA_SET_Z = 214 + 512;
+
 bool is_one_input(uint8_t cmd){
     return cmd == 93 || cmd == 117 || cmd == 122 || cmd == 123 || cmd == 124 || cmd == 125 || cmd == 179 || cmd == 190 || cmd == 211;
 }
@@ -111,7 +125,7 @@ const uint8_t A_BUS_FIELD_STILL_MODE = 89; // VDE:089 - Video digital effect
 const uint8_t A_BUS_FRAME_STILL_MODE = 90; // VDE:090 - Video digital effect 
 const uint8_t A_BUS_COLOR_CORRECTOR_OFF = 91; // VDE:091 - Video digital effect 
 const uint8_t A_BUS_COLOR_CORRECTOR_ON = 92; // VDE:092 - Video digital effect 
-const uint8_t A_BUS_CHROMA_LEVEL = 93; // VDE:093 - xx Video digital effect    xx = (ASCII HEX1H_17H 
+const uint8_t A_BUS_CHROMA_LEVEL = 93; // stx VDE:093xx etx - xx Video digital effect    xx = (ASCII HEX1H_17H 
 const uint8_t B_BUS_STROBO_OFF = 94; // VDE:094 - Video digital effect 
 const uint8_t B_BUS_STROBO_STEP_1 = 95; // VDE:095 - Video digital effect 
 const uint8_t B_BUS_STROBO_STEP_2 = 96; // VDE:096 - Video digital effect 
@@ -219,7 +233,7 @@ const uint8_t CHROMA_SET = 214; // VCS:214 - xxyyzz   BUTTON  3 couleurs en mém
 const uint8_t UNDO = 215; // ZUD:215 - BUTTON 
 const uint8_t ENTER = 216; // ZEN:216 - BUTTON 
 const uint8_t COLOR_CORECT = 217; // VPS:217 - xxyy   POSITION 
-const uint8_t CENTER_WIPE = 218; // VPS:218 - xxyy    POSITION    (xx = horizontal) (yy _ vertical) (ASCII HEX 00H_FFH 
+const uint8_t CENTER_WIPE = 218; // stx V P S : 2 1 8 xx yy etx - xxyy    POSITION    (xx = horizontal) (yy _ vertical) (ASCII HEX 00H_FFH 
 const uint8_t SCENE_GRABER = 219; // VPS:219 - xxyy   POSITION 
 
 }
