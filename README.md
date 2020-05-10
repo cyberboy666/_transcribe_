@@ -6,7 +6,7 @@ __disclaimer__ _this project is a work in progress. dont order any boards or exp
 
 ## background
 
-some people in the video-art community are performing with old hardware video-mixers such as in the Pansonic_WJ_AVE and Pansonic_WJ_MX lines. some of these mixers have a RS232 serial protocal for interfacing with them digitally. this is espically useful for live performace where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but many more programs and devices that are made to interface digitally using MIDI.
+some people in the video-art community are performing with old hardware video-mixers such as in the Pansonic_WJ_AVE and Pansonic_WJ_MX lines. some of these mixers have a RS232 serial especially for interfacing with them digitally. this is especially useful for live performace where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but many more programs and devices that are made to interface digitally using MIDI.
 
 the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocal used commonly in live/performance instruments to the specific _RS232 panasonic video-mixer spec_ , to better equipt these retired workstations for their new life of glamour on stage
 
