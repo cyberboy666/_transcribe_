@@ -4,33 +4,27 @@ this is the hardware section of _transcribe_ - a project created to control pana
 
 # BOM
 
-ref | part | source | source-id | section
---- | --- | --- | --- | ---
-? | _transcribe_ pcb | me? or a fab-house | ...  | all
-? | sparkfun pro-micro 5v | [ali](https://www.aliexpress.com/item/1348800135.html) [amazon](https://www.amazon.com/OSOYOO-ATmega32U4-arduino-Leonardo-ATmega328/dp/B012FOV17O/), [sparkfun](https://www.sparkfun.com/products/12640) | - | A
-? | max232n ic | tayda | A-034 | B
-c2, c3, c4, c5 | 0.1uF caps | tayda | A-4008 | B
-? | 3.5mm TSR jacks | tayda | A-853 | B , C
-? | din jacks | tayda | A-1010 | B , C
-? | dsub9 | tayda | A-300 | B , C
-? | 6n137 | tayda | A-871 | C
-? | resistors and diode | tayda | - | C
-r1, r2, r3 | 220 | tayda | - | C
-r4 | 10k | tayda | - | C
-d1 | 1n4148 | tayda | - | C
-c1 | 100uf | tayda | - | A
-? | cd4069 | tayda | A-882 | C
-? | USB-host sheild mini | [ali](https://www.aliexpress.com/item/32842815739.html) [amazon](https://www.amazon.com/HiLetgo-Development-Compatible-Interface-Arduino/dp/B01EWW9R1E/) | - | D
-? |  78L33 regulator | tayda | A-492 | D
-
+Reference | Qty | Value | source | source-id | section
+--- | --- | --- | --- | --- | ---
+? | 1|  _transcribe_ pcb | me? or a fab-house | ...  | all
+C1 | 1 | 100uf | tayda | [A-1063](https://www.taydaelectronics.com/catalogsearch/result/?q=A-1063) | A 
+C2, C3, C4, C5 | 4 | 0.1uf | tayda | [A-4008](https://www.taydaelectronics.com/catalogsearch/result/?q=A-4008) | B
+D1, D2 | 2 | 1N4148 | tayda | [A-157](https://www.taydaelectronics.com/catalogsearch/result/?q=A-157) | C
+J1 | 1 | europower header (optional) | tayda | [A-2956](https://www.taydaelectronics.com/catalogsearch/result/?q=A-2956) | -
+J2, J4, J6 | 1 | AudioJackTSR | tayda | [A-853](https://www.taydaelectronics.com/catalogsearch/result/?q=A-853) | B , C
+J3 | 1 | DSUB9 | tayda | [A-300](https://www.taydaelectronics.com/catalogsearch/result/?q=A-300) | B , C
+J5, J7 | 1 | DIN-5 | tayda | [A-1010](https://www.taydaelectronics.com/catalogsearch/result/?q=A-1010) | B , C
+R1, R2, R3 | 3 |  220 | tayda | [A-2169](https://www.taydaelectronics.com/catalogsearch/result/?q=A-2169)  | C
+R4 | 1 | 10k | tayda | [A-2253](https://www.taydaelectronics.com/catalogsearch/result/?q=A-2253)  | C
+U1 | 1 | ProMicro5v | [ali](https://www.aliexpress.com/item/1348800135.html) [amazon](https://www.amazon.com/OSOYOO-ATmega32U4-arduino-Leonardo-ATmega328/dp/B012FOV17O/), [sparkfun](https://www.sparkfun.com/products/12640) | - | A
+U2 | 1 | MAX232n | tayda | [A-034](https://www.taydaelectronics.com/catalogsearch/result/?q=A-034) | B
+U3 | 1 | 6N137 | tayda | [A-871](https://www.taydaelectronics.com/catalogsearch/result/?q=A-871) | C
+U4 | 1 | 4069 |  tayda | [A-882](https://www.taydaelectronics.com/catalogsearch/result/?q=A-882) | C
+U5 | 1 | usbHostMini | [ali](https://www.aliexpress.com/item/32842815739.html) [amazon](https://www.amazon.com/HiLetgo-Development-Compatible-Interface-Arduino/dp/B01EWW9R1E/) | - | D
+U6 | 1 | 78L33 | tayda | [A-492](https://www.taydaelectronics.com/catalogsearch/result/?q=A-492) | D
 
 ## potential additional parts to add : 
 
-- version for arduino nano ? (dont need regulator)
-- 74hc14 inverter for buffered serial midi out ? or transistor inverter ?
-- power caps (main for usb-host , but also for in general )
-- switches to select serial-midi TRS standard , and/or din option ?
-- a dsub9 / dsub9 breakout
 
 ## assemble guide :
 
