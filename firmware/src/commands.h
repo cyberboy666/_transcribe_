@@ -198,7 +198,7 @@ const uint8_t TITLE_EDGE_PATTERN_2 = 169; // VTE:169 - Tittle pattern
 const uint8_t TITLE_EDGE_PATTERN_3 = 170; // VTE:170 - Tittle pattern 
 const uint8_t TITLE_EDGE_PATTERN_4 = 171; // VTE:171 - Tittle pattern 
 const uint8_t TITLE_EDGE_PATTERN_5 = 172; // VTE:172 - Tittle pattern 
-const uint8_t BACK_COLOR_MANUAL = 174; // VB:174 - xxyy  Set user color xx = B_Y (ASCII HEX 00H_FFH) yy = R_Y (ASCII HEX 00H_FFH 
+const uint8_t BACK_COLOR_MANUAL = 174; // VB:174 - xxyy  Set user color xx =  r (ASCII HEX 00H_FFH) yy = R_Y (ASCII HEX 00H_FFH 
 const uint8_t EDGE_COLOR_MANUAL = 175; // VE:175 - xxyy  Set user color xx = B_Y (ASCII HEX 00H_FFH) yy = R_Y (ASCII HEX 00H_FFH 
 const uint8_t A_B_MIX_LEVEL = 179; // VMM:179 - xx    POTENTIOMETRE 00= A, FF= B 
 const uint8_t A_BUS_EFFECT_ON = 180; // VDE:180 - BUTTON 

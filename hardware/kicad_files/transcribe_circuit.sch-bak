@@ -85,7 +85,7 @@ U 1 1 5E1EB2E4
 P 8575 2050
 F 0 "D1" V 8529 2129 50  0000 L CNN
 F 1 "1N4148" H 8475 1950 50  0000 L CNN
-F 2 "Diode_THT:D_A-405_P7.62mm_Horizontal" H 8575 2050 50  0001 C CNN
+F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" H 8575 2050 50  0001 C CNN
 F 3 "~" H 8575 2050 50  0001 C CNN
 	1    8575 2050
 	0    1    1    0   
@@ -154,7 +154,7 @@ U 1 1 5E1F0A6D
 P 7650 3375
 F 0 "J4" H 7632 3700 50  0000 C CNN
 F 1 "MIDI_IN_TRS" H 7632 3609 50  0000 C CNN
-F 2 "Connector_Audio:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7650 3375 50  0001 C CNN
+F 2 "lib_fp:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7650 3375 50  0001 C CNN
 F 3 "~" H 7650 3375 50  0001 C CNN
 	1    7650 3375
 	1    0    0    -1  
@@ -171,7 +171,7 @@ U 1 1 5E1F4FCA
 P 7725 5700
 F 0 "J6" H 7707 6025 50  0000 C CNN
 F 1 "MIDI_OUT_TRS" H 7707 5934 50  0000 C CNN
-F 2 "Connector_Audio:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7725 5700 50  0001 C CNN
+F 2 "lib_fp:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7725 5700 50  0001 C CNN
 F 3 "~" H 7725 5700 50  0001 C CNN
 	1    7725 5700
 	1    0    0    -1  
@@ -237,7 +237,7 @@ U 1 1 5E215C9F
 P 4150 2925
 F 0 "C2" H 4265 2971 50  0000 L CNN
 F 1 "0.1u" H 4265 2880 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 4188 2775 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 4188 2775 50  0001 C CNN
 F 3 "~" H 4150 2925 50  0001 C CNN
 	1    4150 2925
 	1    0    0    -1  
@@ -252,7 +252,7 @@ U 1 1 5E2174FD
 P 6250 2925
 F 0 "C4" H 6365 2971 50  0000 L CNN
 F 1 "0.1u" H 6365 2880 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 6288 2775 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 6288 2775 50  0001 C CNN
 F 3 "~" H 6250 2925 50  0001 C CNN
 	1    6250 2925
 	1    0    0    -1  
@@ -267,7 +267,7 @@ U 1 1 5E218A45
 P 6150 3275
 F 0 "C3" V 6000 3275 50  0000 C CNN
 F 1 "0.1u" V 6300 3275 50  0000 C CNN
-F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 6188 3125 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 6188 3125 50  0001 C CNN
 F 3 "~" H 6150 3275 50  0001 C CNN
 	1    6150 3275
 	0    1    1    0   
@@ -278,7 +278,7 @@ U 1 1 5E219C1D
 P 6300 3575
 F 0 "C5" V 6150 3575 50  0000 C CNN
 F 1 "0.1u" V 6450 3575 50  0000 C CNN
-F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 6338 3425 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 6338 3425 50  0001 C CNN
 F 3 "~" H 6300 3575 50  0001 C CNN
 	1    6300 3575
 	0    1    1    0   
@@ -337,7 +337,7 @@ U 1 1 5E2249E5
 P 4150 1575
 F 0 "J2" H 4132 1900 50  0000 C CNN
 F 1 "RS232_SERIAL" H 4025 1800 50  0000 C CNN
-F 2 "Connector_Audio:Tayda_3.5mm_stereo_TRS_jack_A-853" H 4150 1575 50  0001 C CNN
+F 2 "lib_fp:Tayda_3.5mm_stereo_TRS_jack_A-853" H 4150 1575 50  0001 C CNN
 F 3 "~" H 4150 1575 50  0001 C CNN
 	1    4150 1575
 	1    0    0    -1  
@@ -630,7 +630,7 @@ U 1 1 5E3595C7
 P 6525 1450
 F 0 "J3" H 6705 1452 50  0000 L CNN
 F 1 "RS232_DSUB" H 6705 1361 50  0000 L CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles" H 6525 1450 50  0001 C CNN
+F 2 "lib_fp:DSUB-9_Male_Vertical_Tayda" H 6525 1450 50  0001 C CNN
 F 3 " ~" H 6525 1450 50  0001 C CNN
 	1    6525 1450
 	1    0    0    -1  
@@ -651,7 +651,7 @@ U 1 1 5E26D6D4
 P 9950 5800
 F 0 "J7" H 9950 5525 50  0000 C CNN
 F 1 "MIDI_OUT_DIN" H 9950 5434 50  0000 C CNN
-F 2 "Connector_DIN:Tayda5pinMidi-A1010" H 9950 5800 50  0001 C CNN
+F 2 "lib_fp:Tayda5pinMidi-A1010" H 9950 5800 50  0001 C CNN
 F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9950 5800 50  0001 C CNN
 	1    9950 5800
 	1    0    0    -1  
@@ -673,7 +673,7 @@ U 1 1 5E28B4C2
 P 9850 3300
 F 0 "J5" H 9850 3025 50  0000 C CNN
 F 1 "MIDI_IN_DIN" H 9850 2934 50  0000 C CNN
-F 2 "Connector_DIN:Tayda5pinMidi-A1010" H 9850 3300 50  0001 C CNN
+F 2 "lib_fp:Tayda5pinMidi-A1010" H 9850 3300 50  0001 C CNN
 F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9850 3300 50  0001 C CNN
 	1    9850 3300
 	1    0    0    -1  
@@ -849,7 +849,7 @@ U 1 1 5E242FE2
 P 3500 1675
 F 0 "C1" H 3618 1721 50  0000 L CNN
 F 1 "100uf" H 3618 1630 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" H 3538 1525 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 3538 1525 50  0001 C CNN
 F 3 "~" H 3500 1675 50  0001 C CNN
 	1    3500 1675
 	1    0    0    -1  
@@ -872,7 +872,7 @@ U 1 1 5E27F2FF
 P 1250 3675
 F 0 "J1" H 1300 3050 50  0000 C CNN
 F 1 "europower" H 1300 3141 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 1250 3675 50  0001 C CNN
+F 2 "lib_fp:PinHeader_2x08_P2.54_Euro" H 1250 3675 50  0001 C CNN
 F 3 "~" H 1250 3675 50  0001 C CNN
 	1    1250 3675
 	-1   0    0    1   
@@ -880,46 +880,20 @@ $EndComp
 $Comp
 L power:+5V #PWR06
 U 1 1 5E281F93
-P 1725 3375
-F 0 "#PWR06" H 1725 3225 50  0001 C CNN
-F 1 "+5V" H 1740 3548 50  0000 C CNN
-F 2 "" H 1725 3375 50  0001 C CNN
-F 3 "" H 1725 3375 50  0001 C CNN
-	1    1725 3375
+P 1750 3375
+F 0 "#PWR06" H 1750 3225 50  0001 C CNN
+F 1 "+5V" H 1765 3548 50  0000 C CNN
+F 2 "" H 1750 3375 50  0001 C CNN
+F 3 "" H 1750 3375 50  0001 C CNN
+	1    1750 3375
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+5V #PWR01
-U 1 1 5E2863EC
-P 700 3375
-F 0 "#PWR01" H 700 3225 50  0001 C CNN
-F 1 "+5V" H 715 3548 50  0000 C CNN
-F 2 "" H 700 3375 50  0001 C CNN
-F 3 "" H 700 3375 50  0001 C CNN
-	1    700  3375
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	950  3475 700  3475
-Wire Wire Line
-	700  3475 700  3375
 NoConn ~ 950  3275
 NoConn ~ 950  3375
 NoConn ~ 1450 3375
 NoConn ~ 1450 3275
 NoConn ~ 1450 3575
 NoConn ~ 950  3575
-$Comp
-L power:GND #PWR02
-U 1 1 5E29F868
-P 700 4000
-F 0 "#PWR02" H 700 3750 50  0001 C CNN
-F 1 "GND" H 705 3827 50  0000 C CNN
-F 2 "" H 700 4000 50  0001 C CNN
-F 3 "" H 700 4000 50  0001 C CNN
-	1    700  4000
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:GND #PWR07
 U 1 1 5E29F8A8
@@ -931,24 +905,6 @@ F 3 "" H 1725 3975 50  0001 C CNN
 	1    1725 3975
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	950  3675 700  3675
-Wire Wire Line
-	700  3675 700  3775
-Wire Wire Line
-	950  3875 700  3875
-Connection ~ 700  3875
-Wire Wire Line
-	700  3875 700  4000
-Wire Wire Line
-	950  3775 700  3775
-Connection ~ 700  3775
-Wire Wire Line
-	700  3775 700  3875
-Wire Wire Line
-	1725 3475 1725 3375
-Wire Wire Line
-	1450 3475 1725 3475
 Wire Wire Line
 	1450 3675 1725 3675
 Wire Wire Line
@@ -972,4 +928,84 @@ Wire Wire Line
 Connection ~ 6225 2050
 Wire Wire Line
 	6225 2050 6225 2125
+$Comp
+L Device:D D2
+U 1 1 5E8284AF
+P 1600 3475
+F 0 "D2" H 1600 3259 50  0000 C CNN
+F 1 "1N4148" H 1600 3350 50  0000 C CNN
+F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" H 1600 3475 50  0001 C CNN
+F 3 "~" H 1600 3475 50  0001 C CNN
+	1    1600 3475
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1750 3375 1750 3475
+Wire Wire Line
+	950  3475 1450 3475
+Connection ~ 1450 3475
+Wire Wire Line
+	950  3675 1450 3675
+Connection ~ 1450 3675
+Wire Wire Line
+	950  3775 1450 3775
+Connection ~ 1450 3775
+Wire Wire Line
+	950  3875 1450 3875
+Connection ~ 1450 3875
+$Comp
+L Connector_Generic:Conn_01x06 J8
+U 1 1 5EE5600D
+P 4625 5900
+F 0 "J8" H 4543 5375 50  0000 C CNN
+F 1 "Conn_01x06" H 4543 5466 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" H 4625 5900 50  0001 C CNN
+F 3 "~" H 4625 5900 50  0001 C CNN
+	1    4625 5900
+	-1   0    0    1   
+$EndComp
+Text GLabel 4900 5900 2    50   Input ~ 0
+SKC_HOST
+Text GLabel 4900 6000 2    50   Input ~ 0
+MISO_HOST
+Text GLabel 4900 6100 2    50   Input ~ 0
+MOSI_HOST
+Text GLabel 4900 5800 2    50   Input ~ 0
+RST_HOST
+$Comp
+L power:GND #PWR02
+U 1 1 5EE5C0CB
+P 5475 5700
+F 0 "#PWR02" H 5475 5450 50  0001 C CNN
+F 1 "GND" H 5480 5527 50  0000 C CNN
+F 2 "" H 5475 5700 50  0001 C CNN
+F 3 "" H 5475 5700 50  0001 C CNN
+	1    5475 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR01
+U 1 1 5EE5E849
+P 5200 5600
+F 0 "#PWR01" H 5200 5450 50  0001 C CNN
+F 1 "+5V" H 5215 5773 50  0000 C CNN
+F 2 "" H 5200 5600 50  0001 C CNN
+F 3 "" H 5200 5600 50  0001 C CNN
+	1    5200 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4825 6100 4900 6100
+Wire Wire Line
+	4825 6000 4900 6000
+Wire Wire Line
+	4825 5900 4900 5900
+Wire Wire Line
+	4825 5800 4900 5800
+Wire Wire Line
+	5475 5700 4825 5700
+Wire Wire Line
+	4825 5600 5200 5600
+Text Notes 4550 5325 0    39   ~ 0
+bootloader breakout
 $EndSCHEMATC

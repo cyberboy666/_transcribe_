@@ -6,8 +6,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "_transcribe_"
-Date "2020-01-13"
-Rev "0.1"
+Date "2020-06-13"
+Rev "0.2"
 Comp "cyberboy666 & user43368831"
 Comment1 ""
 Comment2 ""
@@ -630,7 +630,7 @@ U 1 1 5E3595C7
 P 6525 1450
 F 0 "J3" H 6705 1452 50  0000 L CNN
 F 1 "RS232_DSUB" H 6705 1361 50  0000 L CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles" H 6525 1450 50  0001 C CNN
+F 2 "lib_fp:DSUB-9_Male_Vertical_Tayda" H 6525 1450 50  0001 C CNN
 F 3 " ~" H 6525 1450 50  0001 C CNN
 	1    6525 1450
 	1    0    0    -1  
@@ -953,4 +953,59 @@ Connection ~ 1450 3775
 Wire Wire Line
 	950  3875 1450 3875
 Connection ~ 1450 3875
+$Comp
+L Connector_Generic:Conn_01x06 J8
+U 1 1 5EE5600D
+P 4625 5900
+F 0 "J8" H 4543 5375 50  0000 C CNN
+F 1 "Conn_01x06" H 4543 5466 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" H 4625 5900 50  0001 C CNN
+F 3 "~" H 4625 5900 50  0001 C CNN
+	1    4625 5900
+	-1   0    0    1   
+$EndComp
+Text GLabel 4900 5900 2    50   Input ~ 0
+SKC_HOST
+Text GLabel 4900 6000 2    50   Input ~ 0
+MISO_HOST
+Text GLabel 4900 6100 2    50   Input ~ 0
+MOSI_HOST
+Text GLabel 4900 5800 2    50   Input ~ 0
+RST_HOST
+$Comp
+L power:GND #PWR02
+U 1 1 5EE5C0CB
+P 5475 5700
+F 0 "#PWR02" H 5475 5450 50  0001 C CNN
+F 1 "GND" H 5480 5527 50  0000 C CNN
+F 2 "" H 5475 5700 50  0001 C CNN
+F 3 "" H 5475 5700 50  0001 C CNN
+	1    5475 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR01
+U 1 1 5EE5E849
+P 5200 5600
+F 0 "#PWR01" H 5200 5450 50  0001 C CNN
+F 1 "+5V" H 5215 5773 50  0000 C CNN
+F 2 "" H 5200 5600 50  0001 C CNN
+F 3 "" H 5200 5600 50  0001 C CNN
+	1    5200 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4825 6100 4900 6100
+Wire Wire Line
+	4825 6000 4900 6000
+Wire Wire Line
+	4825 5900 4900 5900
+Wire Wire Line
+	4825 5800 4900 5800
+Wire Wire Line
+	5475 5700 4825 5700
+Wire Wire Line
+	4825 5600 5200 5600
+Text Notes 4550 5325 0    39   ~ 0
+bootloader breakout
 $EndSCHEMATC

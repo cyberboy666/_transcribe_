@@ -19,7 +19,7 @@ uint8_t position;
 bool hasUsbDevice;
 bool dropZeroCC;
 
-uint8_t switchStore[10];
+uint8_t switchStore[20];
 
 uint8_t twoInputStore[6][2]; // 0=BACK_COLOR_MANUAL:174, 1=EDGE_COLOR_MANUAL:175, 2=COLOR_CORECT:217, 3=CENTER_WIPE:218, 4=SCENE_GRABER:219
 
@@ -63,8 +63,10 @@ void setCustomMap(){
     else if(midiParam1 == 2){setCmd(AVE55::CENTER_WIPE_Y, midiParam2);}
     else if(midiParam1 == 3){setCmd(AVE55::SCENE_GRABER_X, midiParam2);}
     else if(midiParam1 == 4){setCmd(AVE55::SCENE_GRABER_Y, midiParam2);}
+    else if(midiParam1 == 5){setCmd(AVE55::COLOR_CORECT_X, midiParam2);}
+    else if(midiParam1 == 6){setCmd(AVE55::COLOR_CORECT_Y, midiParam2);}
 
-    else if(midiParam1 == 7){setCmd(AVE55::A_B_MIX_LEVEL, midiParam2);}
+    else if(midiParam1 == 7){setCmd(AVE55::THRESHOLD_LUM_KEY, midiParam2);}
 
     else if(midiParam1 == 16){setCmdStep(AVE55::A_BUS_STROBO_OFF, midiParam2, 6);}
     else if(midiParam1 == 17){setCmdStep(AVE55::A_BUS_MOSAIC_OFF, midiParam2, 6);}
@@ -74,35 +76,55 @@ void setCustomMap(){
     else if(midiParam1 == 21){setCmdStep(AVE55::B_BUS_MOSAIC_OFF, midiParam2, 6);}
     else if(midiParam1 == 22){setCmdStep(AVE55::B_BUS_PAINT_OFF, midiParam2, 6);}
 
-    else if(midiParam1 == 32){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 0);}
-    else if(midiParam1 == 33){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 1);}
-    else if(midiParam1 == 34){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 8, 2);}
+    else if(midiParam1 == 32){setCmdToggle(AVE55::WIPE_SQUARE_CORNER_UL, 16, 0);}
+    else if(midiParam1 == 33){setCmdToggle(AVE55::WIPE_SQUARE, 7, 9);}
+    // else if(midiParam1 == 33){setCmdSwitch(AVE55::A_BUS_SOURCE_1, AVE55::A_BUS_BACK_COLOR, 1);}
+    else if(midiParam1 == 34){setCmdToggle(AVE55::DIRECTION_ONE_WAY, 2, 2);}
     else if(midiParam1 == 35){setCmdParamRandom(AVE55::A_B_MIX_LEVEL);}
+
+    else if(midiParam1 == 48){setCmd(AVE55::WIPE_MIX_BUTTON);}
+    else if(midiParam1 == 49){setCmd(AVE55::LUM_KEY);}
+
+    else if(midiParam1 == 50){setCmdToggle(AVE55::A_BUS_EFFECT_ON, 2, 5);}
+    else if(midiParam1 == 51){setCmdToggle(AVE55::B_BUS_EFFECT_ON, 2, 6);}
+    else if(midiParam1 == 52){setCmdToggle(AVE55::B_BUS_COLOR_CORRECTOR_OFF,2, 7);}
+    else if(midiParam1 == 53){setCmdToggle(AVE55::A_BUS_COLOR_CORRECTOR_OFF, 2, 8);}
+    else if(midiParam1 == 54){setCmdToggle(AVE55::A_BUS_NEGATIVE_OFF, 2, 3);}
+    else if(midiParam1 == 55){setCmdToggle(AVE55::B_BUS_NEGATIVE_OFF, 2, 4);}
+
+    else if(midiParam1 == 64){setCmd(AVE55::A_BUS_SOURCE_1);}
+    else if(midiParam1 == 65){setCmd(AVE55::A_BUS_SOURCE_2);}
+    else if(midiParam1 == 66){setCmd(AVE55::A_BUS_SOURCE_3);}
+    else if(midiParam1 == 67){setCmd(AVE55::A_BUS_SOURCE_4);}
+    else if(midiParam1 == 68){setCmd(AVE55::B_BUS_SOURCE_1);}
+    else if(midiParam1 == 69){setCmd(AVE55::B_BUS_SOURCE_2);}
+    else if(midiParam1 == 70){setCmd(AVE55::B_BUS_SOURCE_3);}
+    else if(midiParam1 == 71){setCmd(AVE55::B_BUS_SOURCE_4);}
   }
 }
 
 void setDefaultMap(){
+  uint16_t this_cmd;
   // check the default flatmap for midi channel 2 or 3
   if(useFlatMidiMap && midiChannel == 1){
     if(midiCommand == MIDICOMMAND::NOTEON){     
-      cmdNum = AVE55::flat_notes_ch_two[midiParam1];
+      this_cmd = AVE55::flat_notes_ch_two[midiParam1];
     }
     else if(midiCommand == MIDICOMMAND::CC){
-      cmdNum = AVE55::flat_cc_ch_two[midiParam1];
+      this_cmd = AVE55::flat_cc_ch_two[midiParam1];
     }
   }
   else if(useFlatMidiMap && midiChannel == 2){
     if(midiCommand == MIDICOMMAND::NOTEON){     
-      cmdNum = AVE55::flat_notes_ch_three[midiParam1];
+      this_cmd = AVE55::flat_notes_ch_three[midiParam1];
     }
   }
-  if(cmdNum != 255){
-    setCmd(cmdNum);
+  if(this_cmd != 255){
+    setCmd(this_cmd, midiParam2);
   }
 }
 
-void setup()
-{
+void setup(){
   Serial1.begin(31250);
   Serial.begin(9600);
   altSerial.begin(9600);
@@ -119,8 +141,7 @@ void setup()
     }
 }
 
-void loop()
-{
+void loop(){
   midiCommand = midiChannel = midiParam1 = midiParam2 = 0;
   position = 0;
   cmdNum = 255;
@@ -146,8 +167,8 @@ void loop()
   Serial.print(midiParam2);
   Serial.print("<-value (midiParam2)\n\n");
 
-  setCustomMap();
-  // setDefaultMap();
+  if(midiChannel == 0){setCustomMap();}
+  else{setDefaultMap();}
 
   removeTrailingUnderscore();
 
@@ -162,10 +183,10 @@ void loop()
 }
 
 bool readInputFromMidiDevice(){
-    Usb.Task();
-    char buf[20];
-    uint8_t bufMidi[3];
-    uint16_t  rcvd;
+  Usb.Task();
+  char buf[20];
+  uint8_t bufMidi[3];
+  uint16_t  rcvd;
 
   if (Midi.RecvData( &rcvd,  bufMidi) == 0 ) {
     uint8_t first =  bufMidi[1];
@@ -229,11 +250,8 @@ void setThisPrefix(char prefix[4]){
 }
 
 void setPrefix(uint8_t inputCmd){
-
-
-
   if(inputCmd >= 0 && inputCmd <= 0) {setThisPrefix("VMX"); }
-  else if(inputCmd >= 1 && inputCmd <= 37) {setThisPrefix("VWP"); }
+  if(inputCmd >= 1 && inputCmd <= 37) {setThisPrefix("VWP"); }
   else if(inputCmd >= 40 && inputCmd <= 41) {setThisPrefix("VWD"); }
   else if(inputCmd >= 42 && inputCmd <= 44) {setThisPrefix("VWB"); }
   else if(inputCmd >= 40 && inputCmd <= 41) {setThisPrefix("VWD"); }
@@ -251,8 +269,8 @@ void setPrefix(uint8_t inputCmd){
   else if(inputCmd >= 174 && inputCmd <= 174) {setThisPrefix("_VB"); }
   else if(inputCmd >= 175 && inputCmd <= 175) {setThisPrefix("_VE"); }
   else if(inputCmd == 179 && inputCmd <= 179) {setThisPrefix("VMM"); }
-  else if(inputCmd >= 180 && inputCmd <= 187) {setThisPrefix("_VDE"); }
-  else if(inputCmd >= 190 && inputCmd <= 190) {setThisPrefix("_VAS"); }
+  else if(inputCmd >= 180 && inputCmd <= 187) {setThisPrefix("VDE"); }
+  else if(inputCmd >= 190 && inputCmd <= 190) {setThisPrefix("VAS"); }
   else if(inputCmd >= 191 && inputCmd <= 191) {setThisPrefix("_VF"); }
   else if(inputCmd >= 192 && inputCmd <= 192) {setThisPrefix("VMA"); }
   else if(inputCmd >= 197 && inputCmd <= 198) {setThisPrefix("VBC"); }
@@ -271,6 +289,7 @@ void setPrefix(uint8_t inputCmd){
 
 void setCmd(uint16_t inputCmd, uint8_t inputParam){
   // adjust for position on 2 or 3 input commands
+  Serial.print(inputCmd);
   Serial.print("<-start set cmd\n");
   position = 0;
   if(inputCmd > 512){
@@ -309,11 +328,10 @@ void setCmdSwitch(uint8_t inputCmd1, uint8_t inputCmd2, uint8_t switchIndex){
 }
 
 void setCmdToggle(uint8_t inputCmd, uint8_t offset, uint8_t switchIndex){
-  inputCmd = (inputCmd + switchStore[switchIndex]) % offset;
+  inputCmd = inputCmd + switchStore[switchIndex];
   setCmd(inputCmd);
   switchStore[switchIndex] = (switchStore[switchIndex] + 1) % offset;
 }
-
 
 void setCmdStep(uint8_t inputCmd, uint8_t param, uint8_t offset){
   // uint8_t max is 65535
@@ -405,14 +423,14 @@ void removeTrailingUnderscore(){
 
 uint8_t get_two_param_position(uint8_t inputCmd){
   uint8_t position = 1;
-  if(AVE55::flat_cc_ch_two[midiParam1+1] == cmdNum){position = 0;}
+  if(AVE55::flat_cc_ch_two[midiParam1+1] == inputCmd){position = 0;}
   return position;
 }
 
 uint8_t get_three_param_position(uint8_t inputCmd){
   uint8_t position = 2;
-  if(AVE55::flat_cc_ch_two[midiParam1+1] == cmdNum && AVE55::flat_cc_ch_two[midiParam1+2] == cmdNum){position = 0;}
-  else if(AVE55::flat_cc_ch_two[midiParam1+1] == cmdNum){position = 1;}
+  if(AVE55::flat_cc_ch_two[midiParam1+1] == inputCmd && AVE55::flat_cc_ch_two[midiParam1+2] == inputCmd){position = 0;}
+  else if(AVE55::flat_cc_ch_two[midiParam1+1] == inputCmd){position = 1;}
   return position;
 }
 
