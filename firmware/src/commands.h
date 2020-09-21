@@ -1,5 +1,9 @@
 
 // commands for panasonic ave55:
+// command format:
+// replace  "~0" with 2digit hex param value between 0-256 based on midi cc input value
+// replace "~x" with 2digit hex param value between 0-256 based on midi cc input value AND save this value to the paramstore at index 'x'
+// replace "*x" with 2digit hex param value between 0-256 from the parastore at index 'x'
 
 #define A55_MIX_MODE "VMX:000"
 #define A55_WIPE_SQUARE_CORNER_UL "VWP:001"
