@@ -1,4 +1,4 @@
-16389443833896036
+16386475537986036
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -73206,72 +73206,58 @@ varistor SIOV
 2
 2
 lib_fp
-DSUB-9_Male_Vertical_Tayda
-9-pin D-Sub connector, straight/vertical, THT-mount, male, pitch 2.77x2.84mm, distance of mounting holes 25mm, see https://disti-assets.s3.amazonaws.com/tonar/files/datasheets/16730.pdf
-9-pin D-Sub connector straight vertical THT male pitch 2.77x2.84mm mounting holes distance 25mm
+Pot_trim_3362_tayda
+Potentiometer, vertical, Bourns 3386P, https://www.bourns.com/pdfs/3386.pdf
+Potentiometer vertical Bourns 3386P
 0
-11
-10
+3
+3
 lib_fp
-PinHeader_2x08_P2.54_Euro
-Through hole straight pin header, 2x08, 2.54mm pitch, double rows
-Through hole pin header THT 2x08 2.54mm double row
+Potentiometer_Vertical_Large
+Potentiometer, vertical, Alps RK09L Single, http://www.alps.com/prod/info/E/HTML/Potentiometer/RotaryPotentiometers/RK09L/RK09L_list.html
+Potentiometer vertical Alps RK09L Single
 0
-16
-16
+3
+3
 lib_fp
-ProMicro
-Pro Micro footprint
-promicro ProMicro
+RCJ-024
+<b>DC POWER JACK</b><p>Source: DCJ0202.pdf
+
 0
-24
-24
+3
+2
 lib_fp
-Tayda5pinMidi-A1010
-SDS-50J, standard DIN connector, 5 pins, midi
-SDS-50J DIN 5-pins connector midi
-0
-7
-5
-lib_fp
-Tayda_3.5mm_stereo_TRS_jack_A-853
+mini_toggle_switch_tayda
 
 
 0
-5
-5
+3
+3
 project_parts
-DSUB-9_Male_Vertical_Tayda
-9-pin D-Sub connector, straight/vertical, THT-mount, male, pitch 2.77x2.84mm, distance of mounting holes 25mm, see https://disti-assets.s3.amazonaws.com/tonar/files/datasheets/16730.pdf
-9-pin D-Sub connector straight vertical THT male pitch 2.77x2.84mm mounting holes distance 25mm
+Pot_trim_3362_tayda
+Potentiometer, vertical, Bourns 3386P, https://www.bourns.com/pdfs/3386.pdf
+Potentiometer vertical Bourns 3386P
 0
-11
-10
+3
+3
 project_parts
-PinHeader_2x08_P2.54_Euro
-Through hole straight pin header, 2x08, 2.54mm pitch, double rows
-Through hole pin header THT 2x08 2.54mm double row
+Potentiometer_Vertical_Large
+Potentiometer, vertical, Alps RK09L Single, http://www.alps.com/prod/info/E/HTML/Potentiometer/RotaryPotentiometers/RK09L/RK09L_list.html
+Potentiometer vertical Alps RK09L Single
 0
-16
-16
+3
+3
 project_parts
-ProMicro
-Pro Micro footprint
-promicro ProMicro
+RCJ-024
+<b>DC POWER JACK</b><p>Source: DCJ0202.pdf
+
 0
-24
-24
+3
+2
 project_parts
-Tayda5pinMidi-A1010
-SDS-50J, standard DIN connector, 5 pins, midi
-SDS-50J DIN 5-pins connector midi
-0
-7
-5
-project_parts
-Tayda_3.5mm_stereo_TRS_jack_A-853
+mini_toggle_switch_tayda
 
 
 0
-5
-5
+3
+3

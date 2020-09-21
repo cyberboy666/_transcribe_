@@ -87,7 +87,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "/Users/timcaldwell/personal/_transcribe_/_transcribe_/hardware/transcribe_0.2/"))
+      (outputdirectory "../transcribe_0.2b/"))
   )
 
   (net 0 "")
@@ -1904,7 +1904,7 @@
   (segment (start -217.2 -757) (end -215.42 -757) (width 0.25) (layer F.Cu) (net 96))
   (segment (start -224.7 -749.5) (end -217.2 -757) (width 0.25) (layer F.Cu) (net 96))
 
-  (zone (net 3) (net_name GND) (layer F.Cu) (tstamp 5E813F5F) (hatch edge 0.508)
+  (zone (net 3) (net_name GND) (layer F.Cu) (tstamp 5EE664B4) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
     (min_thickness 0.254)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))
@@ -2632,7 +2632,7 @@
       )
     )
   )
-  (zone (net 3) (net_name GND) (layer B.Cu) (tstamp 5E813F5C) (hatch edge 0.508)
+  (zone (net 3) (net_name GND) (layer B.Cu) (tstamp 5EE664B1) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
     (min_thickness 0.254)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))

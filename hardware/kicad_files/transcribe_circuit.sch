@@ -721,18 +721,6 @@ Wire Wire Line
 	4350 1775 4825 1775
 Wire Wire Line
 	4350 1475 4500 1475
-Wire Wire Line
-	4500 1475 4500 1675
-Wire Wire Line
-	4350 1675 4500 1675
-Connection ~ 4500 1675
-Wire Wire Line
-	4500 1675 4500 1875
-Wire Wire Line
-	4350 1875 4500 1875
-Connection ~ 4500 1875
-Wire Wire Line
-	4500 1875 4500 1950
 $Comp
 L 4xxx:4069 U4
 U 1 1 5E28F9AC
@@ -1008,4 +996,8 @@ Wire Wire Line
 	4825 5600 5200 5600
 Text Notes 4550 5325 0    39   ~ 0
 bootloader breakout
+Wire Wire Line
+	4500 1475 4500 1950
+NoConn ~ 4350 1675
+NoConn ~ 4350 1875
 $EndSCHEMATC
