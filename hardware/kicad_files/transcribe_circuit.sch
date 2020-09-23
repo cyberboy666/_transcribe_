@@ -6,8 +6,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "_transcribe_"
-Date "2020-06-13"
-Rev "0.2"
+Date "2020-09-23"
+Rev "0.3"
 Comp "cyberboy666 & user43368831"
 Comment1 ""
 Comment2 ""
@@ -438,7 +438,7 @@ Wire Wire Line
 	6250 4175 6000 4175
 Text GLabel 4225 3775 0    50   Input ~ 0
 ALT_SERIAL_OUT
-Text GLabel 6150 1450 0    50   Input ~ 0
+Text GLabel 6150 1250 0    50   Input ~ 0
 RS_SERIAL_OUT
 Wire Wire Line
 	4350 1575 4800 1575
@@ -609,7 +609,7 @@ Wire Wire Line
 	6225 1450 6150 1450
 Text GLabel 4825 1775 2    50   Input ~ 0
 RS_SERIAL_OUT
-Text GLabel 6150 1250 0    50   Input ~ 0
+Text GLabel 6150 1450 0    50   Input ~ 0
 RS_SERIAL_IN
 Wire Wire Line
 	6225 1250 6150 1250
@@ -704,7 +704,7 @@ U 1 1 5E33912E
 P 1300 5025
 F 0 "U6" H 1300 5267 50  0000 C CNN
 F 1 "L78L33_TO92" H 1300 5176 50  0000 C CNN
-F 2 "Package_TO_SOT_THT:TO-92_Inline" H 1300 5250 50  0001 C CIN
+F 2 "Package_TO_SOT_THT:TO-92_HandSolder" H 1300 5250 50  0001 C CIN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 1300 4975 50  0001 C CNN
 	1    1300 5025
 	1    0    0    -1  
