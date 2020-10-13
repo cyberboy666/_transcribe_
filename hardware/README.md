@@ -28,8 +28,9 @@ U6 | 1 | 78L33 | tayda | [A-492](https://www.taydaelectronics.com/catalogsearch/
 if you have circuit revision 0.2 or lower then there is a mistake on the footprint of the dsub9 connector sorry (serial from the 3.5mm jack to ave55 works fine) follow the following steps to get serial from the dsub9 header on these boards:
 
 - solder the DSUB9_HEADER onto the bottom of the board
-- from here solder pins 2 and 3 together (the ones with the traces running to them on the front)
-- cut the trace going to pin2 (the trace going between c2) - probably it will still work even without doing this
+- from here pins 2 and 3 need to be swapped
+- cut both traces going to dsub (the traces going between and around c2)
+- wire the other ends pin13 and pin14 of u2 to the pins on dsub. u2_pin13 to dusb_pion3 and u2_pin14 to dsub_pin2 
 - finally due to another error on the board IF you have placed the 3.5mm jack at J2 THEN you must have a stereo cable plugged into this to use the DSUB9 output (otherwise signal is grounded)
 
 </details>
