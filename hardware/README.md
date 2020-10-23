@@ -44,6 +44,9 @@ if you have circuit revision 0.2 or lower then there is a mistake on the footpri
 
 ## assemble guide :
 
+- i soldered the resistors, capicitors, diodes and regulator first, then the ics(/sockets) and pin headers, then the jacks
+- i used pin sockets to attach the pro-micro and usb host to board in detatchable way (helpful for debugging) but this is up to you
+
 blah blah blah
 
 IF USING USB_HOST_MIDI YOU __MUST CUT A TRACE__ ON THE BOARD ! heres how - ...
