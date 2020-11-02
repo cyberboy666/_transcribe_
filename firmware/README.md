@@ -6,7 +6,23 @@ also a detailed guide on how to download / flash the firmware...
 
 # how to flash the firmware
 
-coming soon...
+- clone/download this git repo
+
+## easiest way (gui)
+
+- install [visual studio code](https://code.visualstudio.com/download)
+- within vscode go to _extensions_ , search and install __platformio__
+- in vscode open the folder `/_transcribe_/firmware`
+- attach the pro-micro to computer via usb and press `upload` on platformio toolbar at bottom of screen
+
+## cmdline way (if you dont want to install vscode)
+
+- install [platformio-core](https://docs.platformio.org/en/latest/core/installation.html)
+- `cd <location to repo>/_transcribe_/firmware`
+- `pio run -t upload`
+
+![image](https://user-images.githubusercontent.com/12017938/97863854-f6f28e80-1d07-11eb-9040-006e1a201af5.png)
+
 
 # default midi mappings
 
