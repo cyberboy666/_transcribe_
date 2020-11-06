@@ -23,6 +23,17 @@ also a detailed guide on how to download / flash the firmware...
 
 ![image](https://user-images.githubusercontent.com/12017938/97863854-f6f28e80-1d07-11eb-9040-006e1a201af5.png)
 
+# setting the midi map
+
+the code that sets the midi map is [here](https://github.com/langolierz/_transcribe_/blob/master/firmware/src/main.cpp#L48-L89)
+
+for example look at this line:
+
+```
+else if(midiParam1 == 64){setCmd(A55_A_BUS_SOURCE_1);}
+```
+this is saying if the _midiParam1_ (cc channel) is 1 then send the command __A55_A_BUS_SOURCE_1__ -> which we can see is defined [here](https://github.com/langolierz/_transcribe_/blob/master/firmware/src/commands.h#L182) to be "VCP:200"
+
 
 # default midi mappings
 
