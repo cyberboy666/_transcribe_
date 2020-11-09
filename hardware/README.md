@@ -51,6 +51,13 @@ blah blah blah
 
 IF USING USB_HOST_MIDI YOU __MUST CUT A TRACE__ ON THE BOARD ! heres how - ...
 
+the trace you need to cut is going into the resistor labelled 2.2k in the top corner near the usb socket
+
+![image](https://user-images.githubusercontent.com/12017938/98587955-32bec280-22cb-11eb-93e5-89b337cc7d75.png)
+![image](https://user-images.githubusercontent.com/12017938/98587933-2a668780-22cb-11eb-9844-af73e18d9543.png)
+
+
+
 # explaining the sections of _transcribe_
 
  _transcribe_ is based around an arduino micro controller. included in this circuit are a number of different ways to input midi and output serial. you can choose which sections to populate based on your personal requirements.
