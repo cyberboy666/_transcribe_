@@ -11,11 +11,11 @@ C1 | 1 | 100uf | tayda | [A-1063](https://www.taydaelectronics.com/catalogsearch
 C2, C3, C4, C5 | 4 | 0.1uf | tayda | [A-4008](https://www.taydaelectronics.com/catalogsearch/result/?q=A-4008) | B
 D1, D2 | 2 | 1N4148 | tayda | [A-157](https://www.taydaelectronics.com/catalogsearch/result/?q=A-157) | C
 J1 | 1 | europower header (optional) | tayda | [A-2956](https://www.taydaelectronics.com/catalogsearch/result/?q=A-2956) | -
-J2, J4, J6 | 1 | AudioJackTSR | tayda | [A-853](https://www.taydaelectronics.com/catalogsearch/result/?q=A-853) | B , C
-J3 | 1 | DSUB9 | tayda | [A-300](https://www.taydaelectronics.com/catalogsearch/result/?q=A-300) | B , C
-J5, J7 | 1 | DIN-5 | tayda | [A-1010](https://www.taydaelectronics.com/catalogsearch/result/?q=A-1010) | B , C
-R1, R2, R3 | 3 |  220 | tayda | [A-2169](https://www.taydaelectronics.com/catalogsearch/result/?q=A-2169)  | C
-R4 | 1 | 10k | tayda | [A-2253](https://www.taydaelectronics.com/catalogsearch/result/?q=A-2253)  | C
+J2, J4, J6 | 3 | AudioJackTSR | tayda | [A-853](https://www.taydaelectronics.com/catalogsearch/result/?q=A-853) | B , C
+J3 | 1 | DSUB9 | tayda | [A-300](https://www.taydaelectronics.com/catalogsearch/result/?q=A-300) or [A-301](https://www.taydaelectronics.com/catalogsearch/result/?q=A-301) | B , C
+J5, J7 | 2 | DIN-5 | tayda | [A-1010](https://www.taydaelectronics.com/catalogsearch/result/?q=A-1010) | B , C
+R1, R2, R3 | 3 |  220 | tayda | [A-3755](https://www.taydaelectronics.com/catalogsearch/result/?q=A-3755)  | C
+R4 | 1 | 10k | tayda | [A-2275](https://www.taydaelectronics.com/catalogsearch/result/?q=A-2275)  | C
 U1 | 1 | ProMicro5v | [ali](https://www.aliexpress.com/item/1348800135.html) [amazon](https://www.amazon.com/OSOYOO-ATmega32U4-arduino-Leonardo-ATmega328/dp/B012FOV17O/), [sparkfun](https://www.sparkfun.com/products/12640) | - | A
 U2 | 1 | MAX232n | tayda | [A-034](https://www.taydaelectronics.com/catalogsearch/result/?q=A-034) | B
 U3 | 1 | 6N137 | tayda | [A-871](https://www.taydaelectronics.com/catalogsearch/result/?q=A-871) | C
@@ -28,9 +28,14 @@ U6 | 1 | 78L33 | tayda | [A-492](https://www.taydaelectronics.com/catalogsearch/
 if you have circuit revision 0.2 or lower then there is a mistake on the footprint of the dsub9 connector sorry (serial from the 3.5mm jack to ave55 works fine) follow the following steps to get serial from the dsub9 header on these boards:
 
 - solder the DSUB9_HEADER onto the bottom of the board
-- from here solder pins 2 and 3 together (the ones with the traces running to them on the front)
-- cut the trace going to pin2 (the trace going between c2) - probably it will still work even without doing this
+- from here pins 2 and 3 need to be swapped
+- cut both traces going to dsub (the traces going between and around c2)
+- wire the other ends pin13 and pin14 of u2 to the pins on dsub. u2_pin13 to dusb_pion3 and u2_pin14 to dsub_pin2 
 - finally due to another error on the board IF you have placed the 3.5mm jack at J2 THEN you must have a stereo cable plugged into this to use the DSUB9 output (otherwise signal is grounded)
+
+![image](https://user-images.githubusercontent.com/12017938/97021555-43dda480-1553-11eb-9862-1321866dfa1b.png)
+![image](https://user-images.githubusercontent.com/12017938/97021587-4e983980-1553-11eb-98bb-da4398e9c42a.png)
+
 
 </details>
 
@@ -39,9 +44,19 @@ if you have circuit revision 0.2 or lower then there is a mistake on the footpri
 
 ## assemble guide :
 
+- i soldered the resistors, capicitors, diodes and regulator first, then the ics(/sockets) and pin headers, then the jacks
+- i used pin sockets to attach the pro-micro and usb host to board in detatchable way (helpful for debugging) but this is up to you
+
 blah blah blah
 
 IF USING USB_HOST_MIDI YOU __MUST CUT A TRACE__ ON THE BOARD ! heres how - ...
+
+the trace you need to cut is going into the resistor labelled 2.2k in the top corner near the usb socket
+
+![image](https://user-images.githubusercontent.com/12017938/98587955-32bec280-22cb-11eb-93e5-89b337cc7d75.png)
+![image](https://user-images.githubusercontent.com/12017938/98587933-2a668780-22cb-11eb-9844-af73e18d9543.png)
+
+
 
 # explaining the sections of _transcribe_
 
