@@ -208,6 +208,8 @@
 
 // commands (wip) for panasonic mx30/50/70:
 
+#define MX50_A_B_MIX_LEVEL "VMM:~0"
+
 /*
 
 1 VBC Back Color Select // param: VBC:a1a2b1b2

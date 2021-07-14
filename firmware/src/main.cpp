@@ -48,8 +48,8 @@ void setCustomMap(){
     else if(midiParam1 == 1){setCmd(A55_CENTER_WIPE_X, midiParam2);}
     else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
     else if(midiParam1 == 3){setCmd(A55_A_BUS_SOURCE_2, midiParam2);}
-    else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
-    else if(midiParam1 == 3){setCmd(A55_SCENE_GRABER_X, midiParam2);}
+    // else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
+    // else if(midiParam1 == 3){setCmd(A55_SCENE_GRABER_X, midiParam2);}
     else if(midiParam1 == 4){setCmd(A55_SCENE_GRABER_Y, midiParam2);}
     else if(midiParam1 == 5){setCmd(A55_COLOR_CORECT_X, midiParam2);}
     else if(midiParam1 == 6){setCmd(A55_COLOR_CORECT_Y, midiParam2);}
@@ -91,9 +91,9 @@ void setCustomMap(){
 }
 
 void setup(){
-  Serial1.begin(31250);
+  altSerial.begin(31250);
   Serial.begin(9600);
-  altSerial.begin(9600);
+  Serial1.begin(9600);
 
   hasUsbDevice = false;
   vid = pid = 0;
@@ -141,9 +141,9 @@ void loop(){
   Serial.print("<-cmd\n");
   if(cmd[0] == 0){return;}
 
-  altSerial.write(2);
-  altSerial.write(cmd);
-  altSerial.write(3);
+  Serial1.write(2);
+  Serial1.write(cmd);
+  Serial1.write(3);
 }
 
 bool readInputFromMidiDevice(){
@@ -177,9 +177,9 @@ bool readInputFromMidiHost(){
     midiParam1 = USBMIDI.read(); // param 1 (note)
     midiParam2 = USBMIDI.read(); // param 2 (value)
 
-    Serial1.write(first);
-    Serial1.write(midiParam1);
-    Serial1.write(midiParam2);
+    altSerial.write(first);
+    altSerial.write(midiParam1);
+    altSerial.write(midiParam2);
 
     USBMIDI.flush();
     return true;
@@ -189,19 +189,19 @@ bool readInputFromMidiHost(){
 
 bool readInputFromMidiSerial(){
 
-  if(Serial1.available() < 3){ return false;}
+  if(altSerial.available() < 3){ return false;}
   //Skip to beginning of next message (silently dropping stray data bytes)
-  while(!(Serial1.peek() & 0x80)){ Serial1.read(); }
-  if(Serial1.available() < 3){ return false;}
-  uint8_t first = Serial1.read();
+  while(!(altSerial.peek() & 0x80)){ altSerial.read(); }
+  if(altSerial.available() < 3){ return false;}
+  uint8_t first = altSerial.read();
 
   midiCommand = first & 0xF0; // command 0b11110000 = 0xF0
   midiChannel = first & 0xF; // channel 0b00001111 = 0xF
-  midiParam1 = Serial1.read(); // param 1
-  midiParam2 = Serial1.read(); // param 2
+  midiParam1 = altSerial.read(); // param 1
+  midiParam2 = altSerial.read(); // param 2
 
-  // Serial1.flush();
-  while(Serial1.available()){Serial1.read();}
+  // altSerial.flush();
+  while(altSerial.available()){altSerial.read();}
 
   return true;
 }

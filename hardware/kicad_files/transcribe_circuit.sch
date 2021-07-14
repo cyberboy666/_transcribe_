@@ -148,17 +148,6 @@ Wire Wire Line
 	8575 2200 8575 2250
 Wire Wire Line
 	8575 2250 7900 2250
-$Comp
-L Connector:AudioJack3_SwitchTR J4
-U 1 1 5E1F0A6D
-P 7650 3375
-F 0 "J4" H 7632 3700 50  0000 C CNN
-F 1 "MIDI_IN_TRS" H 7632 3609 50  0000 C CNN
-F 2 "lib_fp:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7650 3375 50  0001 C CNN
-F 3 "~" H 7650 3375 50  0001 C CNN
-	1    7650 3375
-	1    0    0    -1  
-$EndComp
 Text GLabel 8000 3375 2    50   Input ~ 0
 MIDI_IN_PLUS
 Text GLabel 8000 3575 2    50   Input ~ 0
@@ -170,8 +159,8 @@ L Connector:AudioJack3_SwitchTR J6
 U 1 1 5E1F4FCA
 P 7725 5700
 F 0 "J6" H 7707 6025 50  0000 C CNN
-F 1 "MIDI_OUT_TRS" H 7707 5934 50  0000 C CNN
-F 2 "lib_fp:Tayda_3.5mm_stereo_TRS_jack_A-853" H 7725 5700 50  0001 C CNN
+F 1 "stereo_jack_3.5mm" H 7707 5934 50  0000 C CNN
+F 2 "lib_fp:horizontal_3.5mm_stereo_TRS_jack_A-853" H 7725 5700 50  0001 C CNN
 F 3 "~" H 7725 5700 50  0001 C CNN
 	1    7725 5700
 	1    0    0    -1  
@@ -336,8 +325,8 @@ L Connector:AudioJack3_SwitchTR J2
 U 1 1 5E2249E5
 P 4150 1575
 F 0 "J2" H 4132 1900 50  0000 C CNN
-F 1 "RS232_SERIAL" H 4025 1800 50  0000 C CNN
-F 2 "lib_fp:Tayda_3.5mm_stereo_TRS_jack_A-853" H 4150 1575 50  0001 C CNN
+F 1 "stereo_jack_3.5mm" H 4025 1800 50  0000 C CNN
+F 2 "lib_fp:horizontal_3.5mm_stereo_TRS_jack_A-853" H 4150 1575 50  0001 C CNN
 F 3 "~" H 4150 1575 50  0001 C CNN
 	1    4150 1575
 	1    0    0    -1  
@@ -450,26 +439,16 @@ Text GLabel 4225 4175 0    50   Input ~ 0
 ALT_SERIAL_IN
 Wire Wire Line
 	4225 4175 4400 4175
-Text GLabel 1325 2450 0    50   Input ~ 0
-ALT_SERIAL_OUT
 Wire Wire Line
 	1325 2450 1500 2450
 Text GLabel 1275 2275 0    50   Input ~ 0
-ALT_SERIAL_IN
-Text GLabel 1325 1850 0    50   Input ~ 0
 MIDI_SERIAL_IN
-Text GLabel 1400 1675 0    50   Input ~ 0
+Text GLabel 1325 2450 0    50   Input ~ 0
 MIDI_SERIAL_OUT
 Wire Wire Line
 	1275 2275 1275 2350
 Wire Wire Line
 	1275 2350 1500 2350
-Wire Wire Line
-	1400 1675 1400 1750
-Wire Wire Line
-	1400 1750 1500 1750
-Wire Wire Line
-	1325 1850 1500 1850
 $Comp
 L power:GND #PWR05
 U 1 1 5E27B159
@@ -624,17 +603,6 @@ F 3 "" H 6225 2125 50  0001 C CNN
 	1    6225 2125
 	1    0    0    -1  
 $EndComp
-$Comp
-L Connector:DB9_Female_MountingHoles J3
-U 1 1 5E3595C7
-P 6525 1450
-F 0 "J3" H 6705 1452 50  0000 L CNN
-F 1 "RS232_DSUB" H 6705 1361 50  0000 L CNN
-F 2 "lib_fp:DSUB-9_Male_Vertical_Tayda" H 6525 1450 50  0001 C CNN
-F 3 " ~" H 6525 1450 50  0001 C CNN
-	1    6525 1450
-	1    0    0    -1  
-$EndComp
 NoConn ~ 6225 1050
 NoConn ~ 6225 1150
 NoConn ~ 6225 1350
@@ -650,8 +618,8 @@ L Connector:DIN-5_180degree J7
 U 1 1 5E26D6D4
 P 9950 5800
 F 0 "J7" H 9950 5525 50  0000 C CNN
-F 1 "MIDI_OUT_DIN" H 9950 5434 50  0000 C CNN
-F 2 "lib_fp:Tayda5pinMidi-A1010" H 9950 5800 50  0001 C CNN
+F 1 "din5" H 9950 5434 50  0000 C CNN
+F 2 "lib_fp:horizontal_din5-A1010" H 9950 5800 50  0001 C CNN
 F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9950 5800 50  0001 C CNN
 	1    9950 5800
 	1    0    0    -1  
@@ -672,8 +640,8 @@ L Connector:DIN-5_180degree J5
 U 1 1 5E28B4C2
 P 9850 3300
 F 0 "J5" H 9850 3025 50  0000 C CNN
-F 1 "MIDI_IN_DIN" H 9850 2934 50  0000 C CNN
-F 2 "lib_fp:Tayda5pinMidi-A1010" H 9850 3300 50  0001 C CNN
+F 1 "din5" H 9850 2934 50  0000 C CNN
+F 2 "lib_fp:horizontal_din5-A1010" H 9850 3300 50  0001 C CNN
 F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9850 3300 50  0001 C CNN
 	1    9850 3300
 	1    0    0    -1  
@@ -703,7 +671,7 @@ L Regulator_Linear:L78L33_TO92 U6
 U 1 1 5E33912E
 P 1300 5025
 F 0 "U6" H 1300 5267 50  0000 C CNN
-F 1 "L78L33_TO92" H 1300 5176 50  0000 C CNN
+F 1 "78L33" H 1300 5176 50  0000 C CNN
 F 2 "Package_TO_SOT_THT:TO-92_HandSolder" H 1300 5250 50  0001 C CIN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 1300 4975 50  0001 C CNN
 	1    1300 5025
@@ -726,7 +694,7 @@ L 4xxx:4069 U4
 U 1 1 5E28F9AC
 P 8875 5000
 F 0 "U4" H 8875 4683 50  0000 C CNN
-F 1 "4069" H 8875 4774 50  0000 C CNN
+F 1 "CD4069" H 8875 4774 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 8875 5000 50  0001 C CNN
 F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 8875 5000 50  0001 C CNN
 	1    8875 5000
@@ -737,7 +705,7 @@ L 4xxx:4069 U4
 U 2 1 5E2B243C
 P 9475 5000
 F 0 "U4" H 9475 4683 50  0000 C CNN
-F 1 "4069" H 9475 4774 50  0000 C CNN
+F 1 "CD4069" H 9475 4774 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 9475 5000 50  0001 C CNN
 F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 9475 5000 50  0001 C CNN
 	2    9475 5000
@@ -750,7 +718,7 @@ L 4xxx:4069 U4
 U 7 1 5E2B6FEB
 P 6500 6925
 F 0 "U4" H 6730 6971 50  0000 L CNN
-F 1 "4069" H 6730 6880 50  0000 L CNN
+F 1 "CD4069" H 6730 6880 50  0000 L CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 6500 6925 50  0001 C CNN
 F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 6500 6925 50  0001 C CNN
 	7    6500 6925
@@ -783,7 +751,7 @@ L 4xxx:4069 U4
 U 4 1 5E2BFA24
 P 5850 6700
 F 0 "U4" H 5850 6383 50  0000 C CNN
-F 1 "4069" H 5850 6474 50  0000 C CNN
+F 1 "CD4069" H 5850 6474 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 5850 6700 50  0001 C CNN
 F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 5850 6700 50  0001 C CNN
 	4    5850 6700
@@ -794,7 +762,7 @@ L 4xxx:4069 U4
 U 6 1 5E2C11FA
 P 5850 7200
 F 0 "U4" H 5850 6883 50  0000 C CNN
-F 1 "4069" H 5850 6974 50  0000 C CNN
+F 1 "CD4069" H 5850 6974 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 5850 7200 50  0001 C CNN
 F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 5850 7200 50  0001 C CNN
 	6    5850 7200
@@ -805,7 +773,7 @@ L 4xxx:4069 U4
 U 3 1 5E2C1EB1
 P 5100 6700
 F 0 "U4" H 5100 6383 50  0000 C CNN
-F 1 "4069" H 5100 6474 50  0000 C CNN
+F 1 "CD4069" H 5100 6474 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 5100 6700 50  0001 C CNN
 F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 5100 6700 50  0001 C CNN
 	3    5100 6700
@@ -816,7 +784,7 @@ L 4xxx:4069 U4
 U 5 1 5E2C40C8
 P 5075 7200
 F 0 "U4" H 5075 6883 50  0000 C CNN
-F 1 "4069" H 5075 6974 50  0000 C CNN
+F 1 "CD4069" H 5075 6974 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 5075 7200 50  0001 C CNN
 F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 5075 7200 50  0001 C CNN
 	5    5075 7200
@@ -1000,4 +968,36 @@ Wire Wire Line
 	4500 1475 4500 1950
 NoConn ~ 4350 1675
 NoConn ~ 4350 1875
+$Comp
+L Connector:DB9_Female_MountingHoles J3
+U 1 1 5E3595C7
+P 6525 1450
+F 0 "J3" H 6705 1452 50  0000 L CNN
+F 1 "dsub9_socket" H 6705 1361 50  0000 L CNN
+F 2 "lib_fp:tht_DSUB-9_Vertical_Tayda" H 6525 1450 50  0001 C CNN
+F 3 " ~" H 6525 1450 50  0001 C CNN
+	1    6525 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:AudioJack3_SwitchTR J4
+U 1 1 5E1F0A6D
+P 7650 3375
+F 0 "J4" H 7632 3700 50  0000 C CNN
+F 1 "stereo_jack_3.5mm" H 7632 3609 50  0000 C CNN
+F 2 "lib_fp:horizontal_3.5mm_stereo_TRS_jack_A-853" H 7650 3375 50  0001 C CNN
+F 3 "~" H 7650 3375 50  0001 C CNN
+	1    7650 3375
+	1    0    0    -1  
+$EndComp
+Text GLabel 1300 1675 0    50   Input ~ 0
+ALT_SERIAL_OUT
+Text GLabel 1300 1850 0    50   Input ~ 0
+ALT_SERIAL_IN
+Wire Wire Line
+	1300 1750 1500 1750
+Wire Wire Line
+	1300 1750 1300 1675
+Wire Wire Line
+	1300 1850 1500 1850
 $EndSCHEMATC

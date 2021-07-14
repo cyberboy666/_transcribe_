@@ -1,4 +1,4 @@
-(module Tayda_3.5mm_stereo_TRS_jack_A-853 (layer F.Cu) (tedit 5E21FBC2)
+(module horizontal_3.5mm_stereo_TRS_jack_A-853 (layer F.Cu) (tedit 5E21FBC2)
   (fp_text reference REF** (at -4.318 7.112) (layer F.SilkS)
     (effects (font (size 0.8 0.8) (thickness 0.15)))
   )

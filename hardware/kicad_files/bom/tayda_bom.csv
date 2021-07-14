@@ -1,0 +1,14 @@
+sku,qty,ref,val
+A-1063,1,C1 ,100uf
+A-214,4,C2 C4 C3 C5 ,0.1u
+A-157,2,D1 D2 ,1N4148
+A-2956,1,J1 ,europower
+A-300,1,J3 ,dsub9_socket
+A-853,3,J6 J2 J4 ,stereo_jack_3.5mm
+A-1010,2,J7 J5 ,din5
+A-2246,3,R3 R1 R2 ,220
+A-2203,1,R4 ,10k
+A-034,1,U2 ,MAX232
+A-871,1,U3 ,6N137
+A-882,1,U4 ,CD4069
+A-492,1,U6 ,78L33

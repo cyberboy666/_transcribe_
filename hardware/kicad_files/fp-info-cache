@@ -1,4 +1,4 @@
-16389443833896036
+16399717218855036
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -73206,72 +73206,114 @@ varistor SIOV
 2
 2
 lib_fp
-DSUB-9_Male_Vertical_Tayda
-9-pin D-Sub connector, straight/vertical, THT-mount, male, pitch 2.77x2.84mm, distance of mounting holes 25mm, see https://disti-assets.s3.amazonaws.com/tonar/files/datasheets/16730.pdf
-9-pin D-Sub connector straight vertical THT male pitch 2.77x2.84mm mounting holes distance 25mm
-0
-11
-10
-lib_fp
-PinHeader_2x08_P2.54_Euro
-Through hole straight pin header, 2x08, 2.54mm pitch, double rows
-Through hole pin header THT 2x08 2.54mm double row
+DIP-SOIC-8
+8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils), LongPads
+THT DIP DIL PDIP 2.54mm 7.62mm 300mil LongPads
 0
 16
-16
+8
 lib_fp
-ProMicro
-Pro Micro footprint
-promicro ProMicro
+dpdt_mini_toggle_switch_tayda
+
+
 0
-24
-24
+6
+6
 lib_fp
-Tayda5pinMidi-A1010
-SDS-50J, standard DIN connector, 5 pins, midi
-SDS-50J DIN 5-pins connector midi
+dpdt_slide_switch_large_tayda
+E-Switch sub miniature slide switch, EG series, DPDT, http://spec_sheets.e-switch.com/specs/P040047.pdf
+switch DPDT
 0
-7
-5
+6
+6
 lib_fp
-Tayda_3.5mm_stereo_TRS_jack_A-853
+pot_vertical_9mm
+Potentiometer, vertical, Alps RK09L Single, http://www.alps.com/prod/info/E/HTML/Potentiometer/RotaryPotentiometers/RK09L/RK09L_list.html
+Potentiometer vertical Alps RK09L Single
+0
+3
+3
+lib_fp
+spdt_mini_toggle_switch_tayda
+
+
+0
+3
+3
+lib_fp
+spdt_slide_switch_small_tayda
 
 
 0
 5
-5
-project_parts
-DSUB-9_Male_Vertical_Tayda
-9-pin D-Sub connector, straight/vertical, THT-mount, male, pitch 2.77x2.84mm, distance of mounting holes 25mm, see https://disti-assets.s3.amazonaws.com/tonar/files/datasheets/16730.pdf
-9-pin D-Sub connector straight vertical THT male pitch 2.77x2.84mm mounting holes distance 25mm
+3
+lib_fp
+tht_BarrelJack_Horizontal
+DC Barrel Jack
+Power Jack
 0
-11
-10
+3
+3
+lib_fp
+tht_rca_vertical
+<b>DC POWER JACK</b><p>Source: DCJ0202.pdf
+
+0
+3
+2
 project_parts
-PinHeader_2x08_P2.54_Euro
-Through hole straight pin header, 2x08, 2.54mm pitch, double rows
-Through hole pin header THT 2x08 2.54mm double row
+DIP-SOIC-8
+8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils), LongPads
+THT DIP DIL PDIP 2.54mm 7.62mm 300mil LongPads
 0
 16
-16
+8
 project_parts
-ProMicro
-Pro Micro footprint
-promicro ProMicro
+dpdt_mini_toggle_switch_tayda
+
+
 0
-24
-24
+6
+6
 project_parts
-Tayda5pinMidi-A1010
-SDS-50J, standard DIN connector, 5 pins, midi
-SDS-50J DIN 5-pins connector midi
+dpdt_slide_switch_large_tayda
+E-Switch sub miniature slide switch, EG series, DPDT, http://spec_sheets.e-switch.com/specs/P040047.pdf
+switch DPDT
 0
-7
-5
+6
+6
 project_parts
-Tayda_3.5mm_stereo_TRS_jack_A-853
+pot_vertical_9mm
+Potentiometer, vertical, Alps RK09L Single, http://www.alps.com/prod/info/E/HTML/Potentiometer/RotaryPotentiometers/RK09L/RK09L_list.html
+Potentiometer vertical Alps RK09L Single
+0
+3
+3
+project_parts
+spdt_mini_toggle_switch_tayda
+
+
+0
+3
+3
+project_parts
+spdt_slide_switch_small_tayda
 
 
 0
 5
-5
+3
+project_parts
+tht_BarrelJack_Horizontal
+DC Barrel Jack
+Power Jack
+0
+3
+3
+project_parts
+tht_rca_vertical
+<b>DC POWER JACK</b><p>Source: DCJ0202.pdf
+
+0
+3
+2
