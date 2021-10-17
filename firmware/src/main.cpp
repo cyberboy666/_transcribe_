@@ -5,7 +5,10 @@
 #include "midievents.h"
 #include "commands.h"
 #include <AltSoftSerial.h>
+#include "OneButton.h"
 
+
+OneButton button1(A9, true);
 AltSoftSerial altSerial;
 USB Usb;
 USBH_MIDI  Midi(&Usb);
@@ -15,20 +18,24 @@ uint8_t notes[128];
 uint8_t cc[128];
 uint8_t midiCommand, midiChannel, midiParam1, midiParam2;
 uint8_t position;
-bool hasUsbDevice;
+bool hasUsbDevice = 0;
 bool dropZeroCC;
 
 uint8_t switchStore[20];
 uint8_t paramStore[127];
+
+int incomingByte = 0; // for incoming serial data
 
 bool useFlatMidiMap;
 
 bool readInputFromMidiDevice();
 bool readInputFromMidiHost();
 bool readInputFromMidiSerial();
+void connect_usb_midi();
 
 
 void setCmd(char* inputCmd, uint8_t inputParam = 0);
+void setCmdNoReplace(char* inputCmd);
 void setCmdSwitch(char* inputCmd1, char* inputCmd2, uint8_t switchIndex);
 void setCmdToggle(char* inputCmd, uint8_t start, uint8_t offset, uint8_t switchIndex);
 void setCmdStep(char* inputCmd, uint8_t param, uint8_t start, uint8_t offset);
@@ -45,7 +52,8 @@ void setCustomMap(){
   else if(midiCommand == MIDICOMMAND::CC){
     if(midiParam1 == 0){setCmd(A55_A_B_MIX_LEVEL, midiParam2);}
 
-    else if(midiParam1 == 1){setCmd(A55_CENTER_WIPE_X, midiParam2);}
+    else if(midiParam1 == 1){setCmd(MX50_A_B_MIX_LEVEL, midiParam2);}
+    // else if(midiParam1 == 1){setCmd(A55_CENTER_WIPE_X, midiParam2);}
     else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
     else if(midiParam1 == 3){setCmd(A55_A_BUS_SOURCE_2, midiParam2);}
     // else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
@@ -69,8 +77,9 @@ void setCustomMap(){
     else if(midiParam1 == 34){setCmdToggle(A55_DIRECTION_ONE_WAY, 40, 2, 2);}
     else if(midiParam1 == 35){setCmdParamRandom(A55_A_B_MIX_LEVEL);}
 
-    else if(midiParam1 == 48){setCmd(A55_WIPE_MIX_BUTTON);}
-    else if(midiParam1 == 49){setCmd(A55_LUM_KEY);}
+    else if(midiParam1 == 48){setCmdNoReplace("1*1!");}
+    else if(midiParam1 == 49){setCmdNoReplace("3*1!");}
+    
 
     else if(midiParam1 == 50){setCmdToggle(A55_A_BUS_EFFECT_ON, 180, 2, 5);}
     else if(midiParam1 == 51){setCmdToggle(A55_B_BUS_EFFECT_ON, 182, 2, 6);}
@@ -93,7 +102,8 @@ void setCustomMap(){
 void setup(){
   altSerial.begin(31250);
   Serial.begin(9600);
-  Serial1.begin(9600);
+  Serial1.begin(9600, SERIAL_7O1); // SERIAL_7O1 i think for mx50 // 
+  button1.attachClick(connect_usb_midi);
 
   hasUsbDevice = false;
   vid = pid = 0;
@@ -101,13 +111,12 @@ void setup(){
   useFlatMidiMap = true;
   dropZeroCC = true; // to ignore 'note_off' cc messages
 
-  if (Usb.Init() == 0){ // means it is successful
-    hasUsbDevice = true;
-    delay( 200 );
-    }
+  connect_usb_midi();
+
 }
 
 void loop(){
+  button1.tick();
   midiCommand = midiChannel = midiParam1 = midiParam2 = 0;
   position = 0;
   memset(&cmd[0], 0, sizeof(cmd));
@@ -144,6 +153,14 @@ void loop(){
   Serial1.write(2);
   Serial1.write(cmd);
   Serial1.write(3);
+  // if (Serial1.available() > 0) {
+  // // read the incoming byte:
+  // incomingByte = Serial1.read();
+
+  // // say what you got:
+  // Serial1.print("I received: ");
+  // Serial1.println(incomingByte, DEC);
+  // }
 }
 
 bool readInputFromMidiDevice(){
@@ -245,6 +262,15 @@ void setCmd(char* inputCmd, uint8_t inputParam){
 
 }
 
+void setCmdNoReplace(char* inputCmd){
+
+  Serial.print(inputCmd);
+  Serial.print("<-- input command\n");
+  strcpy(cmd, inputCmd);
+
+}
+
+
 void setCmdSwitch(char* inputCmd1, char* inputCmd2, uint8_t switchIndex){
   if(switchStore[switchIndex] == 0){setCmd(inputCmd1); }
   else{ setCmd(inputCmd2); }
@@ -283,3 +309,13 @@ void setCmdParamRandom(char* inputCmd){
   uint8_t randNumber = random(1,128);
   setCmd(inputCmd, randNumber);
 }
+
+void connect_usb_midi() {
+  Serial.println("Button 1 click.");
+    if (Usb.Init() == 0){ // means it is successful
+      hasUsbDevice = true;
+      delay( 200 );
+    }
+    Serial.print(hasUsbDevice);
+    Serial.print("<--hasUsbDevice\n");
+} // click1

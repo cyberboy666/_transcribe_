@@ -439,26 +439,16 @@ Text GLabel 4225 4175 0    50   Input ~ 0
 ALT_SERIAL_IN
 Wire Wire Line
 	4225 4175 4400 4175
-Text GLabel 1325 2450 0    50   Input ~ 0
-ALT_SERIAL_OUT
 Wire Wire Line
 	1325 2450 1500 2450
 Text GLabel 1275 2275 0    50   Input ~ 0
-ALT_SERIAL_IN
-Text GLabel 1325 1850 0    50   Input ~ 0
 MIDI_SERIAL_IN
-Text GLabel 1400 1675 0    50   Input ~ 0
+Text GLabel 1325 2450 0    50   Input ~ 0
 MIDI_SERIAL_OUT
 Wire Wire Line
 	1275 2275 1275 2350
 Wire Wire Line
 	1275 2350 1500 2350
-Wire Wire Line
-	1400 1675 1400 1750
-Wire Wire Line
-	1400 1750 1500 1750
-Wire Wire Line
-	1325 1850 1500 1850
 $Comp
 L power:GND #PWR05
 U 1 1 5E27B159
@@ -1000,4 +990,14 @@ F 3 "~" H 7650 3375 50  0001 C CNN
 	1    7650 3375
 	1    0    0    -1  
 $EndComp
+Text GLabel 1300 1675 0    50   Input ~ 0
+ALT_SERIAL_OUT
+Text GLabel 1300 1850 0    50   Input ~ 0
+ALT_SERIAL_IN
+Wire Wire Line
+	1300 1750 1500 1750
+Wire Wire Line
+	1300 1750 1300 1675
+Wire Wire Line
+	1300 1850 1500 1850
 $EndSCHEMATC

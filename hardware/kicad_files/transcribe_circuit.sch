@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:transcribe_circuit-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -654,7 +653,7 @@ NoConn ~ 9850 3000
 NoConn ~ 9550 3300
 NoConn ~ 10150 3300
 $Comp
-L Isolator:6N137 U3
+L transcribe_circuit-rescue:6N137-Isolator U3
 U 1 1 5E2A25A4
 P 9075 2000
 F 0 "U3" H 9075 2425 50  0000 C CNN
