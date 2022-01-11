@@ -48,7 +48,7 @@ F 3 "" H 2675 5350 60  0000 C CNN
 $EndComp
 Text Notes 875  950  0    118  ~ 0
 A. micro-controller
-Text Notes 4275 975  0    118  ~ 0
+Text Notes 3550 1100 0    118  ~ 0
 B. rs232 serial
 Text Notes 1000 4525 0    118  ~ 0
 D. usb-host shield
@@ -57,168 +57,168 @@ C. midi serial
 $Comp
 L Device:R R3
 U 1 1 5E1E86F1
-P 8325 1900
-F 0 "R3" V 8225 1900 50  0000 C CNN
-F 1 "220" V 8325 1900 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 8255 1900 50  0001 C CNN
-F 3 "~" H 8325 1900 50  0001 C CNN
-	1    8325 1900
+P 8675 1950
+F 0 "R3" V 8575 1950 50  0000 C CNN
+F 1 "220" V 8675 1950 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 8605 1950 50  0001 C CNN
+F 3 "~" H 8675 1950 50  0001 C CNN
+	1    8675 1950
 	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R4
 U 1 1 5E1E9C5C
-P 9825 1800
-F 0 "R4" V 9725 1800 50  0000 C CNN
-F 1 "10k" V 9825 1800 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 9755 1800 50  0001 C CNN
-F 3 "~" H 9825 1800 50  0001 C CNN
-	1    9825 1800
+P 10175 1850
+F 0 "R4" V 10075 1850 50  0000 C CNN
+F 1 "10k" V 10175 1850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 10105 1850 50  0001 C CNN
+F 3 "~" H 10175 1850 50  0001 C CNN
+	1    10175 1850
 	0    1    1    0   
 $EndComp
-Text GLabel 10250 1800 2    50   Input ~ 0
+Text GLabel 10600 1850 2    50   Input ~ 0
 MIDI_SERIAL_IN
 $Comp
 L Device:D D1
 U 1 1 5E1EB2E4
-P 8575 2050
-F 0 "D1" V 8529 2129 50  0000 L CNN
-F 1 "1N4148" H 8475 1950 50  0000 L CNN
-F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" H 8575 2050 50  0001 C CNN
-F 3 "~" H 8575 2050 50  0001 C CNN
-	1    8575 2050
+P 8925 2100
+F 0 "D1" V 8879 2179 50  0000 L CNN
+F 1 "1N4148" H 8825 2000 50  0000 L CNN
+F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" H 8925 2100 50  0001 C CNN
+F 3 "~" H 8925 2100 50  0001 C CNN
+	1    8925 2100
 	0    1    1    0   
 $EndComp
 $Comp
 L power:+5V #PWR021
 U 1 1 5E1EC60A
-P 9575 1425
-F 0 "#PWR021" H 9575 1275 50  0001 C CNN
-F 1 "+5V" H 9590 1598 50  0000 C CNN
-F 2 "" H 9575 1425 50  0001 C CNN
-F 3 "" H 9575 1425 50  0001 C CNN
-	1    9575 1425
+P 9925 1475
+F 0 "#PWR021" H 9925 1325 50  0001 C CNN
+F 1 "+5V" H 9940 1648 50  0000 C CNN
+F 2 "" H 9925 1475 50  0001 C CNN
+F 3 "" H 9925 1475 50  0001 C CNN
+	1    9925 1475
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR022
 U 1 1 5E1ED3DB
-P 9700 2475
-F 0 "#PWR022" H 9700 2225 50  0001 C CNN
-F 1 "GND" H 9705 2302 50  0000 C CNN
-F 2 "" H 9700 2475 50  0001 C CNN
-F 3 "" H 9700 2475 50  0001 C CNN
-	1    9700 2475
+P 10050 2525
+F 0 "#PWR022" H 10050 2275 50  0001 C CNN
+F 1 "GND" H 10055 2352 50  0000 C CNN
+F 2 "" H 10050 2525 50  0001 C CNN
+F 3 "" H 10050 2525 50  0001 C CNN
+	1    10050 2525
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9700 2475 9700 2200
+	10050 2525 10050 2250
 Wire Wire Line
-	9700 2200 9375 2200
+	10050 2250 9725 2250
 Wire Wire Line
-	9375 1800 9575 1800
+	9725 1850 9925 1850
 Wire Wire Line
-	9975 1800 10050 1800
+	10325 1850 10400 1850
 Wire Wire Line
-	9375 2100 10050 2100
+	9725 2150 10400 2150
 Wire Wire Line
-	10050 2100 10050 1800
-Connection ~ 10050 1800
+	10400 2150 10400 1850
+Connection ~ 10400 1850
 Wire Wire Line
-	10050 1800 10250 1800
+	10400 1850 10600 1850
 Wire Wire Line
-	9575 1425 9575 1800
-Connection ~ 9575 1800
+	9925 1475 9925 1850
+Connection ~ 9925 1850
 Wire Wire Line
-	9575 1800 9675 1800
-NoConn ~ 9375 1900
+	9925 1850 10025 1850
+NoConn ~ 9725 1950
 Wire Wire Line
-	8775 1900 8575 1900
+	9125 1950 8925 1950
 Wire Wire Line
-	8575 1900 8475 1900
-Connection ~ 8575 1900
-Text GLabel 7900 1900 0    50   Input ~ 0
+	8925 1950 8825 1950
+Connection ~ 8925 1950
+Text GLabel 8250 1950 0    50   Input ~ 0
 MIDI_IN_PLUS
-Text GLabel 7900 2250 0    50   Input ~ 0
+Text GLabel 8250 2300 0    50   Input ~ 0
 MIDI_IN_DATA
 Wire Wire Line
-	8175 1900 7900 1900
+	8525 1950 8250 1950
 Wire Wire Line
-	8575 2200 8575 2250
+	8925 2250 8925 2300
 Wire Wire Line
-	8575 2250 7900 2250
-Text GLabel 8000 3375 2    50   Input ~ 0
+	8925 2300 8250 2300
+Text GLabel 8350 3575 2    50   Input ~ 0
 MIDI_IN_PLUS
-Text GLabel 8000 3575 2    50   Input ~ 0
+Text GLabel 8350 3775 2    50   Input ~ 0
 MIDI_IN_DATA
 Wire Wire Line
-	7850 3375 8000 3375
+	8200 3575 8350 3575
 $Comp
 L Connector:AudioJack3_SwitchTR J6
 U 1 1 5E1F4FCA
-P 7725 5700
-F 0 "J6" H 7707 6025 50  0000 C CNN
-F 1 "stereo_jack_3.5mm" H 7707 5934 50  0000 C CNN
-F 2 "lib_fp:horizontal_3.5mm_stereo_TRS_jack_A-853" H 7725 5700 50  0001 C CNN
-F 3 "~" H 7725 5700 50  0001 C CNN
-	1    7725 5700
+P 7975 5900
+F 0 "J6" H 7957 6225 50  0000 C CNN
+F 1 "stereo_jack_3.5mm" H 7957 6134 50  0000 C CNN
+F 2 "lib_fp:horizontal_3.5mm_stereo_TRS_jack_A-853" H 7975 5900 50  0001 C CNN
+F 3 "~" H 7975 5900 50  0001 C CNN
+	1    7975 5900
 	1    0    0    -1  
 $EndComp
-Text GLabel 8075 5700 2    50   Input ~ 0
+Text GLabel 8325 5900 2    50   Input ~ 0
 MIDI_OUT_PLUS
-Text GLabel 8075 5900 2    50   Input ~ 0
+Text GLabel 8325 6100 2    50   Input ~ 0
 MIDI_OUT_DATA
 Wire Wire Line
-	7925 5700 8075 5700
-Text GLabel 9950 5000 2    50   Input ~ 0
+	8175 5900 8325 5900
+Text GLabel 10200 5200 2    50   Input ~ 0
 MIDI_SERIAL_OUT
-Text GLabel 7975 4775 0    50   Input ~ 0
+Text GLabel 8225 4975 0    50   Input ~ 0
 MIDI_OUT_PLUS
-Text GLabel 7975 5000 0    50   Input ~ 0
+Text GLabel 8225 5200 0    50   Input ~ 0
 MIDI_OUT_DATA
 $Comp
 L power:+5V #PWR020
 U 1 1 5E1F83DF
-P 8425 4625
-F 0 "#PWR020" H 8425 4475 50  0001 C CNN
-F 1 "+5V" H 8440 4798 50  0000 C CNN
-F 2 "" H 8425 4625 50  0001 C CNN
-F 3 "" H 8425 4625 50  0001 C CNN
-	1    8425 4625
+P 8675 4825
+F 0 "#PWR020" H 8675 4675 50  0001 C CNN
+F 1 "+5V" H 8690 4998 50  0000 C CNN
+F 2 "" H 8675 4825 50  0001 C CNN
+F 3 "" H 8675 4825 50  0001 C CNN
+	1    8675 4825
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R R1
 U 1 1 5E1F8F29
-P 8225 4775
-F 0 "R1" V 8125 4775 50  0000 C CNN
-F 1 "220" V 8225 4775 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 8155 4775 50  0001 C CNN
-F 3 "~" H 8225 4775 50  0001 C CNN
-	1    8225 4775
+P 8475 4975
+F 0 "R1" V 8375 4975 50  0000 C CNN
+F 1 "220" V 8475 4975 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 8405 4975 50  0001 C CNN
+F 3 "~" H 8475 4975 50  0001 C CNN
+	1    8475 4975
 	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R2
 U 1 1 5E1F93F1
-P 8225 5000
-F 0 "R2" V 8125 5000 50  0000 C CNN
-F 1 "220" V 8225 5000 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 8155 5000 50  0001 C CNN
-F 3 "~" H 8225 5000 50  0001 C CNN
-	1    8225 5000
+P 8475 5200
+F 0 "R2" V 8375 5200 50  0000 C CNN
+F 1 "220" V 8475 5200 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical" V 8405 5200 50  0001 C CNN
+F 3 "~" H 8475 5200 50  0001 C CNN
+	1    8475 5200
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	8375 4775 8425 4775
+	8625 4975 8675 4975
 Wire Wire Line
-	8425 4775 8425 4625
+	8675 4975 8675 4825
 Wire Wire Line
-	8375 5000 8575 5000
+	8625 5200 8825 5200
 Wire Wire Line
-	8075 5000 7975 5000
+	8325 5200 8225 5200
 Wire Wire Line
-	8075 4775 7975 4775
+	8325 4975 8225 4975
 $Comp
 L Device:C C2
 U 1 1 5E215C9F
@@ -426,7 +426,7 @@ Wire Wire Line
 	6250 4175 6000 4175
 Text GLabel 4225 3775 0    50   Input ~ 0
 ALT_SERIAL_OUT
-Text GLabel 6150 1250 0    50   Input ~ 0
+Text GLabel 5650 1100 0    50   Input ~ 0
 RS_SERIAL_OUT
 Wire Wire Line
 	4350 1575 4800 1575
@@ -531,7 +531,6 @@ NoConn ~ 1500 2250
 NoConn ~ 1500 2550
 NoConn ~ 1500 2650
 NoConn ~ 1500 2750
-NoConn ~ 1500 2850
 NoConn ~ 2900 2150
 NoConn ~ 2900 2250
 NoConn ~ 2900 2350
@@ -567,10 +566,10 @@ Connection ~ 1300 5350
 Wire Wire Line
 	1300 5350 1300 5425
 Wire Wire Line
-	8575 2250 8775 2250
+	8925 2300 9125 2300
 Wire Wire Line
-	8775 2250 8775 2100
-Connection ~ 8575 2250
+	9125 2300 9125 2150
+Connection ~ 8925 2300
 Wire Wire Line
 	1875 5950 1800 5950
 Wire Wire Line
@@ -583,88 +582,84 @@ Text GLabel 3400 5950 2    50   Input ~ 0
 3.3v
 Wire Wire Line
 	2900 1950 2950 1950
-Wire Wire Line
-	6225 1450 6150 1450
 Text GLabel 4825 1775 2    50   Input ~ 0
 RS_SERIAL_OUT
-Text GLabel 6150 1450 0    50   Input ~ 0
+Text GLabel 5650 1300 0    50   Input ~ 0
 RS_SERIAL_IN
-Wire Wire Line
-	6225 1250 6150 1250
 $Comp
 L power:GND #PWR016
 U 1 1 5E231F19
-P 6225 2125
-F 0 "#PWR016" H 6225 1875 50  0001 C CNN
-F 1 "GND" H 6230 1952 50  0000 C CNN
-F 2 "" H 6225 2125 50  0001 C CNN
-F 3 "" H 6225 2125 50  0001 C CNN
-	1    6225 2125
+P 6875 1875
+F 0 "#PWR016" H 6875 1625 50  0001 C CNN
+F 1 "GND" H 6880 1702 50  0000 C CNN
+F 2 "" H 6875 1875 50  0001 C CNN
+F 3 "" H 6875 1875 50  0001 C CNN
+	1    6875 1875
 	1    0    0    -1  
 $EndComp
-NoConn ~ 6225 1050
-NoConn ~ 6225 1150
-NoConn ~ 6225 1350
-NoConn ~ 6225 1550
-NoConn ~ 6225 1650
-NoConn ~ 6225 1750
-Text GLabel 9525 5700 0    50   Input ~ 0
+NoConn ~ 6875 800 
+NoConn ~ 6875 900 
+NoConn ~ 6875 1100
+NoConn ~ 6875 1300
+NoConn ~ 6875 1400
+NoConn ~ 6875 1500
+Text GLabel 9775 5900 0    50   Input ~ 0
 MIDI_OUT_PLUS
-Text GLabel 10325 5700 2    50   Input ~ 0
+Text GLabel 10575 5900 2    50   Input ~ 0
 MIDI_OUT_DATA
 $Comp
 L Connector:DIN-5_180degree J7
 U 1 1 5E26D6D4
-P 9950 5800
-F 0 "J7" H 9950 5525 50  0000 C CNN
-F 1 "din5" H 9950 5434 50  0000 C CNN
-F 2 "lib_fp:horizontal_din5-A1010" H 9950 5800 50  0001 C CNN
-F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9950 5800 50  0001 C CNN
-	1    9950 5800
+P 10200 6000
+F 0 "J7" H 10200 5725 50  0000 C CNN
+F 1 "din5" H 10200 5634 50  0000 C CNN
+F 2 "lib_fp:horizontal_din5-A1010" H 10200 6000 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 10200 6000 50  0001 C CNN
+	1    10200 6000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9650 5700 9525 5700
+	9900 5900 9775 5900
 Wire Wire Line
-	10325 5700 10250 5700
-NoConn ~ 9950 5500
-NoConn ~ 9650 5800
-NoConn ~ 10250 5800
-Text GLabel 9425 3200 0    50   Input ~ 0
+	10575 5900 10500 5900
+NoConn ~ 10200 5700
+NoConn ~ 9900 6000
+NoConn ~ 10500 6000
+Text GLabel 9825 3300 0    50   Input ~ 0
 MIDI_IN_PLUS
-Text GLabel 10225 3200 2    50   Input ~ 0
+Text GLabel 10625 3300 2    50   Input ~ 0
 MIDI_IN_DATA
 $Comp
 L Connector:DIN-5_180degree J5
 U 1 1 5E28B4C2
-P 9850 3300
-F 0 "J5" H 9850 3025 50  0000 C CNN
-F 1 "din5" H 9850 2934 50  0000 C CNN
-F 2 "lib_fp:horizontal_din5-A1010" H 9850 3300 50  0001 C CNN
-F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9850 3300 50  0001 C CNN
-	1    9850 3300
+P 10250 3400
+F 0 "J5" H 10250 3125 50  0000 C CNN
+F 1 "din5" H 10250 3034 50  0000 C CNN
+F 2 "lib_fp:horizontal_din5-A1010" H 10250 3400 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 10250 3400 50  0001 C CNN
+	1    10250 3400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9550 3200 9425 3200
+	9950 3300 9825 3300
 Wire Wire Line
-	10225 3200 10150 3200
-NoConn ~ 9850 3000
-NoConn ~ 9550 3300
-NoConn ~ 10150 3300
+	10625 3300 10550 3300
+NoConn ~ 10250 3100
+NoConn ~ 9950 3400
+NoConn ~ 10550 3400
 $Comp
 L transcribe_circuit-rescue:6N137-Isolator U3
 U 1 1 5E2A25A4
-P 9075 2000
-F 0 "U3" H 9075 2425 50  0000 C CNN
-F 1 "6N137" H 9075 2334 50  0000 C CNN
-F 2 "Package_DIP:DIP-8_W7.62mm" H 8875 1700 50  0001 L CIN
-F 3 "https://optoelectronics.liteon.com/upload/download/DS70-2008-0032/6N135-L%206N136-L%20series.pdf" H 9075 2000 50  0001 L CNN
-	1    9075 2000
+P 9425 2050
+F 0 "U3" H 9425 2475 50  0000 C CNN
+F 1 "6N137" H 9425 2384 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 9225 1750 50  0001 L CIN
+F 3 "https://optoelectronics.liteon.com/upload/download/DS70-2008-0032/6N135-L%206N136-L%20series.pdf" H 9425 2050 50  0001 L CNN
+	1    9425 2050
 	1    0    0    -1  
 $EndComp
-NoConn ~ 7850 3275
-NoConn ~ 7925 5600
+NoConn ~ 8200 3475
+NoConn ~ 8175 5800
 $Comp
 L Regulator_Linear:L78L33_TO92 U6
 U 1 1 5E33912E
@@ -677,13 +672,13 @@ F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7925 5900 8075 5900
-NoConn ~ 7925 5800
-NoConn ~ 7925 6000
+	8175 6100 8325 6100
+NoConn ~ 8175 6000
+NoConn ~ 8175 6200
 Wire Wire Line
-	7850 3575 8000 3575
-NoConn ~ 7850 3475
-NoConn ~ 7850 3675
+	8200 3775 8350 3775
+NoConn ~ 8200 3675
+NoConn ~ 8200 3875
 Wire Wire Line
 	4350 1775 4825 1775
 Wire Wire Line
@@ -691,27 +686,27 @@ Wire Wire Line
 $Comp
 L 4xxx:4069 U4
 U 1 1 5E28F9AC
-P 8875 5000
-F 0 "U4" H 8875 4683 50  0000 C CNN
-F 1 "CD4069" H 8875 4774 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 8875 5000 50  0001 C CNN
-F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 8875 5000 50  0001 C CNN
-	1    8875 5000
+P 9125 5200
+F 0 "U4" H 9125 4883 50  0000 C CNN
+F 1 "CD4069" H 9125 4974 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 9125 5200 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 9125 5200 50  0001 C CNN
+	1    9125 5200
 	-1   0    0    1   
 $EndComp
 $Comp
 L 4xxx:4069 U4
 U 2 1 5E2B243C
-P 9475 5000
-F 0 "U4" H 9475 4683 50  0000 C CNN
-F 1 "CD4069" H 9475 4774 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 9475 5000 50  0001 C CNN
-F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 9475 5000 50  0001 C CNN
-	2    9475 5000
+P 9725 5200
+F 0 "U4" H 9725 4883 50  0000 C CNN
+F 1 "CD4069" H 9725 4974 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 9725 5200 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4069ubms.pdf" H 9725 5200 50  0001 C CNN
+	2    9725 5200
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	9775 5000 9950 5000
+	10025 5200 10200 5200
 $Comp
 L 4xxx:4069 U4
 U 7 1 5E2B6FEB
@@ -824,90 +819,90 @@ Wire Wire Line
 $Comp
 L Connector_Generic:Conn_02x08_Odd_Even J1
 U 1 1 5E27F2FF
-P 1250 3675
-F 0 "J1" H 1300 3050 50  0000 C CNN
-F 1 "europower" H 1300 3141 50  0000 C CNN
-F 2 "lib_fp:PinHeader_2x08_P2.54_Euro" H 1250 3675 50  0001 C CNN
-F 3 "~" H 1250 3675 50  0001 C CNN
-	1    1250 3675
+P 1650 3875
+F 0 "J1" H 1700 3250 50  0000 C CNN
+F 1 "europower" H 1700 3341 50  0000 C CNN
+F 2 "lib_fp:PinHeader_2x08_P2.54_Euro" H 1650 3875 50  0001 C CNN
+F 3 "~" H 1650 3875 50  0001 C CNN
+	1    1650 3875
 	-1   0    0    1   
 $EndComp
 $Comp
 L power:+5V #PWR06
 U 1 1 5E281F93
-P 1750 3375
-F 0 "#PWR06" H 1750 3225 50  0001 C CNN
-F 1 "+5V" H 1765 3548 50  0000 C CNN
-F 2 "" H 1750 3375 50  0001 C CNN
-F 3 "" H 1750 3375 50  0001 C CNN
-	1    1750 3375
+P 2150 3575
+F 0 "#PWR06" H 2150 3425 50  0001 C CNN
+F 1 "+5V" H 2165 3748 50  0000 C CNN
+F 2 "" H 2150 3575 50  0001 C CNN
+F 3 "" H 2150 3575 50  0001 C CNN
+	1    2150 3575
 	1    0    0    -1  
 $EndComp
-NoConn ~ 950  3275
-NoConn ~ 950  3375
-NoConn ~ 1450 3375
-NoConn ~ 1450 3275
-NoConn ~ 1450 3575
-NoConn ~ 950  3575
+NoConn ~ 1350 3475
+NoConn ~ 1350 3575
+NoConn ~ 1850 3575
+NoConn ~ 1850 3475
+NoConn ~ 1850 3775
+NoConn ~ 1350 3775
 $Comp
 L power:GND #PWR07
 U 1 1 5E29F8A8
-P 1725 3975
-F 0 "#PWR07" H 1725 3725 50  0001 C CNN
-F 1 "GND" H 1730 3802 50  0000 C CNN
-F 2 "" H 1725 3975 50  0001 C CNN
-F 3 "" H 1725 3975 50  0001 C CNN
-	1    1725 3975
+P 2125 4175
+F 0 "#PWR07" H 2125 3925 50  0001 C CNN
+F 1 "GND" H 2130 4002 50  0000 C CNN
+F 2 "" H 2125 4175 50  0001 C CNN
+F 3 "" H 2125 4175 50  0001 C CNN
+	1    2125 4175
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1450 3675 1725 3675
+	1850 3875 2125 3875
 Wire Wire Line
-	1725 3675 1725 3775
+	2125 3875 2125 3975
 Wire Wire Line
-	1450 3775 1725 3775
-Connection ~ 1725 3775
+	1850 3975 2125 3975
+Connection ~ 2125 3975
 Wire Wire Line
-	1725 3775 1725 3875
+	2125 3975 2125 4075
 Wire Wire Line
-	1450 3875 1725 3875
-Connection ~ 1725 3875
+	1850 4075 2125 4075
+Connection ~ 2125 4075
 Wire Wire Line
-	1725 3875 1725 3975
-NoConn ~ 1450 3975
-NoConn ~ 950  3975
+	2125 4075 2125 4175
+NoConn ~ 1850 4175
+NoConn ~ 1350 4175
 Wire Wire Line
-	6225 1850 6225 2050
+	6875 1600 6875 1800
 Wire Wire Line
-	6525 2050 6225 2050
-Connection ~ 6225 2050
+	7175 1800 6875 1800
+Connection ~ 6875 1800
 Wire Wire Line
-	6225 2050 6225 2125
+	6875 1800 6875 1875
 $Comp
 L Device:D D2
 U 1 1 5E8284AF
-P 1600 3475
-F 0 "D2" H 1600 3259 50  0000 C CNN
-F 1 "1N4148" H 1600 3350 50  0000 C CNN
-F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" H 1600 3475 50  0001 C CNN
-F 3 "~" H 1600 3475 50  0001 C CNN
-	1    1600 3475
+P 2000 3675
+F 0 "D2" H 2000 3459 50  0000 C CNN
+F 1 "1N4148" H 2000 3550 50  0000 C CNN
+F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" H 2000 3675 50  0001 C CNN
+F 3 "~" H 2000 3675 50  0001 C CNN
+	1    2000 3675
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1750 3375 1750 3475
+	2150 3575 2150 3675
 Wire Wire Line
-	950  3475 1450 3475
-Connection ~ 1450 3475
+	1350 3675 1850 3675
+Connection ~ 1850 3675
 Wire Wire Line
-	950  3675 1450 3675
-Connection ~ 1450 3675
+	1350 3875 1850 3875
+Connection ~ 1850 3875
 Wire Wire Line
-	950  3775 1450 3775
-Connection ~ 1450 3775
+	1350 3975 1850 3975
+Connection ~ 1850 3975
 Wire Wire Line
-	950  3875 1450 3875
-Connection ~ 1450 3875
+	1350 4075 1850 4075
+Connection ~ 1850 4075
 $Comp
 L Connector_Generic:Conn_01x06 J8
 U 1 1 5EE5600D
@@ -970,23 +965,23 @@ NoConn ~ 4350 1875
 $Comp
 L Connector:DB9_Female_MountingHoles J3
 U 1 1 5E3595C7
-P 6525 1450
-F 0 "J3" H 6705 1452 50  0000 L CNN
-F 1 "dsub9_socket" H 6705 1361 50  0000 L CNN
-F 2 "lib_fp:tht_DSUB-9_Vertical_Tayda" H 6525 1450 50  0001 C CNN
-F 3 " ~" H 6525 1450 50  0001 C CNN
-	1    6525 1450
+P 7175 1200
+F 0 "J3" H 7355 1202 50  0000 L CNN
+F 1 "dsub9_socket" H 7355 1111 50  0000 L CNN
+F 2 "lib_fp:tht_DSUB-9_Vertical_Tayda" H 7175 1200 50  0001 C CNN
+F 3 " ~" H 7175 1200 50  0001 C CNN
+	1    7175 1200
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:AudioJack3_SwitchTR J4
 U 1 1 5E1F0A6D
-P 7650 3375
-F 0 "J4" H 7632 3700 50  0000 C CNN
-F 1 "stereo_jack_3.5mm" H 7632 3609 50  0000 C CNN
-F 2 "lib_fp:horizontal_3.5mm_stereo_TRS_jack_A-853" H 7650 3375 50  0001 C CNN
-F 3 "~" H 7650 3375 50  0001 C CNN
-	1    7650 3375
+P 8000 3575
+F 0 "J4" H 7982 3900 50  0000 C CNN
+F 1 "stereo_jack_3.5mm" H 7982 3809 50  0000 C CNN
+F 2 "lib_fp:horizontal_3.5mm_stereo_TRS_jack_A-853" H 8000 3575 50  0001 C CNN
+F 3 "~" H 8000 3575 50  0001 C CNN
+	1    8000 3575
 	1    0    0    -1  
 $EndComp
 Text GLabel 1300 1675 0    50   Input ~ 0
@@ -999,4 +994,79 @@ Wire Wire Line
 	1300 1750 1300 1675
 Wire Wire Line
 	1300 1850 1500 1850
+$Comp
+L Switch:SW_Push_Dual SW1
+U 1 1 61DE8CB1
+P 1000 2850
+F 0 "SW1" H 1000 3135 50  0000 C CNN
+F 1 "SW_Push_Dual" H 1000 3044 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm_H7.3mm" H 1000 3050 50  0001 C CNN
+F 3 "~" H 1000 3050 50  0001 C CNN
+	1    1000 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 2850 1200 2850
+NoConn ~ 1200 3050
+NoConn ~ 800  3050
+$Comp
+L power:GND #PWR023
+U 1 1 61E100B1
+P 600 3100
+F 0 "#PWR023" H 600 2850 50  0001 C CNN
+F 1 "GND" H 605 2927 50  0000 C CNN
+F 2 "" H 600 3100 50  0001 C CNN
+F 3 "" H 600 3100 50  0001 C CNN
+	1    600  3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	600  3100 600  2850
+Wire Wire Line
+	600  2850 800  2850
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even J9
+U 1 1 61E72B93
+P 6150 1100
+F 0 "J9" H 6200 1450 50  0000 C CNN
+F 1 "Conn_02x03_Odd_Even" H 6200 1350 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 6150 1100 50  0001 C CNN
+F 3 "~" H 6150 1100 50  0001 C CNN
+	1    6150 1100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 1300 6550 1300
+Wire Wire Line
+	6550 1300 6550 1100
+Wire Wire Line
+	6550 1100 6450 1100
+Wire Wire Line
+	6450 1200 6500 1200
+Wire Wire Line
+	6450 1000 6550 1000
+Wire Wire Line
+	5650 1100 5950 1100
+Wire Wire Line
+	5950 1000 5950 950 
+Wire Wire Line
+	5950 950  6500 950 
+Wire Wire Line
+	6500 950  6500 1200
+Connection ~ 6500 1200
+Wire Wire Line
+	6500 1200 6875 1200
+Wire Wire Line
+	5950 1200 5900 1200
+Wire Wire Line
+	5900 1200 5900 900 
+Wire Wire Line
+	5900 900  6550 900 
+Wire Wire Line
+	6550 900  6550 1000
+Connection ~ 6550 1000
+Wire Wire Line
+	6550 1000 6875 1000
+Text Notes 5800 1450 0    50   ~ 0
+dsub9_jumper_pin_select
 $EndSCHEMATC
