@@ -210,6 +210,10 @@
 
 #define MX50_A_B_MIX_LEVEL "VMM:~0"
 
+#define MX50_A_BUS_MOSAIC_OFF "VDE:AMSOF"
+#define MX50_A_BUS_MOSAIC_STEP "VDE:AMS~0"
+
+
 /*
 
 1 VBC Back Color Select // param: VBC:a1a2b1b2
@@ -267,3 +271,85 @@
 53 VHC Color Cancel Setting for Chroma Key // param: VHC:a
 
 */
+
+#define EXTRON_MAV_1x1 "1*1!"
+#define EXTRON_MAV_2x1 "2*1!"
+#define EXTRON_MAV_3x1 "3*1!"
+#define EXTRON_MAV_4x1 "4*1!"
+#define EXTRON_MAV_5x1 "5*1!"
+#define EXTRON_MAV_6x1 "6*1!"
+#define EXTRON_MAV_7x1 "7*1!"
+#define EXTRON_MAV_8x1 "8*1!"
+
+#define EXTRON_MAV_1x2 "1*2!"
+#define EXTRON_MAV_2x2 "2*2!"
+#define EXTRON_MAV_3x2 "3*2!"
+#define EXTRON_MAV_4x2 "4*2!"
+#define EXTRON_MAV_5x2 "5*2!"
+#define EXTRON_MAV_6x2 "6*2!"
+#define EXTRON_MAV_7x2 "7*2!"
+#define EXTRON_MAV_8x2 "8*2!"
+
+#define EXTRON_MAV_1x3 "1*3!"
+#define EXTRON_MAV_2x3 "2*3!"
+#define EXTRON_MAV_3x3 "3*3!"
+#define EXTRON_MAV_4x3 "4*3!"
+#define EXTRON_MAV_5x3 "5*3!"
+#define EXTRON_MAV_6x3 "6*3!"
+#define EXTRON_MAV_7x3 "7*3!"
+#define EXTRON_MAV_8x3 "8*3!"
+
+#define EXTRON_MAV_1x4 "1*4!"
+#define EXTRON_MAV_2x4 "2*4!"
+#define EXTRON_MAV_3x4 "3*4!"
+#define EXTRON_MAV_4x4 "4*4!"
+#define EXTRON_MAV_5x4 "5*4!"
+#define EXTRON_MAV_6x4 "6*4!"
+#define EXTRON_MAV_7x4 "7*4!"
+#define EXTRON_MAV_8x4 "8*4!"
+
+#define EXTRON_MAV_1x5 "1*5!"
+#define EXTRON_MAV_2x5 "2*5!"
+#define EXTRON_MAV_3x5 "3*5!"
+#define EXTRON_MAV_4x5 "4*5!"
+#define EXTRON_MAV_5x5 "5*5!"
+#define EXTRON_MAV_6x5 "6*5!"
+#define EXTRON_MAV_7x5 "7*5!"
+#define EXTRON_MAV_8x5 "8*5!"
+
+#define EXTRON_MAV_1x6 "1*6!"
+#define EXTRON_MAV_2x6 "2*6!"
+#define EXTRON_MAV_3x6 "3*6!"
+#define EXTRON_MAV_4x6 "4*6!"
+#define EXTRON_MAV_5x6 "5*6!"
+#define EXTRON_MAV_6x6 "6*6!"
+#define EXTRON_MAV_7x6 "7*6!"
+#define EXTRON_MAV_8x6 "8*6!"
+
+#define EXTRON_MAV_1x7 "1*7!"
+#define EXTRON_MAV_2x7 "2*7!"
+#define EXTRON_MAV_3x7 "3*7!"
+#define EXTRON_MAV_4x7 "4*7!"
+#define EXTRON_MAV_5x7 "5*7!"
+#define EXTRON_MAV_6x7 "6*7!"
+#define EXTRON_MAV_7x7 "7*7!"
+#define EXTRON_MAV_8x7 "8*7!"
+
+#define EXTRON_MAV_1x8 "1*8!"
+#define EXTRON_MAV_2x8 "2*8!"
+#define EXTRON_MAV_3x8 "3*8!"
+#define EXTRON_MAV_4x8 "4*8!"
+#define EXTRON_MAV_5x8 "5*8!"
+#define EXTRON_MAV_6x8 "6*8!"
+#define EXTRON_MAV_7x8 "7*8!"
+#define EXTRON_MAV_8x8 "8*8!"
+
+
+#define KRAMER_VS402_1x1 "\x01\x81\x81\x81"
+#define KRAMER_VS402_2x1 "\x01\x82\x81\x81"
+#define KRAMER_VS402_3x1 "\x01\x83\x81\x81"
+#define KRAMER_VS402_4x1 "\x01\x84\x81\x81"
+#define KRAMER_VS402_1x2 "\x01\x81\x82\x81"
+#define KRAMER_VS402_2x2 "\x01\x82\x82\x81"
+#define KRAMER_VS402_3x2 "\x01\x83\x82\x81"
+#define KRAMER_VS402_4x2 "\x01\x84\x82\x81"

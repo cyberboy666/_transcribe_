@@ -28,6 +28,8 @@ int incomingByte = 0; // for incoming serial data
 
 bool useFlatMidiMap;
 
+bool flip = false;
+
 bool readInputFromMidiDevice();
 bool readInputFromMidiHost();
 bool readInputFromMidiSerial();
@@ -53,8 +55,9 @@ void setCustomMap(){
     if(midiParam1 == 0){setCmd(A55_A_B_MIX_LEVEL, midiParam2);}
 
     else if(midiParam1 == 1){setCmd(MX50_A_B_MIX_LEVEL, midiParam2);}
+    else if(midiParam1 == 2){setCmd(MX50_A_BUS_MOSAIC_STEP, midiParam2);}
     // else if(midiParam1 == 1){setCmd(A55_CENTER_WIPE_X, midiParam2);}
-    else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
+    // else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
     else if(midiParam1 == 3){setCmd(A55_A_BUS_SOURCE_2, midiParam2);}
     // else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
     // else if(midiParam1 == 3){setCmd(A55_SCENE_GRABER_X, midiParam2);}
@@ -77,8 +80,10 @@ void setCustomMap(){
     else if(midiParam1 == 34){setCmdToggle(A55_DIRECTION_ONE_WAY, 40, 2, 2);}
     else if(midiParam1 == 35){setCmdParamRandom(A55_A_B_MIX_LEVEL);}
 
-    else if(midiParam1 == 48){setCmdNoReplace("1*1!");}
-    else if(midiParam1 == 49){setCmdNoReplace("3*1!");}
+    else if(midiParam1 == 48){setCmdNoReplace(EXTRON_MAV_1x1);}
+    else if(midiParam1 == 49){setCmdNoReplace(EXTRON_MAV_3x1);}
+    // else if(midiParam1 == 48){setCmdNoReplace(KRAMER_VS402_1x1);}
+    // else if(midiParam1 == 49){setCmdNoReplace(KRAMER_VS402_2x1);}
     
 
     else if(midiParam1 == 50){setCmdToggle(A55_A_BUS_EFFECT_ON, 180, 2, 5);}
@@ -102,7 +107,7 @@ void setCustomMap(){
 void setup(){
   altSerial.begin(31250);
   Serial.begin(9600);
-  Serial1.begin(9600, SERIAL_7O1); // SERIAL_7O1 i think for mx50 // 
+  Serial1.begin(9600, SERIAL_8N1); // SERIAL_7O1 for mx50, ,default (SERIAL_8N1) for kramer ave55 and extron // 
   button1.attachClick(connect_usb_midi);
 
   hasUsbDevice = false;
@@ -153,14 +158,16 @@ void loop(){
   Serial1.write(2);
   Serial1.write(cmd);
   Serial1.write(3);
-  // if (Serial1.available() > 0) {
-  // // read the incoming byte:
-  // incomingByte = Serial1.read();
+  
 
-  // // say what you got:
-  // Serial1.print("I received: ");
-  // Serial1.println(incomingByte, DEC);
-  // }
+  if (Serial1.available() > 0) {
+  // read the incoming byte:
+  incomingByte = Serial1.read();
+
+  // say what you got:
+  Serial.print("I received: ");
+  Serial.println(incomingByte, DEC);
+  }
 }
 
 bool readInputFromMidiDevice(){

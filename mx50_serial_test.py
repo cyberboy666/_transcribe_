@@ -11,6 +11,7 @@ import serial_asyncio
 
 
 class WJMx50(asyncio.Protocol):
+    flip = False
     def __init__(self):
         self.reply = bytearray()
     
@@ -25,9 +26,16 @@ class WJMx50(asyncio.Protocol):
             self.write(cmd.encode())
         
     def write(self, cmd):
-        print('-> {}'.format(cmd))
-        msg = b'\x02' + cmd + b'\x03'
-        msg = cmd # extron mod - no start/stop bytes
+        # print('-> {}'.format(cmd))
+        # msg = b'\x02' + cmd + b'\x03'
+        # msg = cmd # extron mod - no start/stop bytes
+        if self.flip:
+            msg = b'\x01' + b'\x81' + b'\x81' + b'\x81'
+            self.flip = False
+        else:
+            msg = b'\x01' + b'\x82' + b'\x81' + b'\x81'
+            self.flip = True
+        print(msg)
         self.transport.write(msg)
 
     def data_received(self, data):
@@ -66,10 +74,17 @@ coro = serial_asyncio.create_serial_connection(
     loop,
     WJMx50,
     '/dev/ttyUSB0',  # or whatever yr comport is
-    bytesize=serial.EIGHTBITS, #.SEVENBITS, - 8bit for extron
-    parity=serial.PARITY_ODD,
+    bytesize=serial.EIGHTBITS, #.SEVENBITS, - EIGHTBITS for extron
+    parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE
 )
 loop.run_until_complete(coro)
 loop.run_forever()
 loop.close()
+
+
+'''
+PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE = 'N', 'E', 'O', 'M', 'S'
+STOPBITS_ONE, STOPBITS_ONE_POINT_FIVE, STOPBITS_TWO = (1, 1.5, 2)
+FIVEBITS, SIXBITS, SEVENBITS, EIGHTBITS = (5, 6, 7, 8)
+'''
