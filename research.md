@@ -121,6 +121,11 @@ crazy that even these two arnt wired the same way ! but maybe only the (tx/rx/gn
 
 dif plug, (mini din) and i think dif wiring too - looks like , oof it makes no sense ! (no mention of buad rate or stop byte or anything really on this one) , maybe not possible to support this one ...
 
+### kramer vs-402 serial spec
+
+![image](https://user-images.githubusercontent.com/12017938/138995847-f35f2c11-33a1-4b4a-b6d5-0c18c2d1f750.png)
+
+
 ## from wikipedia :
 
 ![image](https://user-images.githubusercontent.com/12017938/72552976-32ff5480-3898-11ea-9528-21e9894f0128.png)
