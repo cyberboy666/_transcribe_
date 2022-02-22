@@ -99,3 +99,14 @@ the uC (in A) can act as a USB midi _device_. this means it can be controlled by
 - convert usb-midi controller to serial midi : A + C + D
 - convert rs232 commands to serial-midi : A + B + C
 - use a ps3 controller to send serial-midi : A + C + D
+
+## build notes for v0_5
+
+- decide on what sections you want to build (ie need to have A, probably you want to send out serial so also add B. do you want usb-midi ? then add D, do you want serial midi in/out ? then add C etc)
+- also decide what kind of serial midi ins/out jack you want - old style din5 or new 3.5mm jack ?
+- i started by placing and soldering the caps and resistors, then diodes and regulator (check orientation!)
+- i like to solder in pin sockets for the pro-micro and usb-header part so they can be removed if i upgrage the circuit design - this is up to you -> will need to solder in the pins onto the pro-micro and usb-host shield if not already done. note the extra pin needed on host and the trace that needs to be cut!
+- if using pin sockets do this next - when cutting the sockets to fit aim your wire cutters exactly on the adjacent socket (one more) than you need - this is to ensure the pin part doesnt fall out of the socket you need when cutting. you may need to bend u6 down abit to fit socket in
+- now place the j9 pins (and two jumpers setting the serial pins on din9) and the ic/ic_sockets
+- finally can solder on the interface parts - midi ins and outs, din9 and 3.5mm jacks
+- note dont need to solder anything on for u5 pins - this is just exposing pins on the pro-micro so it can be reflashed incase of critical error flashing - dont need to place the euroheader either - this is just incase you want to give 5v from an existing europower rail (take care of orientation of the header if doing this)

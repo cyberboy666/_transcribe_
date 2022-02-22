@@ -1,39 +1,146 @@
-# WIP _transcribe_
+# \_transcribe\_
 
-for midi control of panasonic video mixers.
+### midi to rs232 bridge - for performance control of old video mixers and switchers
 
-__disclaimer__ _this project is a work in progress. dont order any boards or expect things to be clear or make sense just yet. if you would like to help or test however pls email me : langolierz@gmail.com_
+![image](https://user-images.githubusercontent.com/12017938/155063426-edec505d-e370-440a-b1c2-ed1fbf227e34.png)
 
-## background
+- this circuit is distributed by __UNDERSCORES__ - _an open video hardware label_ : it is available to purchase - as a pcb, kit or assembled unit - at [underscores.shop](https://underscores.shop/_transcribe_/)
+- the schematic for the circuit can be found [here](/hardware/schematic.pdf)
+- the pcb gerber files for the lastest version can be found [here](/hardware/gerber_latest.zip)
+- consider [donating](https://liberapay.com/underscores/) to the underscores project to help us continue creating for the commons
 
-some people in the video-art community are performing with old hardware video-mixers such as in the Pansonic_WJ_AVE and Pansonic_WJ_MX lines. some of these mixers have a RS232 serial for interfacing with them digitally. this is especially useful for live performace where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but many more programs and devices that are made to interface digitally using MIDI.
+## description
 
-the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocal used commonly in live/performance instruments to the specific _RS232 panasonic video-mixer spec_ , to better equipt these retired workstations for their new life of glamour on stage
+people in the video-art community are performing with old hardware video-mixers such as the Pansonic_WJ_AVE55 and Pansonic_WJ_MX30/50. some of these mixers have a RS232 serial port for interfacing with them digitally. this is especially useful for live performance where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but there many more programs and devices that are made to interface digitally using MIDI.
 
-## supported video-mixers:
-
-- panasonic wj_ave55 wip
-- (not yet) panasonic wj_mx20
-- (not yet) panasonic wj_mx30
-- (not yet) panasonic wj_mx50
-- (not yet) panasonic wj_mx70
-- more ? if you have another mixer or any old equipment with rs232 (or maybe rs422 - i dunno yet..) and a spec-sheet maybe we can add support for it ?
-
-## hardware features
+the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocol used commonly in live&performance instruments to the specific _RS-232 video-device specification_ , to better equip these retired workstations for their new life of glamour on stage
 
 - input USB-midi from a USB-HOST such as a computer or rpi
-- input serial-midi from older midi devices (din)
+- input serial-midi from older midi devices (din5)
 - input USB-midi for a USB-DEVICE such as a korg nanokontroller or otherwise
-- output RS232-serial commands to control panasonic video-mixers
-- all these interfaces are bi-directional and so can be modified with firmware to do other useful things (eg like a USB-DEVICE -> SERIAL converter)
+- output RS232-serial commands over 3.5mm jack or dsub9 socket to control panasonic video-mixers and other devices
+- all these interfaces are bi-directional and so can be modified with firmware to do other useful things (eg like a USB-DEVICE -> SERIAL midi converter)
 
-## software features
+## demo video
 
-- mapping of notes or cc presses to commands (BUTTON)
-- mapping of cc values to continous controls, like a-b mix or key-amount (SLIDER)
-- mapping of two cc channels to 2d continous controls like xy-position or colour-select (JOYSTICK)
-- mapping of notes or cc presses to alternating commands (SWITCH)
-- mapping of notes or cc presses to a rotating selection of consecutive commands (CYCLE)
-- mapping of cc values to a partitioned selection of consecutive commands (STEP)
+[video coming soon]
 
-(extenable to more such as random, random-walks, ossilators etc ...?)
+# documentation
+
+this project is fully _open-source hardware_ - all the files required to build it are included in this repo for free. if you have the time and/or skill you can contribute back by collaborating on / testing new designs, improving these docs, making demo videos/other creative content etc. you can also support the project financially by [donating directing](https://liberapay.com/underscores/), or purchasing through the [web shop](https://underscores.shop).
+
+depending on whether you are going fully diy or buying an assembled and tested unit, some of the following guides will be relavent to you. the flow would be:
+
+## ordering parts
+
+<details><summary><b>parts sourcing guide (w/ notes on pcb fabracation )</b> - start here if you are building fully from scatch or have purchased a pcb</summary>
+
+i try to source all the parts i can from either:
+- [tayda](https://www.taydaelectronics.com/) ; cheaper for common parts like resistors etc, also good for mechanical parts like switches and buttons
+- [mouser](https://www.mouser.de/) ; has lots more options, speciality video ic's, can sometimes cost more (free shipping on orders over 50euros)
+- other ; ocationally there will be parts which will need to be sourced elsewhere - usaully either aliexpress, ebay or amazon etc...
+
+take a look at the [full_bom](/hardware/bom/full_bom.csv) for this project to see where i am sourcing each part from
+
+## import into tayda
+
+- go to the [tayda quick order](https://www.taydaelectronics.com/quick-order/) and in bottom corner choose _add from file_
+- select the file [tayda_bom.csv](../hardware/bom/tayda_bom.csv) in the BOM folder (you will have to download it first or clone this repo)
+- after importing select _add to cart_
+- __NOTE:__ the minimum value for resistors is 10, so you may need to modify these values to add to cart (or if they are already modified here you will need to see the  full_bom for actual part QTY) 
+
+## import into mouser
+
+- go to [mouser bom tool](https://nz.mouser.com/Bom/) and click _upload spreadsheet_
+- select the file [mouser_bom.csv](../hardware/bom/mouser_bom.csv) in this folder (you will have to download it first or clone this repo), then _upload my spreadsheet_ and _next_
+- ensure that __Mouser Part Number__ is selected in the dropdown above the first row, then _next_, _process_
+- if everything looks correct can now put _add to basket_
+
+# ordering pcbs
+
+you can support this project by buying individual pcbs from the [shop](https://underscores.shop). if you would rather have pcbs fabricated from gerbers directly the file you need is [here](/hardware/gerber_latest.zip) 
+
+- i get my pcbs fabricated from [jlcpcb](https://cart.jlcpcb.com/quote) - 5 is the minumum order per design
+- upload the zip file with the `add gerber file` button
+- the default settings are mostly fine - set the __PCB Qty__ and __PCB Color__ settings (you can check that the file looks correct with pcb veiwer)
+- it may be best to combine orders with other pcbs you want to have fab'd since the shipping can cost more than the items - also orginising group buys is a good way to distribute the extra pcbs /costs 
+  
+i often use jlcpcb because they are reliable, cheap and give you an option of colours. remember though that the cheapest Chinese fab houses are not always the most ethical or environmently friendly - if you can afford it consider supporting local companies. 
+
+</details>
+
+## assembly guide
+
+<details><summary><b>assembly guide</b> - start here if you have purchased a diy kit</summary>
+  
+
+## interactive BOM for build guiding
+
+follow this link to view the [interactive BOM](https://htmlpreview.github.io/?https://github.com/cyberboy666/_transcribe_/blob/main/hardware/bom/ibom.html)
+
+## general solder advices
+
+- remember to heat pad first (2-3seconds), then add solder, then continue to heat (1-2seconds)
+
+- Checkout the web-comic [soldering is easy](https://mightyohm.com/files/soldercomic/FullSolderComic_EN.pdf) for more soldering advice
+
+## general order of assembly
+
+- in general while assembling i start placing resistors and capacitors first. placing 5 - 10 components at a time and then flipping the board to solder them and trim the legs etc.
+- next i would do diodes, transistors and ic's - taking care that these are placed in the right direction (using a ic socket can be useful)
+- finally i place the interface parts - rca jacks, power jack, pots and switches - make sure these have lots of solder on for structural stablity
+
+## slightly more specific assembly advice
+
+[coming soon]
+  
+## flashing firmware onto the micro-controller
+  
+if you have got a kit from the shop the firmware will be pre-configured - still you might want to read this so you can edit the code and update the midi mapping.
+
+[more details coming soon]
+  
+</details>
+  
+## operating guide
+  
+<details><summary><b>operating guide</b> - start here if you have purchased an assembled unit</summary>
+
+[coming soon]
+
+</details>
+
+### more info
+
+<details><summary><b>how the circuit works</b></summary>
+  
+[coming soon]
+                                                                                                                             
+</details>
+
+<details><summary><b>contributing guide</b></summary>
+  
+if you would like to contribute back to these projects in some way but dont know how the best thing (for now) would be to reach out to me directly ( tim@cyberboy666.com or @cyberboy666 on scanlines forum) - i will be happy to help
+  
+</details>
+
+
+## credits & more info
+
+
+This circuit is distributed through UNDERSCORES – open video hardware label – visit [underscores.shop](https://underscores.shop) for more info
+
+The pcb was designed using KICAD
+
+Everything from gerbers, cad files, panels and documentation is freely available online and distributed under CC-BY-SA / open-source licenses – help us contribute to the commons !
+
+Ask any questions or start discussions related to this project on the [scanlines.xyz](https://scanlines.xyz) forum – an online community space dedicated to diy av / electronic media art
+
+You can contact me directly at tim (at) cyberboy666 (dot) com 
+Please get in touch if you are interested in hosting a workshop !
+
+![image](https://user-images.githubusercontent.com/12017938/152463166-0fea052b-1eed-4f63-a59d-55c360bfea76.png)
+
+
+Thanks to Gilbert Sinnott for helping with initial experiments. to Bastien Lavaud for circuit advice, always. To Ben Caldwell for project advice. To everyone who has or will contribute ♥♥♥
+
