@@ -8,7 +8,7 @@ people in the video-art community are performing with old hardware video-mixers 
 
 the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocol used commonly in live&performance instruments to the specific _RS-232 video-device specification_ , to better equip these retired workstations for their new life of glamour on stage
 
-- this circuit is distributed by __UNDERSCORES__ - _an open video hardware label_ : it is available to purchase - as a pcb, kit or assembled unit - at [underscores.shop](https://underscores.shop/i_n_c_u_r/)
+- this circuit is distributed by __UNDERSCORES__ - _an open video hardware label_ : it is available to purchase - as a pcb, kit or assembled unit - at [underscores.shop](https://underscores.shop/_transcribe_/)
 - the schematic for the circuit can be found [here](/hardware/schematic.pdf)
 - the pcb gerber files for the lastest version can be found [here](/hardware/transcribe_latest.zip)
 - consider [donating](https://liberapay.com/underscores/) to the underscores project to help us continue creating for the commons
@@ -58,7 +58,7 @@ take a look at the [full_bom](/hardware/bom/full_bom.csv) for this project to se
 
 # ordering pcbs
 
-you can support this project by buying individual pcbs from the [shop](https://underscores.shop). if you would rather have pcbs fabricated from gerbers directly the file you need is [here](/hardware/i_n_c_u_r_latest.zip) 
+you can support this project by buying individual pcbs from the [shop](https://underscores.shop). if you would rather have pcbs fabricated from gerbers directly the file you need is [here](/hardware/transcribe_latest.zip) 
 
 - i get my pcbs fabricated from [jlcpcb](https://cart.jlcpcb.com/quote) - 5 is the minumum order per design
 - upload the zip file with the `add gerber file` button
