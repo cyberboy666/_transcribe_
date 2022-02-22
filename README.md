@@ -1,10 +1,12 @@
-# _transcribe_
+# \_transcribe\_
 
-### midi to rs232 bridge - for performance control of old video equipment
+### midi to rs232 bridge - for performance control of old video mixers and switchers
 
 [image coming soon]
 
+people in the video-art community are performing with old hardware video-mixers such as in the Pansonic_WJ_AVE and Pansonic_WJ_MX lines. some of these mixers have a RS232 serial port for interfacing with them digitally. this is especially useful for live performance where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but there many more programs and devices that are made to interface digitally using MIDI.
 
+the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocol used commonly in live&performance instruments to the specific _RS-232 video-device specification_ , to better equip these retired workstations for their new life of glamour on stage
 
 - this circuit is distributed by __UNDERSCORES__ - _an open video hardware label_ : it is available to purchase - as a pcb, kit or assembled unit - at [underscores.shop](https://underscores.shop/i_n_c_u_r/)
 - the schematic for the circuit can be found [here](/hardware/schematic.pdf)
@@ -18,7 +20,6 @@
 - input USB-midi for a USB-DEVICE such as a korg nanokontroller or otherwise
 - output RS232-serial commands over 3.5mm jack or dsub9 socket to control panasonic video-mixers and other devices
 - all these interfaces are bi-directional and so can be modified with firmware to do other useful things (eg like a USB-DEVICE -> SERIAL midi converter)
-
 
 ## demo video
 
@@ -93,6 +94,12 @@ follow this link to view the [interactive BOM](https://htmlpreview.github.io/?ht
 
 [coming soon]
   
+## flashing firmware onto the micro-controller
+  
+if you have got a kit from the shop the firmware will be pre-configured - still you might want to read this so you can edit the code and update the midi mapping.
+
+[more details coming soon]
+  
 </details>
   
 ## operating guide
@@ -135,5 +142,5 @@ Please get in touch if you are interested in hosting a workshop !
 ![image](https://user-images.githubusercontent.com/12017938/152463166-0fea052b-1eed-4f63-a59d-55c360bfea76.png)
 
 
-Thanks to Gilbert Sin. to Bastien Lavaud for circuit advice, always. To Ben Caldwell for project advice. To everyone who has or will contribute ♥♥♥
+Thanks to Gilbert Sinnott for helping with initial experiments. to Bastien Lavaud for circuit advice, always. To Ben Caldwell for project advice. To everyone who has or will contribute ♥♥♥
 
