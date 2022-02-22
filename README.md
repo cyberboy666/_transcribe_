@@ -4,16 +4,16 @@
 
 ![image](https://user-images.githubusercontent.com/12017938/155063426-edec505d-e370-440a-b1c2-ed1fbf227e34.png)
 
+- this circuit is distributed by __UNDERSCORES__ - _an open video hardware label_ : it is available to purchase - as a pcb, kit or assembled unit - at [underscores.shop](https://underscores.shop/_transcribe_/)
+- the schematic for the circuit can be found [here](/hardware/schematic.pdf)
+- the pcb gerber files for the lastest version can be found [here](/hardware/gerber_latest.zip)
+- consider [donating](https://liberapay.com/underscores/) to the underscores project to help us continue creating for the commons
+
+## description
+
 people in the video-art community are performing with old hardware video-mixers such as the Pansonic_WJ_AVE55 and Pansonic_WJ_MX30/50. some of these mixers have a RS232 serial port for interfacing with them digitally. this is especially useful for live performance where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but there many more programs and devices that are made to interface digitally using MIDI.
 
 the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocol used commonly in live&performance instruments to the specific _RS-232 video-device specification_ , to better equip these retired workstations for their new life of glamour on stage
-
-- this circuit is distributed by __UNDERSCORES__ - _an open video hardware label_ : it is available to purchase - as a pcb, kit or assembled unit - at [underscores.shop](https://underscores.shop/_transcribe_/)
-- the schematic for the circuit can be found [here](/hardware/schematic.pdf)
-- the pcb gerber files for the lastest version can be found [here](/hardware/transcribe_latest.zip)
-- consider [donating](https://liberapay.com/underscores/) to the underscores project to help us continue creating for the commons
-
-## features
 
 - input USB-midi from a USB-HOST such as a computer or rpi
 - input serial-midi from older midi devices (din5)
@@ -58,7 +58,7 @@ take a look at the [full_bom](/hardware/bom/full_bom.csv) for this project to se
 
 # ordering pcbs
 
-you can support this project by buying individual pcbs from the [shop](https://underscores.shop). if you would rather have pcbs fabricated from gerbers directly the file you need is [here](/hardware/transcribe_latest.zip) 
+you can support this project by buying individual pcbs from the [shop](https://underscores.shop). if you would rather have pcbs fabricated from gerbers directly the file you need is [here](/hardware/gerber_latest.zip) 
 
 - i get my pcbs fabricated from [jlcpcb](https://cart.jlcpcb.com/quote) - 5 is the minumum order per design
 - upload the zip file with the `add gerber file` button
@@ -76,7 +76,7 @@ i often use jlcpcb because they are reliable, cheap and give you an option of co
 
 ## interactive BOM for build guiding
 
-follow this link to view the [interactive BOM](https://htmlpreview.github.io/?https://github.com/cyberboy666/_transcribe_/blob/master/hardware/bom/ibom.html)
+follow this link to view the [interactive BOM](https://htmlpreview.github.io/?https://github.com/cyberboy666/_transcribe_/blob/main/hardware/bom/ibom.html)
 
 ## general solder advices
 
