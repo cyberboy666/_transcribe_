@@ -2,9 +2,9 @@
 
 ### midi to rs232 bridge - for performance control of old video mixers and switchers
 
-[image coming soon]
+![image](https://user-images.githubusercontent.com/12017938/155063426-edec505d-e370-440a-b1c2-ed1fbf227e34.png)
 
-people in the video-art community are performing with old hardware video-mixers such as in the Pansonic_WJ_AVE and Pansonic_WJ_MX lines. some of these mixers have a RS232 serial port for interfacing with them digitally. this is especially useful for live performance where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but there many more programs and devices that are made to interface digitally using MIDI.
+people in the video-art community are performing with old hardware video-mixers such as the Pansonic_WJ_AVE55 and Pansonic_WJ_MX30/50. some of these mixers have a RS232 serial port for interfacing with them digitally. this is especially useful for live performance where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but there many more programs and devices that are made to interface digitally using MIDI.
 
 the aim of this project is to create a small utility module that can __\_transcribe\___ _MIDI_, a protocol used commonly in live&performance instruments to the specific _RS-232 video-device specification_ , to better equip these retired workstations for their new life of glamour on stage
 
