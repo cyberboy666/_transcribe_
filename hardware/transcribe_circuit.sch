@@ -5,10 +5,10 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "_transcribe_"
-Date "2020-09-23"
-Rev "0.3"
+Date "2022-02-22"
+Rev "v0_5_1"
 Comp "cyberboy666 & user43368831"
-Comment1 ""
+Comment1 "CC-BY-SA"
 Comment2 ""
 Comment3 ""
 Comment4 ""
@@ -438,11 +438,9 @@ Text GLabel 4225 4175 0    50   Input ~ 0
 ALT_SERIAL_IN
 Wire Wire Line
 	4225 4175 4400 4175
-Wire Wire Line
-	1325 2450 1500 2450
 Text GLabel 1275 2275 0    50   Input ~ 0
 MIDI_SERIAL_IN
-Text GLabel 1325 2450 0    50   Input ~ 0
+Text GLabel 1300 2450 0    50   Input ~ 0
 MIDI_SERIAL_OUT
 Wire Wire Line
 	1275 2275 1275 2350
@@ -530,7 +528,6 @@ NoConn ~ 1500 2150
 NoConn ~ 1500 2250
 NoConn ~ 1500 2550
 NoConn ~ 1500 2650
-NoConn ~ 1500 2750
 NoConn ~ 2900 2150
 NoConn ~ 2900 2250
 NoConn ~ 2900 2350
@@ -995,7 +992,7 @@ Wire Wire Line
 Wire Wire Line
 	1300 1850 1500 1850
 $Comp
-L Switch:SW_Push_Dual SW1
+L Switch:SW_Push SW1
 U 1 1 61DE8CB1
 P 1000 2850
 F 0 "SW1" H 1000 3135 50  0000 C CNN
@@ -1005,10 +1002,6 @@ F 3 "~" H 1000 3050 50  0001 C CNN
 	1    1000 2850
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1500 2850 1200 2850
-NoConn ~ 1200 3050
-NoConn ~ 800  3050
 $Comp
 L power:GND #PWR023
 U 1 1 61E100B1
@@ -1069,4 +1062,13 @@ Wire Wire Line
 	6550 1000 6875 1000
 Text Notes 5800 1450 0    50   ~ 0
 dsub9_jumper_pin_select
+Wire Wire Line
+	1200 2850 1200 2750
+Wire Wire Line
+	1200 2750 1500 2750
+Wire Wire Line
+	1300 2450 1300 2850
+Wire Wire Line
+	1300 2850 1500 2850
+NoConn ~ 1500 2450
 $EndSCHEMATC
