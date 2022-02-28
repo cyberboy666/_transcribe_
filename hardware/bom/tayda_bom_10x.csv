@@ -1,14 +1,16 @@
-sku,qty,ref,val,single unit amount
-A-1063,10,C1 ,100uf,1
-A-214,40,C2 C4 C3 C5 ,0.1u,4
-A-157,20,D1 D2 ,1N4148,2
-A-2956,10,J1 ,europower,1
-A-300,10,J3 ,dsub9_socket,1
-A-853,30,J6 J2 J4 ,stereo_jack_3.5mm,3
-A-1010,20,J7 J5 ,din5,2
-A-2246,30,R3 R1 R2 ,220,3
-A-2203,10,R4 ,10k,1
-A-034,10,U2 ,MAX232,1
-A-871,10,U3 ,6N137,1
-A-882,10,U4 ,CD4069,1
-A-492,10,U6 ,78L33,1
+sku,qty,ref,val
+A-1063,10,C1 ,100uf,tayda
+A-214,40,C2 C3 C4 C5 ,0.1u,tayda
+A-157,20,D1 D2 ,1N4148,tayda
+A-2956,10,J1 ,europower,tayda
+A-300,10,J3 ,dsub9_socket,tayda
+A-853,30,J2 J4 J6 ,stereo_jack_3.5mm,tayda
+A-1010,20,J5 J7 ,din5,tayda
+A-1324,20,J9 J10 ,jumper,tayda
+A-2246,30,R1 R2 R3 ,220,tayda
+A-2203,10,R4 ,10k,tayda
+A-5129,10,SW1 ,SW_Push_Dual,tayda
+A-034,10,U2 ,MAX232,tayda
+A-871,10,U3 ,6N137,tayda
+A-882,10,U4 ,CD4069,tayda
+A-492,10,U6 ,78L33,tayda

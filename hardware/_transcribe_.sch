@@ -19,7 +19,7 @@ U 1 1 5E1CCE60
 P 2200 2500
 F 0 "U1" H 2200 3537 60  0000 C CNN
 F 1 "ProMicro" H 2200 3431 60  0000 C CNN
-F 2 "Module:ProMicro" H 2300 1450 60  0001 C CNN
+F 2 "lib_fp:ProMicro" H 2300 1450 60  0001 C CNN
 F 3 "" H 2300 1450 60  0000 C CNN
 	1    2200 2500
 	1    0    0    -1  
@@ -41,7 +41,7 @@ U 1 1 5E1D17C6
 P 2575 6400
 F 0 "U5" H 2575 7437 60  0000 C CNN
 F 1 "usbHostMini" H 2575 7331 60  0000 C CNN
-F 2 "Module:usbHostMidi" H 2675 5350 60  0001 C CNN
+F 2 "lib_fp:usbHostMidi" H 2675 5350 60  0001 C CNN
 F 3 "" H 2675 5350 60  0000 C CNN
 	1    2575 6400
 	1    0    0    -1  
@@ -905,7 +905,7 @@ L Connector_Generic:Conn_01x06 J8
 U 1 1 5EE5600D
 P 4625 5900
 F 0 "J8" H 4543 5375 50  0000 C CNN
-F 1 "Conn_01x06" H 4543 5466 50  0000 C CNN
+F 1 "bootloader" H 4543 5466 50  0000 C CNN
 F 2 "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" H 4625 5900 50  0001 C CNN
 F 3 "~" H 4625 5900 50  0001 C CNN
 	1    4625 5900
@@ -1018,12 +1018,12 @@ Wire Wire Line
 Wire Wire Line
 	600  2850 800  2850
 $Comp
-L Connector_Generic:Conn_02x03_Odd_Even J9
+L Connector_Generic:Conn_01x03 J9
 U 1 1 61E72B93
 P 6150 1100
-F 0 "J9" H 6200 1450 50  0000 C CNN
-F 1 "Conn_02x03_Odd_Even" H 6200 1350 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 6150 1100 50  0001 C CNN
+F 0 "J9" H 6000 1450 50  0000 C CNN
+F 1 "jumper" H 6000 1400 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6150 1100 50  0001 C CNN
 F 3 "~" H 6150 1100 50  0001 C CNN
 	1    6150 1100
 	1    0    0    -1  
@@ -1071,4 +1071,15 @@ Wire Wire Line
 Wire Wire Line
 	1300 2850 1500 2850
 NoConn ~ 1500 2450
+$Comp
+L Connector_Generic:Conn_01x03 J10
+U 1 1 621EA516
+P 6250 1100
+F 0 "J10" H 6100 1450 50  0000 C CNN
+F 1 "jumper" H 6100 1400 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6250 1100 50  0001 C CNN
+F 3 "~" H 6250 1100 50  0001 C CNN
+	1    6250 1100
+	-1   0    0    -1  
+$EndComp
 $EndSCHEMATC
