@@ -108,7 +108,8 @@ if you have got a kit from the shop the firmware will be pre-configured - still 
   
 <details><summary><b>operating guide</b> - start here if you have purchased an assembled unit</summary>
 
-[coming soon]
+![image](https://user-images.githubusercontent.com/12017938/158474325-491af7d0-d0d1-4446-a689-3c4a773478fd.png)
+
 
 </details>
 
