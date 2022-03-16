@@ -41,6 +41,16 @@ i try to source all the parts i can from either:
 - other ; ocationally there will be parts which will need to be sourced elsewhere - usaully either aliexpress, ebay or amazon etc...
 
 take a look at the [full_bom](/hardware/bom/full_bom.csv) for this project to see where i am sourcing each part from
+  
+## omitting parts
+  
+if you know exactly how you will use your _transcribe_ some parts of this circuit build can be omitted. the pcb is divided into sections that are marked on silk-screen:
+
+- __A - micro-conntroller - centre__ : this is the brain of the circuit and is required to make it do anything. its also where USB_MIDI is received from(/sent to) usb-hosts (eg computer or raspberry pi)
+- __B - rs232 serial - output(/input)__ : for sending(/receiving) serial at rs232 levels - only omit if you are not using this board for its default / intended purpose
+- __C - serial midi - input(/output)__ : for receiving(/sending) midi messages over serial (usually on older hardware over din5 or 3.5mm jack) - can omit if you are only using (newer) hardware with USB-MIDI
+- __D USB-midi HOST__: adds circuitry so that micro-controller can act as USB-HOST. for receiving midi messages from(/sending to) usb-devices (eg korg nanokontrol2) - can omit this if not interested in controlling from usb-devices
+
 
 ## import into tayda
 
@@ -92,15 +102,66 @@ follow this link to view the [interactive BOM](https://htmlpreview.github.io/?ht
 - next i would do diodes, transistors and ic's - taking care that these are placed in the right direction (using a ic socket can be useful)
 - finally i place the interface parts - rca jacks, power jack, pots and switches - make sure these have lots of solder on for structural stablity
 
-## slightly more specific assembly advice
+## interface choice / double footprint
+  
+_serial-midi_ is most commonly sent over __din5__ (older hardware) J5 & J7 or __trs 3.5mm jack__ (newer hardware) J4 & J6 - footprints for both are overlayed on the pcb so you can choose which one you would like to have
+  
+## specific assembly advice
 
 [coming soon]
   
+</details>
+
+## firmware guide
+
+<details><summary><b>firmware guide</b> - for editing the code & flashing it to your micro-controller</summary>
+  
 ## flashing firmware onto the micro-controller
   
-if you have got a kit from the shop the firmware will be pre-configured - still you might want to read this so you can edit the code and update the midi mapping.
+if you have got a kit from the shop the default firmware will be pre-configured - still you probably will want to follow this so you can edit the code and update the mappings.
+  
+### install guide
+  
+all _underscores_ projects with micro-controllers use [platformio](https://platformio.org/) with [visual studio code](https://code.visualstudio.com/) to edit, flash and monitor the code.
+  
+- first download (and unzip) the code in this repo - easiest is [as a zip](https://github.com/cyberboy666/_transcribe_/archive/refs/heads/main.zip) or you can clone using git if you are comfortable with this
+- next download, install and open [visual studio code](https://code.visualstudio.com/#alt-downloads)
+- now open the extension tab within vscode on left vertical menu (or press ctrl-shift-x) and search for `platformio` to install this extension
+  
+![image](https://user-images.githubusercontent.com/12017938/158495161-7c3114fc-814b-4acc-b142-4a9522370473.png)
 
-[more details coming soon]
+- connect the micro-controller to computer via usb, open the _transcribe_ software folder (ctrl-k ctrl-o) in vscode and find the _platformio_ commands (either in left vertical menu under _platformio_ or little tick/arrow symbols along bottom blue bar) - `PlatformIO: Upload` should flash the default code to your micro-controller
+  
+![image](https://user-images.githubusercontent.com/12017938/158495844-99466196-086a-47d2-b803-2b5941d33ac5.png)
+
+### mapping edit guide
+  
+this guide is just an overview to get you started. the two files that you might want to look at are: 
+- [software/src/commands.h](software/src/commands.h) - where the specific serial protocol commands are defined
+- [software/src/main.cpp](software/src/main.cpp) - all the code that handles receiving midi and writing serial is - including the _mapping function_
+  
+open the `src/main.cpp` file in vscode and fold all functions by pressing `ctrl-k, ctrl-0` - this makes reading it a bit easier:
+
+![image](https://user-images.githubusercontent.com/12017938/158500187-9222c7e7-a8f3-4ff5-b663-3d6d90e5ee68.png)
+
+open and take a look at the `setAVE55nanokontrolMap` method - with these few lines we can start to see how the mapping works:
+  
+```cpp
+    if(midiParam1 == 0){setCmd(A55_A_B_MIX_LEVEL, midiParam2);}
+    else if(midiParam1 == 1){setCmd(A55_THRESHOLD_LUM_KEY, midiParam2);}
+```
+  
+- since this is within the clause `midiCommand == MIDICOMMAND::CC` we can read `midiParam1` as the midi cc number and `midiParam2` as the cc value (position of slider etc)
+- these lines basically say that the cc0 slider on my midi controller will set the mix level and the cc1 slider will set luma_key threshhold
+- both of these functions _use_ the `midiParam2` - ie control a variable parameter that is set with slider position
+  
+```cpp
+    else if(midiParam1 == 64){setCmd(A55_A_BUS_SOURCE_1);}
+    else if(midiParam1 == 65){setCmd(A55_A_BUS_SOURCE_2);}
+```
+- these commands however are button presses - when a midi_cc number 64 is sent it will set the A bus to source 1 (regardless of what the `midiParam2` is)
+  
+------------- need to explain this better --------------
   
 </details>
   
@@ -142,7 +203,7 @@ Ask any questions or start discussions related to this project on the [scanlines
 You can contact me directly at tim (at) cyberboy666 (dot) com 
 Please get in touch if you are interested in hosting a workshop !
 
-![image](https://user-images.githubusercontent.com/12017938/152463166-0fea052b-1eed-4f63-a59d-55c360bfea76.png)
+![image](https://user-images.githubusercontent.com/12017938/158493552-49a106d9-8a07-45a7-9833-da2faddb7406.png)
 
 
 Thanks to Gilbert Sinnott for helping with initial experiments. to Bastien Lavaud for circuit advice, always. To Ben Caldwell for project advice. To everyone who has or will contribute ♥♥♥
