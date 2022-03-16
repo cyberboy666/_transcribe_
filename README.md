@@ -144,24 +144,51 @@ open the `src/main.cpp` file in vscode and fold all functions by pressing `ctrl-
 
 ![image](https://user-images.githubusercontent.com/12017938/158500187-9222c7e7-a8f3-4ff5-b663-3d6d90e5ee68.png)
 
-open and take a look at the `setAVE55nanokontrolMap` method - with these few lines we can start to see how the mapping works:
-  
-```cpp
-    if(midiParam1 == 0){setCmd(A55_A_B_MIX_LEVEL, midiParam2);}
-    else if(midiParam1 == 1){setCmd(A55_THRESHOLD_LUM_KEY, midiParam2);}
-```
-  
-- since this is within the clause `midiCommand == MIDICOMMAND::CC` we can read `midiParam1` as the midi cc number and `midiParam2` as the cc value (position of slider etc)
-- these lines basically say that the cc0 slider on my midi controller will set the mix level and the cc1 slider will set luma_key threshhold
-- both of these functions _use_ the `midiParam2` - ie control a variable parameter that is set with slider position
+open and take a look at the `setAVE55nanokontrolMap` method - we will first look at these lines:
   
 ```cpp
     else if(midiParam1 == 64){setCmd(A55_A_BUS_SOURCE_1);}
     else if(midiParam1 == 65){setCmd(A55_A_BUS_SOURCE_2);}
 ```
-- these commands however are button presses - when a midi_cc number 64 is sent it will set the A bus to source 1 (regardless of what the `midiParam2` is)
   
-------------- need to explain this better --------------
+the first line is saying: __if the incoming midi message has `midiParam1` set to 64, then send the `A55_A_BUS_SOURCE_1` command over rs232 serial__ - since we can see from above that this line is within the conditional: `if(midiCommand == MIDICOMMAND::CC)` , then we know that `midiParam1` is refering to the cc channel. we can also see in the __commands.h__ file  that `A55_A_BUS_SOURCE_1` is set to the command from that panasonic ave55 specification that switches the a-bus source to input 1:
+```cpp
+  #define A55_A_BUS_SOURCE_1 "VCP:200"
+```
+
+this line is mapping a midi message on cc channel 64 to the rs232 message for ave55 that switches the input source. this is the simplest kind of mapping - a discrete BUTTON press. however there are also mappings to functions that take parameter values also. for example the `A55_A_B_MIX_LEVEL` command that wipes between the a-bus to b-bus on the mixer:
+  
+ ```cpp
+ if(midiParam1 == 0){setCmd(A55_A_B_MIX_LEVEL, midiParam2);}
+ else if(midiParam1 == 1){setCmd(A55_THRESHOLD_LUM_KEY, midiParam2);}
+ else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_X, midiParam2);}
+ else if(midiParam1 == 3){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
+```
+
+we can see that on these mappings also the __midiParam2__ value is passed into the _setCmd_ function - this is the _cc value_ of the channel - on my controller - the position of the slider that is sending on cc channel 0. the rs232 command for this function also takes a varible input to set position of the mix:
+```cpp
+#define A55_A_B_MIX_LEVEL "VMM:179~0"
+```
+where the `~0` is a placeholder that is replaced with the hex-converted value of `midiParam2`. there are other ways to map midi notes to rs232 commands. there are more 'advanced' mapping functions in the code for this - for example:
+```cpp
+else if(midiParam1 == 35){setCmdParamRandom(A55_A_B_MIX_LEVEL);}
+```
+takes a button press and converts it to a random mix level. another useful mapping is taking continuous inputn (eg slider on midi controller)  and convert this to a STEP of different discrete commands - for example:
+```cpp
+else if(midiParam1 == 17){setCmdStepAVE55(A55_A_BUS_MOSAIC_OFF, midiParam2, 76, 6);}
+else if(midiParam1 == 18){setCmdStepAVE55(A55_A_BUS_PAINT_OFF, midiParam2, 82, 6);}
+```
+these mappings STEP between sending 6 different rs232 commands on a single slider - so you can set all the mosaic/paint effect levels in one turn. another useful 'advanced' mapping function is the SWITCH:
+  
+```cpp
+else if(midiParam1 == 50){setCmdSwitch(MX50_A_BUS_EFFECT_ON, MX50_A_BUS_EFFECT_OFF, 3);}
+```
+
+this will SWITCH between sending the _on_ and _off_ commands when the same midi command is send (the third parameter input `3` is a unique index reference to store the on/off state in memory between messages)
+  
+these are just some examples of the ways that code can be used to perform these mappings. if you are interested can see more in the code directly or write your own mapping functions!
+  
+
   
 </details>
   
