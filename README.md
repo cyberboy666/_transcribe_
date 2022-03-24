@@ -89,6 +89,8 @@ i often use jlcpcb because they are reliable, cheap and give you an option of co
 ## interactive BOM for build guiding
 
 follow this link to view the [interactive BOM](https://htmlpreview.github.io/?https://github.com/cyberboy666/_transcribe_/blob/main/hardware/bom/ibom.html)
+  
+
 
 ## general solder advices
 
@@ -106,9 +108,28 @@ follow this link to view the [interactive BOM](https://htmlpreview.github.io/?ht
   
 _serial-midi_ is most commonly sent over __din5__ (older hardware) J5 & J7 or __trs 3.5mm jack__ (newer hardware) J4 & J6 - footprints for both are overlayed on the pcb so you can choose which one you would like to have
   
+## Usb-host shield
+
+__IMPORTANT: A trace needs to be cut on the usb-host-shield to allow it to be powered by 5v__ – _see the diagram below_ – this is best done with a craft knife – take care not to cut any other traces accidentally.
+  
+![image](https://user-images.githubusercontent.com/12017938/98587955-32bec280-22cb-11eb-93e5-89b337cc7d75.png)
+![image](https://user-images.githubusercontent.com/12017938/98587933-2a668780-22cb-11eb-9844-af73e18d9543.png)
+  
+all pins on the outer vertical lines need to be soldered to the board. In addition to this the single topmost inner pin (labeled 5v in diagram) needs to be soldered to pcb also
+  
 ## specific assembly advice
 
-[coming soon]
+Start by soldering the smallest parts first: resistors, diodes, capacitors and regulators - take note of the direction on the diodes - black bar on component matching black bar on footprint
+
+Next lets do the ic’s/sockets - make sure the direction is correct! place in and fold two corner pins to hold in place, then solder all pins. you can place the ic in now too
+
+Now lets do the micro-controller and usb-host-shield - if you want to be able to remove them from the board you will need to solder header sockets to the board first – otherwise can directly solder the header pins
+
+for the usb-host-shield right_row I would do a 1x2 header horizontally at the top to catch that 5v pin and then 1x11 row vertically for the rest – the left_row can just be a single 1x12 vertical header
+
+Finally place the interface parts (eg jacks and sockets) be generous with the solder here -> this is to strengthen the mechanical connections as well as making electrical ones
+
+Leave j8 header unpopulated – this just exposes the bootloader pins so firmware can be reset in the rare case that the pro-micro gets bricked – also leave j1 header unpopulated unless you want to power from a euro-power-header
   
 </details>
 
