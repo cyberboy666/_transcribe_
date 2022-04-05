@@ -23,7 +23,8 @@ the aim of this project is to create a small utility module that can __\_transcr
 
 ## demo video
 
-[video coming soon]
+[![image](https://user-images.githubusercontent.com/12017938/161842450-5e7714f2-3f4f-4ca7-a6d0-f1c522a89308.png)](https://videos.scanlines.xyz/w/iJpDAtjqwNczxP9pRJbMGW)
+
 
 # documentation
 
