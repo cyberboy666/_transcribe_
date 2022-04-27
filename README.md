@@ -23,7 +23,8 @@ the aim of this project is to create a small utility module that can __\_transcr
 
 ## demo video
 
-[video coming soon]
+[![image](https://user-images.githubusercontent.com/12017938/161842450-5e7714f2-3f4f-4ca7-a6d0-f1c522a89308.png)](https://videos.scanlines.xyz/w/iJpDAtjqwNczxP9pRJbMGW)
+
 
 # documentation
 
@@ -41,6 +42,16 @@ i try to source all the parts i can from either:
 - other ; ocationally there will be parts which will need to be sourced elsewhere - usaully either aliexpress, ebay or amazon etc...
 
 take a look at the [full_bom](/hardware/bom/full_bom.csv) for this project to see where i am sourcing each part from
+  
+## omitting parts
+  
+if you know exactly how you will use your _transcribe_ some parts of this circuit build can be omitted. the pcb is divided into sections that are marked on silk-screen:
+
+- __A - micro-conntroller - centre__ : this is the brain of the circuit and is required to make it do anything. its also where USB_MIDI is received from(/sent to) usb-hosts (eg computer or raspberry pi)
+- __B - rs232 serial - output(/input)__ : for sending(/receiving) serial at rs232 levels - only omit if you are not using this board for its default / intended purpose
+- __C - serial midi - input(/output)__ : for receiving(/sending) midi messages over serial (usually on older hardware over din5 or 3.5mm jack) - can omit if you are only using (newer) hardware with USB-MIDI
+- __D USB-midi HOST__: adds circuitry so that micro-controller can act as USB-HOST. for receiving midi messages from(/sending to) usb-devices (eg korg nanokontrol2) - can omit this if not interested in controlling from usb-devices
+
 
 ## import into tayda
 
@@ -79,6 +90,8 @@ i often use jlcpcb because they are reliable, cheap and give you an option of co
 ## interactive BOM for build guiding
 
 follow this link to view the [interactive BOM](https://htmlpreview.github.io/?https://github.com/cyberboy666/_transcribe_/blob/main/hardware/bom/ibom.html)
+  
+
 
 ## general solder advices
 
@@ -92,15 +105,112 @@ follow this link to view the [interactive BOM](https://htmlpreview.github.io/?ht
 - next i would do diodes, transistors and ic's - taking care that these are placed in the right direction (using a ic socket can be useful)
 - finally i place the interface parts - rca jacks, power jack, pots and switches - make sure these have lots of solder on for structural stablity
 
-## slightly more specific assembly advice
+## interface choice / double footprint
+  
+_serial-midi_ is most commonly sent over __din5__ (older hardware) J5 & J7 or __trs 3.5mm jack__ (newer hardware) J4 & J6 - footprints for both are overlayed on the pcb so you can choose which one you would like to have
+  
+## Usb-host shield
 
-[coming soon]
+__IMPORTANT: A trace needs to be cut on the usb-host-shield to allow it to be powered by 5v__ – _see the diagram below_ – this is best done with a craft knife – take care not to cut any other traces accidentally.
+  
+![image](https://user-images.githubusercontent.com/12017938/98587955-32bec280-22cb-11eb-93e5-89b337cc7d75.png)
+![image](https://user-images.githubusercontent.com/12017938/98587933-2a668780-22cb-11eb-9844-af73e18d9543.png)
+  
+all pins on the outer vertical lines need to be soldered to the board. In addition to this the single topmost inner pin (labeled 5v in diagram) needs to be soldered to pcb also
+  
+## specific assembly advice
+
+Start by soldering the smallest parts first: resistors, diodes, capacitors and regulators - take note of the direction on the diodes - black bar on component matching black bar on footprint
+
+Next lets do the ic’s/sockets - make sure the direction is correct! place in and fold two corner pins to hold in place, then solder all pins. you can place the ic in now too
+
+Now lets do the micro-controller and usb-host-shield - if you want to be able to remove them from the board you will need to solder header sockets to the board first – otherwise can directly solder the header pins
+
+for the usb-host-shield right_row I would do a 1x2 header horizontally at the top to catch that 5v pin and then 1x11 row vertically for the rest – the left_row can just be a single 1x12 vertical header
+
+Finally place the interface parts (eg jacks and sockets) be generous with the solder here -> this is to strengthen the mechanical connections as well as making electrical ones
+
+Leave j8 header unpopulated – this just exposes the bootloader pins so firmware can be reset in the rare case that the pro-micro gets bricked – also leave j1 header unpopulated unless you want to power from a euro-power-header
+  
+</details>
+
+## firmware guide
+
+<details><summary><b>firmware guide</b> - for editing the code & flashing it to your micro-controller</summary>
   
 ## flashing firmware onto the micro-controller
   
-if you have got a kit from the shop the firmware will be pre-configured - still you might want to read this so you can edit the code and update the midi mapping.
+if you have got a kit from the shop the default firmware will be pre-configured - still you probably will want to follow this so you can edit the code and update the mappings.
+  
+### install guide
+  
+all _underscores_ projects with micro-controllers use [platformio](https://platformio.org/) with [visual studio code](https://code.visualstudio.com/) to edit, flash and monitor the code.
+  
+- first download (and unzip) the code in this repo - easiest is [as a zip](https://github.com/cyberboy666/_transcribe_/archive/refs/heads/main.zip) or you can clone using git if you are comfortable with this
+- next download, install and open [visual studio code](https://code.visualstudio.com/#alt-downloads)
+- now open the extension tab within vscode on left vertical menu (or press ctrl-shift-x) and search for `platformio` to install this extension
+  
+![image](https://user-images.githubusercontent.com/12017938/158495161-7c3114fc-814b-4acc-b142-4a9522370473.png)
 
-[more details coming soon]
+- connect the micro-controller to computer via usb, open the _transcribe_ software folder (ctrl-k ctrl-o) in vscode and find the _platformio_ commands (either in left vertical menu under _platformio_ or little tick/arrow symbols along bottom blue bar) - `PlatformIO: Upload` should flash the default code to your micro-controller
+  
+![image](https://user-images.githubusercontent.com/12017938/158495844-99466196-086a-47d2-b803-2b5941d33ac5.png)
+
+### mapping edit guide
+  
+this guide is just an overview to get you started. the two files that you might want to look at are: 
+- [software/src/commands.h](software/src/commands.h) - where the specific serial protocol commands are defined
+- [software/src/main.cpp](software/src/main.cpp) - all the code that handles receiving midi and writing serial is - including the _mapping function_
+  
+open the `src/main.cpp` file in vscode and fold all functions by pressing `ctrl-k, ctrl-0` - this makes reading it a bit easier:
+
+![image](https://user-images.githubusercontent.com/12017938/158500187-9222c7e7-a8f3-4ff5-b663-3d6d90e5ee68.png)
+
+open and take a look at the `setAVE55nanokontrolMap` method - we will first look at these lines:
+  
+```cpp
+    else if(midiParam1 == 64){setCmd(A55_A_BUS_SOURCE_1);}
+    else if(midiParam1 == 65){setCmd(A55_A_BUS_SOURCE_2);}
+```
+  
+the first line is saying: __if the incoming midi message has `midiParam1` set to 64, then send the `A55_A_BUS_SOURCE_1` command over rs232 serial__ - since we can see from above that this line is within the conditional: `if(midiCommand == MIDICOMMAND::CC)` , then we know that `midiParam1` is refering to the cc channel. we can also see in the __commands.h__ file  that `A55_A_BUS_SOURCE_1` is set to the command from that panasonic ave55 specification that switches the a-bus source to input 1:
+```cpp
+  #define A55_A_BUS_SOURCE_1 "VCP:200"
+```
+
+this line is mapping a midi message on cc channel 64 to the rs232 message for ave55 that switches the input source. this is the simplest kind of mapping - a discrete BUTTON press. however there are also mappings to functions that take parameter values also. for example the `A55_A_B_MIX_LEVEL` command that wipes between the a-bus to b-bus on the mixer:
+  
+ ```cpp
+ if(midiParam1 == 0){setCmd(A55_A_B_MIX_LEVEL, midiParam2);}
+ else if(midiParam1 == 1){setCmd(A55_THRESHOLD_LUM_KEY, midiParam2);}
+ else if(midiParam1 == 2){setCmd(A55_CENTER_WIPE_X, midiParam2);}
+ else if(midiParam1 == 3){setCmd(A55_CENTER_WIPE_Y, midiParam2);}
+```
+
+we can see that on these mappings also the __midiParam2__ value is passed into the _setCmd_ function - this is the _cc value_ of the channel - on my controller - the position of the slider that is sending on cc channel 0. the rs232 command for this function also takes a varible input to set position of the mix:
+```cpp
+#define A55_A_B_MIX_LEVEL "VMM:179~0"
+```
+where the `~0` is a placeholder that is replaced with the hex-converted value of `midiParam2`. there are other ways to map midi notes to rs232 commands. there are more 'advanced' mapping functions in the code for this - for example:
+```cpp
+else if(midiParam1 == 35){setCmdParamRandom(A55_A_B_MIX_LEVEL);}
+```
+takes a button press and converts it to a random mix level. another useful mapping is taking continuous inputn (eg slider on midi controller)  and convert this to a STEP of different discrete commands - for example:
+```cpp
+else if(midiParam1 == 17){setCmdStepAVE55(A55_A_BUS_MOSAIC_OFF, midiParam2, 76, 6);}
+else if(midiParam1 == 18){setCmdStepAVE55(A55_A_BUS_PAINT_OFF, midiParam2, 82, 6);}
+```
+these mappings STEP between sending 6 different rs232 commands on a single slider - so you can set all the mosaic/paint effect levels in one turn. another useful 'advanced' mapping function is the SWITCH:
+  
+```cpp
+else if(midiParam1 == 50){setCmdSwitch(MX50_A_BUS_EFFECT_ON, MX50_A_BUS_EFFECT_OFF, 3);}
+```
+
+this will SWITCH between sending the _on_ and _off_ commands when the same midi command is send (the third parameter input `3` is a unique index reference to store the on/off state in memory between messages)
+  
+these are just some examples of the ways that code can be used to perform these mappings. if you are interested can see more in the code directly or write your own mapping functions!
+  
+
   
 </details>
   
@@ -108,7 +218,8 @@ if you have got a kit from the shop the firmware will be pre-configured - still 
   
 <details><summary><b>operating guide</b> - start here if you have purchased an assembled unit</summary>
 
-[coming soon]
+![image](https://user-images.githubusercontent.com/12017938/158474325-491af7d0-d0d1-4446-a689-3c4a773478fd.png)
+
 
 </details>
 
@@ -141,7 +252,7 @@ Ask any questions or start discussions related to this project on the [scanlines
 You can contact me directly at tim (at) cyberboy666 (dot) com 
 Please get in touch if you are interested in hosting a workshop !
 
-![image](https://user-images.githubusercontent.com/12017938/152463166-0fea052b-1eed-4f63-a59d-55c360bfea76.png)
+![image](https://user-images.githubusercontent.com/12017938/158493552-49a106d9-8a07-45a7-9833-da2faddb7406.png)
 
 
 Thanks to Gilbert Sinnott for helping with initial experiments. to Bastien Lavaud for circuit advice, always. To Ben Caldwell for project advice. To everyone who has or will contribute ♥♥♥
