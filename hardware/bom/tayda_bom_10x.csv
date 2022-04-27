@@ -1,6 +1,6 @@
-sku,qty,ref,val
+sku,qty,ref,val,vendor
 A-1063,10,C1 ,100uf,tayda
-A-214,40,C2 C3 C4 C5 ,0.1u,tayda
+A-4008,40,C2 C3 C4 C5 ,0.1u,tayda
 A-157,20,D1 D2 ,1N4148,tayda
 A-2956,10,J1 ,europower,tayda
 A-300,10,J3 ,dsub9_socket,tayda

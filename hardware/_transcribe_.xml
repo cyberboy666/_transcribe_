@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>/home/timcaldwell/projects/_transcribe_/hardware/_transcribe_.sch</source>
-    <date>Mon 28 Feb 2022 12:29:54</date>
+    <date>Thu 07 Apr 2022 11:11:34</date>
     <tool>Eeschema 5.1.10</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -21,7 +21,7 @@
   <components>
     <comp ref="U1">
       <value>ProMicro</value>
-      <footprint>Module:ProMicro</footprint>
+      <footprint>lib_fp:ProMicro</footprint>
       <libsource lib="transcribe_circuit-rescue" part="ProMicro-promicro" description=""/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5E1CCE60</tstamp>
@@ -36,7 +36,7 @@
     </comp>
     <comp ref="U5">
       <value>usbHostMini</value>
-      <footprint>Module:usbHostMidi</footprint>
+      <footprint>lib_fp:usbHostMidi</footprint>
       <libsource lib="transcribe_circuit-rescue" part="usbHostMini-promicro" description=""/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5E1D17C6</tstamp>
