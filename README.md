@@ -7,8 +7,8 @@
 - this circuit is distributed by __UNDERSCORES__ - _an open video hardware label_ : it is available to purchase - as a pcb, kit or assembled unit - at [underscores.shop](https://underscores.shop/_transcribe_/)
 - the schematic for the circuit can be found [here](/hardware/schematic.pdf)
 - the pcb gerber files for the lastest version can be found [here](/hardware/gerber_latest.zip)
-- consider [donating](https://liberapay.com/underscores/) to the underscores project to help us continue creating for the commons
-
+- interactive BOM is [here](https://htmlpreview.github.io/?https://github.com/cyberboy666/_transcribe_/blob/main/hardware/bom/ibom.html)
+- consider [donating](https://opencollective.com/underscores) to the underscores project to help us continue creating for the commons
 ## description
 
 people in the video-art community are performing with old hardware video-mixers such as the Pansonic_WJ_AVE55 and Pansonic_WJ_MX30/50. some of these mixers have a RS232 serial port for interfacing with them digitally. this is especially useful for live performance where sequencing can assist physical actions. there are some cool examples of software specifically written to interface with these mixers (such as [Freds excel app](https://a2m2.ch/fred/wj-ave55.htm) and  [Klifs MaxPatch](https://vimeo.com/161662975) ) , but there many more programs and devices that are made to interface digitally using MIDI.
