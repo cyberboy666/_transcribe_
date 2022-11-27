@@ -1,3 +1,4 @@
 (sym_lib_table
-  (lib (name transcribe_circuit-rescue)(type Legacy)(uri ${KIPRJMOD}/transcribe_circuit-rescue.lib)(options "")(descr ""))
+  (lib (name "transcribe_circuit-rescue")(type "Legacy")(uri "${KIPRJMOD}/transcribe_circuit-rescue.lib")(options "")(descr ""))
+  (lib (name "_transcribe_-rescue")(type "Legacy")(uri "${KIPRJMOD}/_transcribe_-rescue.lib")(options "")(descr ""))
 )
