@@ -20,6 +20,9 @@ uint8_t midiCommand, midiChannel, midiParam1, midiParam2;
 uint8_t position;
 bool hasUsbDevice = 0;
 bool dropZeroCC;
+bool showHasUsbDevice = 0;
+unsigned long time_now = 0;
+
 
 uint8_t switchStore[20];
 uint8_t paramStore[127];
@@ -34,6 +37,7 @@ bool readInputFromMidiDevice();
 bool readInputFromMidiHost();
 bool readInputFromMidiSerial();
 void connect_usb_midi();
+void logUsbDeviceStatus();
 void logMessageToSerial();
 
 void setCmd(char* inputCmd, uint8_t inputParam = 0);
@@ -199,6 +203,7 @@ void setup(){
 
 void loop(){
   button1.tick();
+  logUsbDeviceStatus();
   midiCommand = midiChannel = midiParam1 = midiParam2 = 0;
   position = 0;
   memset(&cmd[0], 0, sizeof(cmd));
@@ -222,7 +227,7 @@ void loop(){
   Serial1.write(2);
   Serial1.write(cmd);
   Serial1.write(3);
-  
+
 }
 
 bool readInputFromMidiDevice(){
@@ -433,8 +438,16 @@ void connect_usb_midi() {
   Serial.println("Button 1 click.");
     if (Usb.Init() == 0){ // means it is successful
       hasUsbDevice = true;
-      delay( 200 );
     }
-    Serial.print(hasUsbDevice);
-    Serial.print("<--hasUsbDevice\n");
+  showHasUsbDevice = 1;
+  time_now = millis();
 } // click1
+
+void logUsbDeviceStatus(){
+  if(showHasUsbDevice && millis() > time_now + 400){
+    Serial.print(Midi.GetAddress() != 0);
+    Serial.print("<--attached device\n");
+    showHasUsbDevice = 0;
+    time_now = 0;
+  }
+}
