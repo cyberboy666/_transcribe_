@@ -1,10 +1,10 @@
 sku,qty,ref,val,vendor
-A-1063,1,C1 ,100uf,tayda
+A-959,1,C1 ,100uf,tayda
 A-4008,4,C2 C3 C4 C5 ,0.1u,tayda
 A-157,2,D1 D2 ,1N4148,tayda
 A-2956,1,J1 ,europower,tayda
-A-300,1,J3 ,dsub9_socket,tayda
 A-853,3,J2 J4 J6 ,stereo_jack_3.5mm,tayda
+A-300,1,J3 ,dsub9_socket,tayda
 A-1010,2,J5 J7 ,din5,tayda
 A-1324,2,J9 J10 ,jumper,tayda
 A-2246,3,R1 R2 R3 ,220,tayda
