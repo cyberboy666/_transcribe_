@@ -82,6 +82,25 @@ i often use jlcpcb because they are reliable, cheap and give you an option of co
 
 </details>
 
+<details><summary>a note on midi over 3.5mm trs jacks</summary>
+
+
+in general newer devices send midi over usb, and older ones send serial-midi over _din5 jacks_. however some newer devices opt to send serial-midi over __3.5mm trs jacks__ (to save space on more compact designs)
+
+_transcribe_ has (overlapping) footprints for either serial-midi over _din5_ or over __3.5mm trs__
+
+unfortunately at the time that designers started using __3.5mm trs jacks__ for midi there was no offical standard for which pins map to midis _source_ (`midi_plus`) and _sink_ (`midi_data`) pins and different designers have mapped this differently on their instruments.
+
+now there is an offical standard - TYPE A - which is what _transcribe_ uses: 
+
+- t -> _sink_ (data)
+- r -> _source_ (plus)
+- s -> x
+
+[minimidi.world](https://minimidi.world/) is a great resource that explains the different standards and allows you to look up the type of _serial midi over 3.5mm trs_ that your devices have - i recommend taking a look at this if you are planning on using 3.5mm trs with your _transcribe_
+
+</details>
+
 ## assembly guide
 
 <details><summary><b>assembly guide</b> - start here if you have purchased a diy kit</summary>
