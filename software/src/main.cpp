@@ -22,7 +22,16 @@ bool hasUsbDevice = 0;
 bool dropZeroCC;
 bool showHasUsbDevice = 0;
 unsigned long time_now = 0;
+int cycleCount = 0;
 
+void readInputFromSerial1();
+void readInputFromSerial();
+void serialMidiSendCC(uint8_t channel, uint8_t control, uint8_t value);
+void serialMidiSendNote(uint8_t channel, uint8_t note, uint8_t velocity);
+void usbhostMidiSendCC(uint8_t channel, uint8_t control, uint8_t value);
+void usbhostMidiSendNote(uint8_t channel, uint8_t note, uint8_t velocity);
+void usbMidiSendCC(uint8_t channel, uint8_t control, uint8_t value);
+void usbMidiSendNote(uint8_t channel, uint8_t note, uint8_t velocity); 
 
 uint8_t switchStore[20];
 uint8_t paramStore[127];
@@ -202,6 +211,23 @@ void setup(){
 }
 
 void loop(){
+
+  // ~~ EXTRA CODE FOR DEMONSTRATING READS & WRITES TO SERIAL/MIDI ~~
+
+  // every loop read, print and respond to serial input on Serial1 (serial-midi in)
+  readInputFromSerial1();
+  // every loop read, print and respond to serial input on Serial (serial monitor on computer)
+  readInputFromSerial();
+  if(cycleCount % 5000){
+  // every 5000 loops send cc0 value 127 on channel 1 to Serial1 (serial-midi out)
+    serialMidiSendCC(0, 0, 127);
+  // every 5000 loops send cc1 value 127 on channel 1 to device attached to USBHOST (usbhost out)
+    usbhostMidiSendCC(0, 1, 127);
+  // every 5000 loops send cc2 value 127 on channel 1 to the midi-host on attached computer via usb (usbmidi out)
+    usbMidiSendCC(0, 2, 127);
+  }
+  cycleCount++;
+
   button1.tick();
   logUsbDeviceStatus();
   midiCommand = midiChannel = midiParam1 = midiParam2 = 0;
@@ -222,13 +248,112 @@ void loop(){
 
   logMessageToSerial();
 
-
   if(cmd[0] == 0){return;}
   Serial1.write(2);
   Serial1.write(cmd);
   Serial1.write(3);
 
+
+
 }
+
+  // code here to do Serial1.read(?) code to get response from lighting panel (maybe do something with it programatically but probably just logMessageToSerial() )
+
+void readInputFromSerial1(){
+  while (Serial1.available()) {
+      // Read the incoming byte
+      char incomingByte = Serial1.read();
+      // Print the received byte to the Serial Monitor
+      Serial.print("Received on Serial1: ");
+      Serial.println(incomingByte);
+
+      // Example: React based on the received byte
+      if (incomingByte == 'A') {
+          // Do something when 'A' is received
+          Serial.println("Command A received!");
+      } else if (incomingByte == 'B') {
+          // Do something when 'B' is received
+          Serial.println("Command B received!");
+      }
+      // Add more conditions as needed
+  }
+}
+
+  // code here to do Serial.???(?) ... opposite of print to see what might be typed on the PuTTY session if any against the com port i assume shows up in devices on the PC
+
+  //                                   might never do this but i want to know how
+
+ void readInputFromSerial(){
+  // Serial.println("reading from seriAal");
+  while (Serial.available()) {
+      // Read the incoming byte
+      char incomingByte = Serial.read();
+      // Print the received byte to the Serial Monitor
+      Serial.print("Received on Serial: ");
+      Serial.println(incomingByte);
+
+      // Example: React based on the received byte
+      if (incomingByte == 'A') {
+          // Do something when 'A' is received
+          Serial.println("Command A received!");
+      } else if (incomingByte == 'B') {
+          // Do something when 'B' is received
+          Serial.println("Command B received!");
+      }
+      // Add more conditions as needed
+  }
+}
+
+  // code here to do altSerial.poke(?) to put 3 bytes on the midi din out plug...this is the meat and potatoes of my needed modifications
+
+void serialMidiSendCC(uint8_t channel, uint8_t control, uint8_t value) {
+	altSerial.write(0xB0 | (channel & 0xf));
+	altSerial.write(control & 0x7f);
+	altSerial.write(value & 0x7f);
+}
+
+void serialMidiSendNote(uint8_t channel, uint8_t note, uint8_t velocity) {
+	altSerial.write((velocity != 0 ? 0x90 : 0x80) | (channel & 0xf));
+	altSerial.write(note & 0x7f);
+	altSerial.write(velocity &0x7f);
+}
+
+  // code here to do USBMIDI.poke(?) to put 3 bytes on the USBMIDI host controller though i think many controllers attached ignore "in" (may never do this but i want to know how)
+
+ void usbhostMidiSendCC(uint8_t channel, uint8_t control, uint8_t value) {
+  uint8_t buf[3];
+  buf[0] = 0xB0 | (channel & 0xf);
+  buf[1] = control & 0x7f;
+  buf[2] = value & 0x7f;
+
+  Midi.SendData(buf);
+}
+
+void usbhostMidiSendNote(uint8_t channel, uint8_t note, uint8_t velocity) {
+  uint8_t buf[3];
+  buf[0] = (velocity != 0 ? 0x90 : 0x80) | (channel & 0xf);
+  buf[1] = note & 0x7f;
+  buf[2] = velocity &0x7f;
+
+  Midi.SendData(buf);
+
+}
+
+  // code here to do Usb.???(?) to put 3 bytes on the MidiDevice to appear at the PC on any program attached to the midi device (may never do this but i want to know how)
+
+ void usbMidiSendCC(uint8_t channel, uint8_t control, uint8_t value) {
+	USBMIDI.write(0xB0 | (channel & 0xf));
+	USBMIDI.write(control & 0x7f);
+	USBMIDI.write(value & 0x7f);
+}
+
+void usbMidiSendNote(uint8_t channel, uint8_t note, uint8_t velocity) {
+	USBMIDI.write((velocity != 0 ? 0x90 : 0x80) | (channel & 0xf));
+	USBMIDI.write(note & 0x7f);
+	USBMIDI.write(velocity &0x7f);
+}
+
+  // ~~ END OF EXTRA CODE FOR DEMONSTRATING READS & WRITES TO SERIAL/MIDI ~~
 
 bool readInputFromMidiDevice(){
   Usb.Task();
